@@ -6,42 +6,11 @@ description: Comprehensive modernization recipe for the OrionAlpha project inclu
 recipeList:
   # Core Migration
   - org.openrewrite.java.migrate.Java8toJava11
-  - org.openrewrite.java.migrate.UpgradePluginsToJava11
-  - org.openrewrite.java.migrate.netty.UpgradeNetty_4_1_to_4_2
+  - org.openrewrite.netty.UpgradeNetty_4_1_to_4_2
   
   # Static Analysis
   - org.openrewrite.staticanalysis.CommonStaticAnalysis
-  - org.openrewrite.staticanalysis.JavaApiBestPractices
-  - org.openrewrite.staticanalysis.CodeCleanup
-  
-  # Java API Modernization
-  - org.openrewrite.java.migrate.nio
-  - org.openrewrite.java.migrate.io
-  - org.openrewrite.java.migrate.lang
-  - org.openrewrite.java.migrate.net
-  - org.openrewrite.java.migrate.sql
-  - org.openrewrite.java.migrate.util
-  - org.openrewrite.java.migrate.concurrent
-  - org.openrewrite.java.migrate.logging
-  - org.openrewrite.java.migrate.javax
-  - org.openrewrite.java.migrate.search
-  - org.openrewrite.java.migrate.metrics
-  - org.openrewrite.java.migrate.maven
   
   # Security - OWASP Top 10
   - org.openrewrite.java.security.OwaspTopTen
   - org.openrewrite.java.security.JavaSecurityBestPractices
-  - org.openrewrite.java.migrate.RemoveSecurityAccessController
-  - org.openrewrite.java.migrate.RemoveSecurityPolicy
-  - org.openrewrite.java.migrate.RemoveSecuritySecurityManager
-  - org.openrewrite.java.migrate.ReplaceSystemGetSecurityManagerWithNull
-  
-  # Recipe Quality & Nullability
-  - org.openrewrite.java.recipes.JavaRecipeBestPractices
-  - org.openrewrite.java.recipes.RecipeNullabilityBestPractices
-  - org.openrewrite.java.recipes.FindRecipes
-  
-  # Cleanup
-  - org.openrewrite.java.migrate.RemoveIllegalSemicolons
-  - org.openrewrite.java.migrate.CatchTypeNotPresentException
-  - org.openrewrite.java.migrate.UseJavaUtilBase64

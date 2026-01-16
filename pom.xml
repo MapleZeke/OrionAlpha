@@ -156,45 +156,14 @@
                     <activeRecipes>
                         <!-- Core Migration -->
                         <recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
-                        <recipe>org.openrewrite.java.migrate.UpgradePluginsToJava11</recipe>
-                        <recipe>org.openrewrite.java.migrate.netty.UpgradeNetty_4_1_to_4_2</recipe>
+                        <recipe>org.openrewrite.netty.UpgradeNetty_4_1_to_4_2</recipe>
                         
                         <!-- Static Analysis -->
                         <recipe>org.openrewrite.staticanalysis.CommonStaticAnalysis</recipe>
-                        <recipe>org.openrewrite.staticanalysis.JavaApiBestPractices</recipe>
-                        <recipe>org.openrewrite.staticanalysis.CodeCleanup</recipe>
-                        
-                        <!-- Java API Modernization -->
-                        <recipe>org.openrewrite.java.migrate.nio</recipe>
-                        <recipe>org.openrewrite.java.migrate.io</recipe>
-                        <recipe>org.openrewrite.java.migrate.lang</recipe>
-                        <recipe>org.openrewrite.java.migrate.net</recipe>
-                        <recipe>org.openrewrite.java.migrate.sql</recipe>
-                        <recipe>org.openrewrite.java.migrate.util</recipe>
-                        <recipe>org.openrewrite.java.migrate.concurrent</recipe>
-                        <recipe>org.openrewrite.java.migrate.logging</recipe>
-                        <recipe>org.openrewrite.java.migrate.javax</recipe>
-                        <recipe>org.openrewrite.java.migrate.search</recipe>
-                        <recipe>org.openrewrite.java.migrate.metrics</recipe>
-                        <recipe>org.openrewrite.java.migrate.maven</recipe>
                         
                         <!-- Security - OWASP Top 10 -->
                         <recipe>org.openrewrite.java.security.OwaspTopTen</recipe>
                         <recipe>org.openrewrite.java.security.JavaSecurityBestPractices</recipe>
-                        <recipe>org.openrewrite.java.migrate.RemoveSecurityAccessController</recipe>
-                        <recipe>org.openrewrite.java.migrate.RemoveSecurityPolicy</recipe>
-                        <recipe>org.openrewrite.java.migrate.RemoveSecuritySecurityManager</recipe>
-                        <recipe>org.openrewrite.java.migrate.ReplaceSystemGetSecurityManagerWithNull</recipe>
-                        
-                        <!-- Recipe Quality & Nullability -->
-                        <recipe>org.openrewrite.java.recipes.JavaRecipeBestPractices</recipe>
-                        <recipe>org.openrewrite.java.recipes.RecipeNullabilityBestPractices</recipe>
-                        <recipe>org.openrewrite.java.recipes.FindRecipes</recipe>
-                        
-                        <!-- Cleanup -->
-                        <recipe>org.openrewrite.java.migrate.RemoveIllegalSemicolons</recipe>
-                        <recipe>org.openrewrite.java.migrate.CatchTypeNotPresentException</recipe>
-                        <recipe>org.openrewrite.java.migrate.UseJavaUtilBase64</recipe>
                     </activeRecipes>
                 </configuration>
                 <dependencies>
@@ -212,6 +181,11 @@
                         <groupId>org.openrewrite.recipe</groupId>
                         <artifactId>rewrite-java-security</artifactId>
                         <version>2.14.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.openrewrite.recipe</groupId>
+                        <artifactId>rewrite-netty</artifactId>
+                        <version>0.6.4</version>
                     </dependency>
                 </dependencies>
             </plugin>
