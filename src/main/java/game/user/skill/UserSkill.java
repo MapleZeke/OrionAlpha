@@ -252,15 +252,13 @@ public class UserSkill {
         int skillLevel = SkillAccessor.getTeleportSkillLevel(user.getCharacter());
         if (slv > skillLevel + 3) {
           format =
-              String.format(
-                  "[SkillHack] Illegal Teleport LEVEL Tried [ %s ] Field: %d / SkillID: %d / (CurLev: %d, ReqLev: %d) (DISCONNECTED)",
-                  character, fieldID, skillID, skillLevel, slv);
+              "[SkillHack] Illegal Teleport LEVEL Tried [ %s ] Field: %d / SkillID: %d / (CurLev: %d, ReqLev: %d) (DISCONNECTED)"
+                  .formatted(character, fieldID, skillID, skillLevel, slv);
         }
       } else {
         format =
-            String.format(
-                "[SkillHack] Illegal Teleport Tried [ %s ] Field: %d / SkillID: %d (DISCONNECTED)",
-                character, fieldID, skillID);
+            "[SkillHack] Illegal Teleport Tried [ %s ] Field: %d / SkillID: %d (DISCONNECTED)"
+                .formatted(character, fieldID, skillID);
       }
     }
     if (!format.isEmpty()) {

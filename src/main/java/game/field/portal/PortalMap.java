@@ -105,7 +105,7 @@ public class PortalMap {
     } else {
       Logger.logError("GetRandStartPoint() Failed. The count of m_aStartPoint is zero.");
       if (!portal.isEmpty()) {
-        return portal.get(0);
+        return portal.getFirst();
       } else {
         Logger.logReport("GetRandStartPoint() Failed. There are no portals in the map.");
         return null;

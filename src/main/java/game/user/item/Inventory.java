@@ -723,10 +723,10 @@ public class Inventory {
       item.setCashItemSN(GameApp.getInstance().getNextCashSN());
       return item.getCashItemSN();
     } else {
-      if (item instanceof ItemSlotBundle) {
-        ((ItemSlotBundle) item).setItemSN(GameApp.getInstance().getNextSN());
-      } else if (item instanceof ItemSlotEquip) {
-        ((ItemSlotEquip) item).setItemSN(GameApp.getInstance().getNextSN());
+      if (item instanceof ItemSlotBundle bundle) {
+        bundle.setItemSN(GameApp.getInstance().getNextSN());
+      } else if (item instanceof ItemSlotEquip equip) {
+        equip.setItemSN(GameApp.getInstance().getNextSN());
       } else if (item instanceof ItemSlotBase) {
         return GameApp.getInstance().getNextSN();
       }

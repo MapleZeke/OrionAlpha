@@ -178,7 +178,7 @@ public class LoginDB {
                 hair,
                 level,
                 job,
-                stats.get(0),
+                stats.getFirst(),
                 stats.get(1),
                 stats.get(2),
                 stats.get(3),
@@ -240,7 +240,7 @@ public class LoginDB {
 
     try (Connection con = Database.getDB().poolConnection()) {
       for (String deleteCharacter : DELETE_CHARACTER) {
-        String query = String.format("DELETE FROM `%s` WHERE `CharacterID` = ?", deleteCharacter);
+        String query = "DELETE FROM `%s` WHERE `CharacterID` = ?".formatted(deleteCharacter);
         if (query.contains("givepopularity")) {
           query += " OR `TargetID` = ?";
         }

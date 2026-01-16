@@ -47,7 +47,7 @@ public class CommonDB {
           if (rs.next()) {
             String[] types = {"Equip", "Consume", "Install", "Etc"};
             for (int i = 1; i <= types.length; i++) {
-              int count = rs.getInt(String.format("%sCount", types[i - 1]));
+              int count = rs.getInt("%sCount".formatted(types[i - 1]));
               for (int j = 0; j <= count; j++) {
                 cd.getItemSlot(i).add(j, null);
                 cd.getItemTrading().get(i).add(j, 0);
@@ -185,14 +185,12 @@ public class CommonDB {
       String query = "DELETE FROM `itemslotbundle` WHERE `CharacterID` = ?";
       if (!removeSN.isEmpty()) {
         query +=
-            String.format(
-                " AND `ItemSN` NOT IN (%s)", removeSN.substring(0, removeSN.length() - 2));
+            " AND `ItemSN` NOT IN (%s)".formatted(removeSN.substring(0, removeSN.length() - 2));
       }
       if (!removeCashSN.isEmpty()) {
         query +=
-            String.format(
-                " AND `CashItemSN` NOT IN (%s)",
-                removeCashSN.substring(0, removeCashSN.length() - 2));
+            " AND `CashItemSN` NOT IN (%s)"
+                .formatted(removeCashSN.substring(0, removeCashSN.length() - 2));
       }
       try (PreparedStatement ps = con.prepareStatement(query)) {
         Database.execute(con, ps, characterID);
@@ -348,14 +346,12 @@ public class CommonDB {
       String query = "DELETE FROM `itemslotequip` WHERE `CharacterID` = ?";
       if (!removeSN.isEmpty()) {
         query +=
-            String.format(
-                " AND `ItemSN` NOT IN (%s)", removeSN.substring(0, removeSN.length() - 2));
+            " AND `ItemSN` NOT IN (%s)".formatted(removeSN.substring(0, removeSN.length() - 2));
       }
       if (!removeCashSN.isEmpty()) {
         query +=
-            String.format(
-                " AND `CashItemSN` NOT IN (%s)",
-                removeCashSN.substring(0, removeCashSN.length() - 2));
+            " AND `CashItemSN` NOT IN (%s)"
+                .formatted(removeCashSN.substring(0, removeCashSN.length() - 2));
       }
       try (PreparedStatement ps = con.prepareStatement(query)) {
         Database.execute(con, ps, characterID);

@@ -122,7 +122,7 @@ public class MSMessenger {
 
           ++userCount;
 
-          Character c = character.get(0);
+          Character c = character.getFirst();
           c.setUser(user);
           c.setAvatarLook(al);
           c.setID(user.getCharacter().getCharacterStat().getName());

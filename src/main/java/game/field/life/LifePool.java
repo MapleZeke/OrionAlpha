@@ -113,7 +113,7 @@ public class LifePool {
     } else {
       if (ctrlMin.getCount() == 0
           || ctrlMin.getHeap().isEmpty()
-          || ctrlMin.getHeap().get(0) == null) return false;
+          || ctrlMin.getHeap().getFirst() == null) return false;
       for (Controller p : ctrlMin.getHeap()) {
         if (p != null && p != controller && p.getCtrlCount() < 50) {
           ctrl = p;
@@ -166,7 +166,7 @@ public class LifePool {
       Controller owner) {
     if (owner == null) {
       if (ctrlMin.getCount() != 0) {
-        owner = ctrlMin.getHeap().get(0);
+        owner = ctrlMin.getHeap().getFirst();
       }
     }
     if (owner != null && owner.getCtrlCount() >= 50) {
@@ -321,7 +321,7 @@ public class LifePool {
   public boolean giveUpMobController(Controller ctrl) {
     Logger.logError("* GiveUpMobController Happened");
     if (ctrl != null && !ctrl.getCtrlMob().isEmpty()) {
-      Mob ctrlMob = ctrl.getCtrlMob().get(0); // pHead
+      Mob ctrlMob = ctrl.getCtrlMob().getFirst(); // pHead
       if (ctrlMob != null) {
         for (Mob mob : ctrl.getCtrlMob()) {
           if (mob != null) {
@@ -472,7 +472,7 @@ public class LifePool {
 
     for (Iterator<Npc> it = controller.getCtrlNpc().iterator(); it.hasNext(); ) {
       Npc npc = it.next();
-      ctrl = ctrlMin.getHeap().get(0);
+      ctrl = ctrlMin.getHeap().getFirst();
       if (ctrl.getCtrlCount() >= 50) {
         break;
       }
@@ -484,7 +484,7 @@ public class LifePool {
     }
     for (Iterator<Mob> it = controller.getCtrlMob().iterator(); it.hasNext(); ) {
       Mob mob = it.next();
-      ctrl = ctrlMin.getHeap().get(0);
+      ctrl = ctrlMin.getHeap().getFirst();
       if (ctrl.getCtrlCount() >= 50) {
         break;
       }
@@ -496,15 +496,15 @@ public class LifePool {
     }
 
     while (true) {
-      Controller minCtrl = ctrlMin.getHeap().get(0);
-      Controller maxCtrl = ctrlMax.getHeap().get(0);
+      Controller minCtrl = ctrlMin.getHeap().getFirst();
+      Controller maxCtrl = ctrlMax.getHeap().getFirst();
 
       if (maxCtrl.getCtrlCount() <= minCtrl.getCtrlCount() || maxCtrl.getCtrlCount() <= 20) {
         return;
       }
 
       if (!maxCtrl.getCtrlNpc().isEmpty()) {
-        Npc npc = maxCtrl.getCtrlNpc().remove(0);
+        Npc npc = maxCtrl.getCtrlNpc().removeFirst();
         updateCtrlHeap(maxCtrl);
         minCtrl.getCtrlNpc().add(npc);
         npc.setController(minCtrl);
@@ -552,7 +552,7 @@ public class LifePool {
       for (Mob mob : ctrlMob) {
         if (mob == null) break;
         if (ctrlMin.getCount() == 0
-            || (ctrl = ctrlMin.getHeap().get(0)) == null
+            || (ctrl = ctrlMin.getHeap().getFirst()) == null
             || ctrl.getCtrlCount() >= 50) {
           ctrl = ctrlNull;
         }
@@ -565,7 +565,7 @@ public class LifePool {
       for (Npc npc : ctrlNpc) {
         if (npc == null) break;
         if (ctrlMin.getCount() == 0
-            || (ctrl = ctrlMin.getHeap().get(0)) == null
+            || (ctrl = ctrlMin.getHeap().getFirst()) == null
             || ctrl.getCtrlCount() >= 50) {
           ctrl = ctrlNull;
         }

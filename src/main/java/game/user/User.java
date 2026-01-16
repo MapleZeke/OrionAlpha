@@ -2664,9 +2664,8 @@ public class User extends Creature {
   public void setMaxLevelReach() {
     if (!isGM()) {
       String notice =
-          String.format(
-              "[Congrats] %s has reached Level 200! Congratulate %s on such an amazing achievement!",
-              characterName, characterName);
+          "[Congrats] %s has reached Level 200! Congratulate %s on such an amazing achievement!"
+              .formatted(characterName, characterName);
       getChannel().broadcast(WvsContext.onBroadcastMsg(BroadcastMsg.Notice, notice));
     }
   }

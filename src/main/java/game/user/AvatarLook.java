@@ -79,8 +79,7 @@ public class AvatarLook {
 
   @Override
   public boolean equals(Object o) {
-    if (o instanceof AvatarLook) {
-      AvatarLook al = (AvatarLook) o;
+    if (o instanceof AvatarLook al) {
       return this.hairEquip.equals(al.hairEquip);
     }
     return false;

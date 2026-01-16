@@ -67,11 +67,9 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.12.1</version>
+                <version>3.14.1</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                    <release>${jdk.version}</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -163,30 +161,13 @@
                 <configuration>
                     <activeRecipes>
                         <!-- Full Java Migration Chain (run in order) -->
-                        <recipe>org.openrewrite.java.migrate.UpgradeToJava6</recipe>
-                        <recipe>org.openrewrite.java.migrate.UpgradeToJava7</recipe>
-                        <recipe>org.openrewrite.java.migrate.UpgradeToJava8</recipe>
-                        <recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
-                        <recipe>org.openrewrite.java.migrate.UpgradeToJava17</recipe>
                         <recipe>org.openrewrite.java.migrate.UpgradeToJava21</recipe>
-                        
-                        <!-- Core Migration -->
-                        <recipe>org.openrewrite.netty.UpgradeNetty_4_1_to_4_2</recipe>
-                        
-                        <!-- Static Analysis -->
-                        <recipe>org.openrewrite.staticanalysis.CommonStaticAnalysis</recipe>
                         
                         <!-- Security - OWASP Top 10 -->
                         <recipe>org.openrewrite.java.security.OwaspTopTen</recipe>
-                        <recipe>org.openrewrite.java.security.JavaSecurityBestPractices</recipe>
                     </activeRecipes>
                 </configuration>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-static-analysis</artifactId>
-                        <version>1.21.0</version>
-                    </dependency>
                     <dependency>
                         <groupId>org.openrewrite.recipe</groupId>
                         <artifactId>rewrite-migrate-java</artifactId>
@@ -196,11 +177,6 @@
                         <groupId>org.openrewrite.recipe</groupId>
                         <artifactId>rewrite-java-security</artifactId>
                         <version>2.14.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-netty</artifactId>
-                        <version>0.6.4</version>
                     </dependency>
                 </dependencies>
             </plugin>

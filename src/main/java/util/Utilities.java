@@ -80,12 +80,12 @@ public class Utilities {
    * @return The string representation of the IP
    */
   public static final String netIPToString(long netaddr) {
-    return String.format(
-        "%d.%d.%d.%d",
-        (netaddr & 0xFF),
-        ((netaddr >> 8) & 0xFF),
-        ((netaddr >> 16) & 0xFF),
-        ((netaddr >> 24) & 0xFF));
+    return "%d.%d.%d.%d"
+        .formatted(
+            (netaddr & 0xFF),
+            ((netaddr >> 8) & 0xFF),
+            ((netaddr >> 16) & 0xFF),
+            ((netaddr >> 24) & 0xFF));
   }
 
   // Thanks odin

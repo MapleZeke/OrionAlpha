@@ -151,8 +151,7 @@ public class GameAcceptor {
                         return;
                       }
                       ClientSocket socket = new ClientSocket(ch);
-                      socket.setAddr(
-                          String.format("%s:%d", socket.getSocketRemoteIP(), addr.getPort()));
+                      socket.setAddr("%s:%d".formatted(socket.getSocketRemoteIP(), addr.getPort()));
                       socket.setChannelID(getChannelID());
                       socket.initSequence();
                       int serialNo = serialNoCounter.incrementAndGet();

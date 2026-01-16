@@ -74,7 +74,7 @@ public class FieldMan {
         try {
           WzPackage fieldDir = new WzFileSystem().init("Map/Map").getPackage();
           if (fieldDir != null) {
-            field = registerField(fieldID, fieldDir.getItem(String.format("%09d.img", fieldID)));
+            field = registerField(fieldID, fieldDir.getItem("%09d.img".formatted(fieldID)));
             if (field != null) {
               fields.put(fieldID, field);
             }
