@@ -18,19 +18,16 @@
 package game.field;
 
 /**
- *
  * @author Eric
  */
 public class FieldOpt {
-    public static final int
-            MoveLimit                       = 0x1,
-            SkillLimit                      = 0x2,
-            SummonLimit                     = 0x4,
-            MysticDoorLimit                 = 0x8,
-            Event                           = 0x9,
-            MigrateLimit                    = 0x10,
-            PortalScrollLimit               = 0x20,
-            TeleportItemLimit               = 0x40,
-            MiniGameLimit                   = 0x80
-    ;
+  public static final int MoveLimit = 0x1,
+      SkillLimit = 0x2,
+      SummonLimit = 0x4,
+      MysticDoorLimit = 0x8,
+      Event = 0x9,
+      MigrateLimit = 0x10,
+      PortalScrollLimit = 0x20,
+      TeleportItemLimit = 0x40,
+      MiniGameLimit = 0x80;
 }

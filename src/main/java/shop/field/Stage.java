@@ -23,15 +23,14 @@ import network.packet.OutPacket;
 import shop.user.User;
 
 /**
- *
  * @author sunnyboy
  */
 public class Stage {
 
-    public static OutPacket onSetCashShop(User user) {
-        OutPacket packet = new OutPacket(LoopbackPacket.SetCashShop);
-        packet.encodeInt(user.getKSSN());
-        user.getCharacter().encode(packet, DBChar.All);
-        return packet;
-    }
+  public static OutPacket onSetCashShop(User user) {
+    OutPacket packet = new OutPacket(LoopbackPacket.SetCashShop);
+    packet.encodeInt(user.getKSSN());
+    user.getCharacter().encode(packet, DBChar.All);
+    return packet;
+  }
 }

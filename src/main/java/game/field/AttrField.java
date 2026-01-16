@@ -18,51 +18,50 @@
 package game.field;
 
 /**
- *
  * @author Eric
  */
 public class AttrField {
-    private double walk;
-    private double drag;
-    private double fly;
-    private double g;
+  private double walk;
+  private double drag;
+  private double fly;
+  private double g;
 
-    public AttrField() {
-        this.walk = 0.0d;
-        this.drag = 0.0d;
-        this.fly = 0.0d;
-        this.g = 0.0d;
-    }
+  public AttrField() {
+    this.walk = 0.0d;
+    this.drag = 0.0d;
+    this.fly = 0.0d;
+    this.g = 0.0d;
+  }
 
-    public double getWalk() {
-        return walk;
-    }
+  public double getWalk() {
+    return walk;
+  }
 
-    public double getDrag() {
-        return drag;
-    }
+  public double getDrag() {
+    return drag;
+  }
 
-    public double getFly() {
-        return fly;
-    }
-    
-    public double getGravity() {
-        return g;
-    }
+  public double getFly() {
+    return fly;
+  }
 
-    public void setWalk(double walk) {
-        this.walk = walk;
-    }
+  public double getGravity() {
+    return g;
+  }
 
-    public void setDrag(double drag) {
-        this.drag = drag;
-    }
+  public void setWalk(double walk) {
+    this.walk = walk;
+  }
 
-    public void setFly(double fly) {
-        this.fly = fly;
-    }
-    
-    public void setGravity(double g) {
-        this.g = g;
-    }
+  public void setDrag(double drag) {
+    this.drag = drag;
+  }
+
+  public void setFly(double fly) {
+    this.fly = fly;
+  }
+
+  public void setGravity(double g) {
+    this.g = g;
+  }
 }

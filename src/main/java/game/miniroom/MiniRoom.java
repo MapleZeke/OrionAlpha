@@ -22,56 +22,55 @@ import game.user.User;
 import network.packet.InPacket;
 
 /**
- *
  * @author sunnyboy
  */
 public class MiniRoom {
 
-    private static void onMRInviteResult(InPacket packet) {
-        int sn = packet.decodeInt();
-        if (sn > 0) {
-            MiniRoomBase.inviteResult(sn, packet.decodeString(), packet.decodeByte());
-        }
+  private static void onMRInviteResult(InPacket packet) {
+    int sn = packet.decodeInt();
+    if (sn > 0) {
+      MiniRoomBase.inviteResult(sn, packet.decodeString(), packet.decodeByte());
     }
+  }
 
-    private static void onMRCreate(User user, InPacket packet) {
-        byte type = packet.decodeByte();
-        if (type > 0 && user.getField() != null) {
-            MiniRoomBase.create(user, type, packet, false, 0);
-        }
+  private static void onMRCreate(User user, InPacket packet) {
+    byte type = packet.decodeByte();
+    if (type > 0 && user.getField() != null) {
+      MiniRoomBase.create(user, type, packet, false, 0);
     }
+  }
 
-    private static void onMREnter(User user, InPacket packet) {
-        int sn = packet.decodeInt();
-        if (sn > 0) {
-            MiniRoomBase.enter(user, sn);
-        }
+  private static void onMREnter(User user, InPacket packet) {
+    int sn = packet.decodeInt();
+    if (sn > 0) {
+      MiniRoomBase.enter(user, sn);
     }
+  }
 
-    private static void onMRForward(User user, int type, InPacket packet) {
-        MiniRoomBase miniRoom = user.getMiniRoom();
-        if (miniRoom != null) {
-            miniRoom.onPacketBase(type, user, packet);
-        } else {
-            user.sendCharacterStat(Request.Excl, 0);
-        }
+  private static void onMRForward(User user, int type, InPacket packet) {
+    MiniRoomBase miniRoom = user.getMiniRoom();
+    if (miniRoom != null) {
+      miniRoom.onPacketBase(type, user, packet);
+    } else {
+      user.sendCharacterStat(Request.Excl, 0);
     }
+  }
 
-    public static void onMiniRoom(User user, InPacket packet) {
-        byte type = packet.decodeByte();
-        switch (type) {
-            case MiniRoomPacket.Create:
-                onMRCreate(user, packet);
-                break;
-            case MiniRoomPacket.EnterFailed:
-                onMRInviteResult(packet);
-                break;
-            case MiniRoomPacket.Enter:
-                onMREnter(user, packet);
-                break;
-            default:
-                onMRForward(user, type, packet);
-                break;
-        }
+  public static void onMiniRoom(User user, InPacket packet) {
+    byte type = packet.decodeByte();
+    switch (type) {
+      case MiniRoomPacket.Create:
+        onMRCreate(user, packet);
+        break;
+      case MiniRoomPacket.EnterFailed:
+        onMRInviteResult(packet);
+        break;
+      case MiniRoomPacket.Enter:
+        onMREnter(user, packet);
+        break;
+      default:
+        onMRForward(user, type, packet);
+        break;
     }
+  }
 }

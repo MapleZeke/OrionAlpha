@@ -20,22 +20,21 @@ package game.party;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class PartyData {
-    private final PartyMember party;
-    
-    public PartyData() {
-        this.party = new PartyMember();
-    }
-    
-    public void encode(OutPacket packet) {
-        party.encode(packet);
-        //packet.encodePadding(102);
-    }
-    
-    public PartyMember getParty() {
-        return party;
-    }
+  private final PartyMember party;
+
+  public PartyData() {
+    this.party = new PartyMember();
+  }
+
+  public void encode(OutPacket packet) {
+    party.encode(packet);
+    // packet.encodePadding(102);
+  }
+
+  public PartyMember getParty() {
+    return party;
+  }
 }

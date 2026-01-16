@@ -18,22 +18,19 @@
 package network.packet;
 
 /**
- *
  * @author Eric
  */
 public class CenterPacket {
-    public static final byte
-            BEGIN_SOCKET    = 0,
-            InitGameSvr     = 1,
-            InitShopSvr     = 2,
-            END_SOCKET      = 3,
-            BEGIN_GAME      = 4,
-            ShopMigrateReq  = 5,
-            ShopMigrateRes  = 6,
-            END_GAME        = 7,
-            BEGIN_SHOP      = 8,
-            GameMigrateReq  = 9,
-            GameMigrateRes  = 10,
-            END_SHOP        = 11
-    ;
+  public static final byte BEGIN_SOCKET = 0,
+      InitGameSvr = 1,
+      InitShopSvr = 2,
+      END_SOCKET = 3,
+      BEGIN_GAME = 4,
+      ShopMigrateReq = 5,
+      ShopMigrateRes = 6,
+      END_GAME = 7,
+      BEGIN_SHOP = 8,
+      GameMigrateReq = 9,
+      GameMigrateRes = 10,
+      END_SHOP = 11;
 }

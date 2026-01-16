@@ -18,19 +18,16 @@
 package game.field;
 
 /**
- *
  * @author Eric
  */
 public class GameObjectType {
-    public static final int
-            None        = 0,
-            GameObject  = 1,
-            Creature    = 2,
-            User        = 3,
-            Npc         = 4,
-            Mob         = 5,
-            Item        = 7,
-            Portal      = 8,
-            NO          = 9
-    ;
+  public static final int None = 0,
+      GameObject = 1,
+      Creature = 2,
+      User = 3,
+      Npc = 4,
+      Mob = 5,
+      Item = 7,
+      Portal = 8,
+      NO = 9;
 }

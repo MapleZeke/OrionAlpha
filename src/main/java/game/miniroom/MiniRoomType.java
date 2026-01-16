@@ -18,12 +18,9 @@
 package game.miniroom;
 
 /**
- *
  * @author sunnyboy
  */
 public class MiniRoomType {
 
-    public static final int 
-            TradingRoom = 1
-    ;
+  public static final int TradingRoom = 1;
 }

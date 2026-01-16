@@ -22,20 +22,19 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class ShopDlg {
-    
-    public static OutPacket onOpenShopDlg(User user, NpcTemplate npcTemplate) {
-        OutPacket packet = new OutPacket(LoopbackPacket.OpenShopDlg);
-        npcTemplate.encodeShop(user, packet);
-        return packet;
-    }
-    
-    public static OutPacket onShopResult(int resCode) {
-        OutPacket packet = new OutPacket(LoopbackPacket.ShopResult);
-        packet.encodeByte(resCode);
-        return packet;
-    }
+
+  public static OutPacket onOpenShopDlg(User user, NpcTemplate npcTemplate) {
+    OutPacket packet = new OutPacket(LoopbackPacket.OpenShopDlg);
+    npcTemplate.encodeShop(user, packet);
+    return packet;
+  }
+
+  public static OutPacket onShopResult(int resCode) {
+    OutPacket packet = new OutPacket(LoopbackPacket.ShopResult);
+    packet.encodeByte(resCode);
+    return packet;
+  }
 }

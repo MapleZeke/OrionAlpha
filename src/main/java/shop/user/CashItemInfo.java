@@ -20,81 +20,80 @@ package shop.user;
 import util.FileTime;
 
 /**
- *
  * @author sunnyboy
  */
 public class CashItemInfo {
 
-    private long cashItemSN;
-    private int accountID;
-    private int characterID;
-    private int itemID;
-    private int commodityID;
-    private short number;
-    private String buyCharacterName = "";
-    private FileTime dateExpire;
+  private long cashItemSN;
+  private int accountID;
+  private int characterID;
+  private int itemID;
+  private int commodityID;
+  private short number;
+  private String buyCharacterName = "";
+  private FileTime dateExpire;
 
-    public long getCashItemSN() {
-        return cashItemSN;
-    }
+  public long getCashItemSN() {
+    return cashItemSN;
+  }
 
-    public void setCashItemSN(long CashItemSN) {
-        this.cashItemSN = CashItemSN;
-    }
+  public void setCashItemSN(long CashItemSN) {
+    this.cashItemSN = CashItemSN;
+  }
 
-    public int getAccountID() {
-        return accountID;
-    }
+  public int getAccountID() {
+    return accountID;
+  }
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
-    }
+  public void setAccountID(int accountID) {
+    this.accountID = accountID;
+  }
 
-    public int getCharacterID() {
-        return characterID;
-    }
+  public int getCharacterID() {
+    return characterID;
+  }
 
-    public void setCharacterID(int characterID) {
-        this.characterID = characterID;
-    }
+  public void setCharacterID(int characterID) {
+    this.characterID = characterID;
+  }
 
-    public int getItemID() {
-        return itemID;
-    }
+  public int getItemID() {
+    return itemID;
+  }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+  public void setItemID(int itemID) {
+    this.itemID = itemID;
+  }
 
-    public int getCommodityID() {
-        return commodityID;
-    }
+  public int getCommodityID() {
+    return commodityID;
+  }
 
-    public void setCommodityID(int commodityID) {
-        this.commodityID = commodityID;
-    }
+  public void setCommodityID(int commodityID) {
+    this.commodityID = commodityID;
+  }
 
-    public short getNumber() {
-        return number;
-    }
+  public short getNumber() {
+    return number;
+  }
 
-    public void setNumber(short number) {
-        this.number = number;
-    }
+  public void setNumber(short number) {
+    this.number = number;
+  }
 
-    public String getBuyCharacterName() {
-        return buyCharacterName;
-    }
+  public String getBuyCharacterName() {
+    return buyCharacterName;
+  }
 
-    public void setBuyCharacterName(String buyCharacterName) {
-        this.buyCharacterName = buyCharacterName;
-    }
+  public void setBuyCharacterName(String buyCharacterName) {
+    this.buyCharacterName = buyCharacterName;
+  }
 
-    public FileTime getDateExpire() {
-        return dateExpire;
-    }
+  public FileTime getDateExpire() {
+    return dateExpire;
+  }
 
-    public void setDateExpire(FileTime dateExpire) {
-        this.dateExpire = dateExpire;
-    }
+  public void setDateExpire(FileTime dateExpire) {
+    this.dateExpire = dateExpire;
+  }
 }

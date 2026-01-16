@@ -47,195 +47,199 @@ import util.Logger;
 import util.Utilities;
 
 /**
- *
  * @author Eric
  */
 public class CenterSocket extends SimpleChannelInboundHandler {
-    private Channel channel;
-    private Bootstrap bootstrap;
-    private final EventLoopGroup workerGroup;
-    private final Lock lock;
-    private final Lock lockSend;
-    private boolean closePosted;
-    private String worldName;
-    private String addr;
-    private int port;
-    
-    public CenterSocket() {
-        this.worldName = "";
-        this.addr = "";
-        this.closePosted = false;
-        this.lock = new ReentrantLock();
-        this.lockSend = new ReentrantLock();
-        this.workerGroup = new NioEventLoopGroup();
+  private Channel channel;
+  private Bootstrap bootstrap;
+  private final EventLoopGroup workerGroup;
+  private final Lock lock;
+  private final Lock lockSend;
+  private boolean closePosted;
+  private String worldName;
+  private String addr;
+  private int port;
+
+  public CenterSocket() {
+    this.worldName = "";
+    this.addr = "";
+    this.closePosted = false;
+    this.lock = new ReentrantLock();
+    this.lockSend = new ReentrantLock();
+    this.workerGroup = new NioEventLoopGroup();
+  }
+
+  @Override
+  public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    super.channelActive(ctx);
+  }
+
+  @Override
+  public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    Logger.logReport("Center socket closed");
+    try {
+      postCloseMessage();
+    } finally {
+      ctx.channel().close();
     }
-    
+    super.channelInactive(ctx);
+  }
+
+  @Override
+  public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+    if (ctx == null || msg == null) {
+      return;
+    }
+    InPacket packet = (InPacket) msg;
+    if (packet.getDataLen() < 1) {
+      return;
+    }
+    processPacket(packet);
+  }
+
+  @Override
+  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    if (ctx == null || (cause instanceof IOException || cause instanceof ClassCastException)) {
+      return;
+    }
+    super.exceptionCaught(ctx, cause);
+  }
+
+  public void connect() {
+    try {
+      bootstrap =
+          new Bootstrap()
+              .group(workerGroup)
+              .channel(NioSocketChannel.class)
+              .option(ChannelOption.SO_KEEPALIVE, true)
+              .handler(
+                  new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    public void initChannel(SocketChannel ch) {
+                      ch.pipeline()
+                          .addLast(new CenterDecoder(), CenterSocket.this, new CenterEncoder());
+                    }
+                  });
+
+      // Connect to the Center socket
+      channel =
+          bootstrap
+              .connect(getAddr(), getPort())
+              .syncUninterruptibly()
+              .channel()
+              .closeFuture()
+              .channel();
+
+      // Send the Center Server the Login server information request
+      OutPacket packet = new OutPacket(CenterPacket.InitShopSvr);
+      packet.encodeString(ShopApp.getInstance().getAddr());
+      packet.encodeShort(ShopApp.getInstance().getPort());
+      sendPacket(packet);
+
+      Logger.logReport("Center socket connected successfully");
+    } catch (Exception ex) {
+      ex.printStackTrace(System.err);
+    }
+  }
+
+  public String getAddr() {
+    return addr;
+  }
+
+  public int getPort() {
+    return port;
+  }
+
+  public String getWorldName() {
+    return worldName;
+  }
+
+  public void init(JsonObject data) {
+    this.addr = data.getString("ip", "127.0.0.1");
+    this.port = data.getInt("port", 8383);
+    this.worldName = data.getString("worldName", "OrionAlpha");
+  }
+
+  public void onGameMigrateResult(InPacket packet) {
+    int characterID = packet.decodeInt();
+
+    User user = User.findUser(characterID);
+    if (user != null) {
+      if (packet.decodeBool()) {
+        user.sendPacket(
+            ClientSocket.onMigrateCommand(
+                false, Utilities.netIPToInt32(packet.decodeString()), packet.decodeShort()));
+      } else {
+        // Might as well close socket or something tbh..
+      }
+    }
+  }
+
+  public void postCloseMessage() {
+    lock.lock();
+    try {
+      if (!closePosted) {
+        closePosted = true;
+        channel.close();
+        workerGroup.shutdownGracefully();
+      }
+    } finally {
+      lock.unlock();
+    }
+  }
+
+  public void processPacket(InPacket packet) {
+    if (ShopAcceptor.getInstance() != null) {
+      final byte type = packet.decodeByte();
+
+      switch (type) {
+        case CenterPacket.GameMigrateRes:
+          onGameMigrateResult(packet);
+          break;
+        default:
+          {
+            Logger.logReport("Packet received: %s", packet.dumpString());
+          }
+      }
+    }
+  }
+
+  public void sendPacket(OutPacket packet) {
+    if (channel != null && channel.isActive()) {
+      lockSend.lock();
+      try {
+        channel.writeAndFlush(packet.toArray());
+      } finally {
+        lockSend.unlock();
+      }
+    }
+  }
+
+  private static class CenterDecoder extends ReplayingDecoder<Void> {
+
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)
+        throws Exception {
+      int length = in.readInt();
+
+      byte[] src = new byte[length];
+      in.readBytes(src);
+
+      InPacket packet = new InPacket();
+      packet.setDataLen(length);
+      packet.rawAppendBuffer(Unpooled.wrappedBuffer(src), length);
+      out.add(packet);
     }
-    
+  }
+
+  private static class CenterEncoder extends MessageToByteEncoder<byte[]> {
+
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        Logger.logReport("Center socket closed");
-        try {
-            postCloseMessage();
-        } finally {
-            ctx.channel().close();
-        }
-        super.channelInactive(ctx);
+    protected void encode(ChannelHandlerContext ctx, byte[] message, ByteBuf out) throws Exception {
+      byte[] packet = (byte[]) message;
+
+      out.writeInt(packet.length);
+      out.writeBytes(Arrays.copyOf(packet, packet.length));
     }
-    
-    @Override
-    public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if (ctx == null || msg == null) {
-            return;
-        }
-        InPacket packet = (InPacket) msg;
-        if (packet.getDataLen() < 1) {
-            return;
-        }
-        processPacket(packet);
-    }
-    
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        if (ctx == null || (cause instanceof IOException || cause instanceof ClassCastException)) {
-            return;
-        }
-        super.exceptionCaught(ctx, cause);
-    }
-    
-    public void connect() {
-        try {
-            bootstrap = new Bootstrap()
-                    .group(workerGroup)
-                    .channel(NioSocketChannel.class)
-                    .option(ChannelOption.SO_KEEPALIVE, true)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        public void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(
-                                    new CenterDecoder(), 
-                                    CenterSocket.this,
-                                    new CenterEncoder()
-                            );
-                        }
-                    });
-            
-            // Connect to the Center socket
-            channel = bootstrap.connect(getAddr(), getPort())
-                    .syncUninterruptibly()
-                    .channel()
-                    .closeFuture()
-                    .channel();
-            
-            // Send the Center Server the Login server information request
-            OutPacket packet = new OutPacket(CenterPacket.InitShopSvr);
-            packet.encodeString(ShopApp.getInstance().getAddr());
-            packet.encodeShort(ShopApp.getInstance().getPort());
-            sendPacket(packet);
-            
-            Logger.logReport("Center socket connected successfully");
-        } catch (Exception ex) {
-            ex.printStackTrace(System.err);
-        }
-    }
-    
-    public String getAddr() {
-        return addr;
-    }
-    
-    public int getPort() {
-        return port;
-    }
-    
-    public String getWorldName() {
-        return worldName;
-    }
-    
-    public void init(JsonObject data) {
-        this.addr = data.getString("ip", "127.0.0.1");
-        this.port = data.getInt("port", 8383);
-        this.worldName = data.getString("worldName", "OrionAlpha");
-    }
-    
-    public void onGameMigrateResult(InPacket packet) {
-        int characterID = packet.decodeInt();
-        
-        User user = User.findUser(characterID);
-        if (user != null) {
-            if (packet.decodeBool()) {
-                user.sendPacket(ClientSocket.onMigrateCommand(false, Utilities.netIPToInt32(packet.decodeString()), packet.decodeShort()));
-            } else {
-                // Might as well close socket or something tbh..
-            }
-        }
-    }
-    
-    public void postCloseMessage() {
-        lock.lock();
-        try {
-            if (!closePosted) {
-                closePosted = true;
-                channel.close();
-                workerGroup.shutdownGracefully();
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-    
-    public void processPacket(InPacket packet) {
-        if (ShopAcceptor.getInstance() != null) {
-            final byte type = packet.decodeByte();
-            
-            switch (type) {
-                case CenterPacket.GameMigrateRes:
-                    onGameMigrateResult(packet);
-                    break;
-                default: {
-                    Logger.logReport("Packet received: %s", packet.dumpString());
-                }
-            }
-        }
-    }
-    
-    public void sendPacket(OutPacket packet) {
-        if (channel != null && channel.isActive()) {
-            lockSend.lock();
-            try {
-                channel.writeAndFlush(packet.toArray());
-            } finally {
-                lockSend.unlock();
-            }
-        }
-    }
-    
-    private static class CenterDecoder extends ReplayingDecoder<Void> {
-        
-        @Override
-        protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-            int length = in.readInt();
-            
-            byte[] src = new byte[length];
-            in.readBytes(src);
-            
-            InPacket packet = new InPacket();
-            packet.setDataLen(length);
-            packet.rawAppendBuffer(Unpooled.wrappedBuffer(src), length);
-            out.add(packet);
-        }
-    }
-    
-    private static class CenterEncoder extends MessageToByteEncoder<byte[]> {
-        
-        @Override
-        protected void encode(ChannelHandlerContext ctx, byte[] message, ByteBuf out) throws Exception {
-            byte[] packet = (byte[]) message;
-        
-            out.writeInt(packet.length);
-            out.writeBytes(Arrays.copyOf(packet, packet.length));
-        }
-    }
+  }
 }

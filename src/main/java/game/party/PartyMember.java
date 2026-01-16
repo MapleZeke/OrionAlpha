@@ -22,66 +22,66 @@ import java.util.List;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class PartyMember {
-    private final List<Integer> characterID;
-    private final List<String> characterName;
-    //private int partyBossCharacterID;
-    
-    public PartyMember() {
-        this.characterID = new ArrayList<>(6);
-        this.characterName = new ArrayList<>(6);
-        
-        for (int i = 0; i < 6; i++) {
-            characterID.add(i, 0);
-            characterName.add(i, "");
-        }
+  private final List<Integer> characterID;
+  private final List<String> characterName;
+
+  // private int partyBossCharacterID;
+
+  public PartyMember() {
+    this.characterID = new ArrayList<>(6);
+    this.characterName = new ArrayList<>(6);
+
+    for (int i = 0; i < 6; i++) {
+      characterID.add(i, 0);
+      characterName.add(i, "");
     }
-    
-    public void encode(OutPacket packet) {
-        for (int id : characterID) {
-            packet.encodeInt(id);
-        }
-        for (String name : characterName) {
-            packet.encodeString(name, 13);
-        }
+  }
+
+  public void encode(OutPacket packet) {
+    for (int id : characterID) {
+      packet.encodeInt(id);
     }
-    
-    public int getCharacterID(String name) {
-        int idx = findIndex(name);
-        if (idx == -1) {
-            return 0;
-        } else {
-            return characterID.get(idx);
-        }
+    for (String name : characterName) {
+      packet.encodeString(name, 13);
     }
-    
-    public List<Integer> getCharacterID() {
-        return characterID;
+  }
+
+  public int getCharacterID(String name) {
+    int idx = findIndex(name);
+    if (idx == -1) {
+      return 0;
+    } else {
+      return characterID.get(idx);
     }
-    
-    public List<String> getCharacterName() {
-        return characterName;
+  }
+
+  public List<Integer> getCharacterID() {
+    return characterID;
+  }
+
+  public List<String> getCharacterName() {
+    return characterName;
+  }
+
+  public int getMemberCount() {
+    int count = 0;
+    for (int id : characterID) {
+      if (id != 0) {
+        count++;
+      }
     }
-    
-    public int getMemberCount() {
-        int count = 0;
-        for (int id : characterID) {
-            if (id != 0) {
-                count++;
-            }
-        }
-        return count;
+    return count;
+  }
+
+  public int findIndex(String name) {
+    for (int i = 0; i < characterName.size(); i++) {
+      if (characterName.get(i).toLowerCase().equals(name.toLowerCase())) {
+        return i;
+      }
     }
-    
-    public int findIndex(String name) {
-        for (int i = 0; i < characterName.size(); i++) {
-            if (characterName.get(i).toLowerCase().equals(name.toLowerCase())) {
-                return i;
-            }
-        }
-        return -1;
-    }
+    return -1;
+  }
 }

@@ -18,21 +18,20 @@
 package game.user.command;
 
 /**
- *
  * @author Eric
  */
 public enum UserGradeCode {
-    User(0),
-    GM(1),
-    Developer(2),
-    ;
-    private final int grade;
-    
-    private UserGradeCode(int grade) {
-        this.grade = grade;
-    }
-    
-    public int getGrade() {
-        return grade;
-    }
+  User(0),
+  GM(1),
+  Developer(2),
+  ;
+  private final int grade;
+
+  private UserGradeCode(int grade) {
+    this.grade = grade;
+  }
+
+  public int getGrade() {
+    return grade;
+  }
 }

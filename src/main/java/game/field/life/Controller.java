@@ -24,57 +24,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Eric
  */
 public class Controller {
-    private User user;
-    private final List<Mob> ctrlMob;
-    private final List<Npc> ctrlNpc;
-    private int posMinHeap;
-    private int posMaxHeap;
-    
-    public Controller(User user) {
-        this.user = user;
-        this.ctrlMob = new ArrayList<>();
-        this.ctrlNpc = new ArrayList<>();
-        this.posMinHeap = 0;
-        this.posMaxHeap = 0;
-    }
-    
-    public User getUser() {
-        return user;
-    }
-    
-    public List<Mob> getCtrlMob() {
-        return ctrlMob;
-    }
-    
-    public List<Npc> getCtrlNpc() {
-        return ctrlNpc;
-    }
-    
-    public int getPosMinHeap() {
-        return posMinHeap;
-    }
-    
-    public int getPosMaxHeap() {
-        return posMaxHeap;
-    }
-    
-    public void setPosMinHeap(int pos) {
-        this.posMinHeap = pos;
-    }
-    
-    public void setPosMaxHeap(int pos) {
-        this.posMaxHeap = pos;
-    }
-    
-    public void setUser(User user) {
-        this.user = user;
-    }
-    
-    public int getCtrlCount() {
-        return ctrlMob.size() + ctrlNpc.size() - (!ctrlMob.isEmpty() ? 1 : 0);
-    }
+  private User user;
+  private final List<Mob> ctrlMob;
+  private final List<Npc> ctrlNpc;
+  private int posMinHeap;
+  private int posMaxHeap;
+
+  public Controller(User user) {
+    this.user = user;
+    this.ctrlMob = new ArrayList<>();
+    this.ctrlNpc = new ArrayList<>();
+    this.posMinHeap = 0;
+    this.posMaxHeap = 0;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public List<Mob> getCtrlMob() {
+    return ctrlMob;
+  }
+
+  public List<Npc> getCtrlNpc() {
+    return ctrlNpc;
+  }
+
+  public int getPosMinHeap() {
+    return posMinHeap;
+  }
+
+  public int getPosMaxHeap() {
+    return posMaxHeap;
+  }
+
+  public void setPosMinHeap(int pos) {
+    this.posMinHeap = pos;
+  }
+
+  public void setPosMaxHeap(int pos) {
+    this.posMaxHeap = pos;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public int getCtrlCount() {
+    return ctrlMob.size() + ctrlNpc.size() - (!ctrlMob.isEmpty() ? 1 : 0);
+  }
 }

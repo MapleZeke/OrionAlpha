@@ -24,135 +24,139 @@ import game.user.skill.SkillAccessor;
 import java.util.List;
 
 /**
- *
  * @author Eric
  */
 public class BasicStat {
-    private byte gender;
-    private byte level;
-    private short job;
-    private short STR, DEX, INT, LUK;
-    private short pop;
-    private short mhp, mmp;
-    
-    public void clear() {
-        this.job = 0;
-        this.level = 0;
-        this.gender = 0;
-        this.LUK = 0;
-        this.INT = 0;
-        this.DEX = 0;
-        this.STR = 0;
-        this.mmp = 0;
-        this.mhp = 0;
-        this.pop = 0;
-    }
-    
-    public byte getGender() {
-        return gender;
+  private byte gender;
+  private byte level;
+  private short job;
+  private short STR, DEX, INT, LUK;
+  private short pop;
+  private short mhp, mmp;
+
+  public void clear() {
+    this.job = 0;
+    this.level = 0;
+    this.gender = 0;
+    this.LUK = 0;
+    this.INT = 0;
+    this.DEX = 0;
+    this.STR = 0;
+    this.mmp = 0;
+    this.mhp = 0;
+    this.pop = 0;
+  }
+
+  public byte getGender() {
+    return gender;
+  }
+
+  public byte getLevel() {
+    return level;
+  }
+
+  public short getJob() {
+    return job;
+  }
+
+  public short getSTR() {
+    return STR;
+  }
+
+  public short getDEX() {
+    return DEX;
+  }
+
+  public short getINT() {
+    return INT;
+  }
+
+  public short getLUK() {
+    return LUK;
+  }
+
+  public short getPOP() {
+    return pop;
+  }
+
+  public short getMHP() {
+    return mhp;
+  }
+
+  public short getMMP() {
+    return mmp;
+  }
+
+  public void setFrom(
+      CharacterData c,
+      List<ItemSlotBase> realEquip,
+      List<ItemSlotBase> realEquip2,
+      int maxHPIncRate,
+      int maxMPIncRate) {
+    this.gender = c.getCharacterStat().getGender();
+    this.level = c.getCharacterStat().getLevel();
+    this.job = c.getCharacterStat().getJob();
+    this.STR = c.getCharacterStat().getSTR();
+    this.INT = c.getCharacterStat().getINT();
+    this.DEX = c.getCharacterStat().getDEX();
+    this.LUK = c.getCharacterStat().getLUK();
+    this.pop = c.getCharacterStat().getPOP();
+    this.mhp = c.getCharacterStat().getMHP();
+    this.mmp = c.getCharacterStat().getMMP();
+
+    ItemSlotEquip equip;
+    for (ItemSlotBase item : realEquip) {
+      if ((equip = (ItemSlotEquip) item) != null) {
+        this.STR += equip.iSTR;
+        this.INT += equip.iINT;
+        this.DEX += equip.iDEX;
+        this.LUK += equip.iLUK;
+        this.mhp += equip.iMaxHP;
+        this.mmp += equip.iMaxMP;
+      }
     }
 
-    public byte getLevel() {
-        return level;
-    }
+    this.mhp = (short) Math.min((maxHPIncRate + 100) * this.mhp / 100, SkillAccessor.HP_MAX);
+    this.mmp = (short) Math.min((maxMPIncRate + 100) * this.mmp / 100, SkillAccessor.MP_MAX);
+  }
 
-    public short getJob() {
-        return job;
-    }
+  public void setGender(byte gender) {
+    this.gender = gender;
+  }
 
-    public short getSTR() {
-        return STR;
-    }
+  public void setLevel(byte level) {
+    this.level = level;
+  }
 
-    public short getDEX() {
-        return DEX;
-    }
+  public void setJob(short job) {
+    this.job = job;
+  }
 
-    public short getINT() {
-        return INT;
-    }
+  public void setSTR(short STR) {
+    this.STR = STR;
+  }
 
-    public short getLUK() {
-        return LUK;
-    }
+  public void setDEX(short DEX) {
+    this.DEX = DEX;
+  }
 
-    public short getPOP() {
-        return pop;
-    }
+  public void setINT(short INT) {
+    this.INT = INT;
+  }
 
-    public short getMHP() {
-        return mhp;
-    }
+  public void setLUK(short LUK) {
+    this.LUK = LUK;
+  }
 
-    public short getMMP() {
-        return mmp;
-    }
-    
-    public void setFrom(CharacterData c, List<ItemSlotBase> realEquip, List<ItemSlotBase> realEquip2, int maxHPIncRate, int maxMPIncRate) {
-        this.gender = c.getCharacterStat().getGender();
-        this.level = c.getCharacterStat().getLevel();
-        this.job = c.getCharacterStat().getJob();
-        this.STR = c.getCharacterStat().getSTR();
-        this.INT = c.getCharacterStat().getINT();
-        this.DEX = c.getCharacterStat().getDEX();
-        this.LUK = c.getCharacterStat().getLUK();
-        this.pop = c.getCharacterStat().getPOP();
-        this.mhp = c.getCharacterStat().getMHP();
-        this.mmp = c.getCharacterStat().getMMP();
-        
-        ItemSlotEquip equip;
-        for (ItemSlotBase item : realEquip) {
-            if ((equip = (ItemSlotEquip) item) != null) {
-                this.STR += equip.iSTR;
-                this.INT += equip.iINT;
-                this.DEX += equip.iDEX;
-                this.LUK += equip.iLUK;
-                this.mhp += equip.iMaxHP;
-                this.mmp += equip.iMaxMP;
-            }
-        }
-        
-        this.mhp = (short) Math.min((maxHPIncRate + 100) * this.mhp / 100, SkillAccessor.HP_MAX);
-        this.mmp = (short) Math.min((maxMPIncRate + 100) * this.mmp / 100, SkillAccessor.MP_MAX);
-    }
+  public void setPOP(short pop) {
+    this.pop = pop;
+  }
 
-    public void setGender(byte gender) {
-        this.gender = gender;
-    }
+  public void setMHP(short mhp) {
+    this.mhp = mhp;
+  }
 
-    public void setLevel(byte level) {
-        this.level = level;
-    }
-
-    public void setJob(short job) {
-        this.job = job;
-    }
-
-    public void setSTR(short STR) {
-        this.STR = STR;
-    }
-
-    public void setDEX(short DEX) {
-        this.DEX = DEX;
-    }
-
-    public void setINT(short INT) {
-        this.INT = INT;
-    }
-
-    public void setLUK(short LUK) {
-        this.LUK = LUK;
-    }
-
-    public void setPOP(short pop) {
-        this.pop = pop;
-    }
-
-    public void setMHP(short mhp) {
-        this.mhp = mhp;
-    }
-
-    public void setMMP(short mmp) {
-        this.mmp = mmp;
-    }
+  public void setMMP(short mmp) {
+    this.mmp = mmp;
+  }
 }

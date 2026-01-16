@@ -21,52 +21,45 @@ import game.user.User;
 import java.util.LinkedList;
 
 /**
- *
  * @author Eric
  */
 public class FieldSplit {
-    // Focus Points
-    public static final int
-            User            = 0,
-            Mob             = 1,
-            Npc             = 2,
-            Drop            = 3,
-            NO              = 4
-    ;
-    private int row;
-    private int col;
-    private int index;
-    private final LinkedList<User> users;
-    private final LinkedList<FieldObj>[] fieldObj;
-    
-    public FieldSplit(int row, int col, int index) {
-        this.row = row;
-        this.col = col;
-        this.index = index;
-        this.users = new LinkedList<>();
-        this.fieldObj = new LinkedList[GameObjectType.NO];
-        for (int i = 0; i < GameObjectType.NO; i++) {
-            this.fieldObj[i] = new LinkedList<>();
-        }
+  // Focus Points
+  public static final int User = 0, Mob = 1, Npc = 2, Drop = 3, NO = 4;
+  private int row;
+  private int col;
+  private int index;
+  private final LinkedList<User> users;
+  private final LinkedList<FieldObj>[] fieldObj;
+
+  public FieldSplit(int row, int col, int index) {
+    this.row = row;
+    this.col = col;
+    this.index = index;
+    this.users = new LinkedList<>();
+    this.fieldObj = new LinkedList[GameObjectType.NO];
+    for (int i = 0; i < GameObjectType.NO; i++) {
+      this.fieldObj[i] = new LinkedList<>();
     }
-    
-    public LinkedList<User> getUser() {
-        return users;
-    }
-    
-    public LinkedList<FieldObj> getFieldObj(int foc) {
-        return fieldObj[foc];
-    }
-    
-    public int getRow() {
-        return row;
-    }
-    
-    public int getCol() {
-        return col;
-    }
-    
-    public int getIndex() {
-        return index;
-    }
+  }
+
+  public LinkedList<User> getUser() {
+    return users;
+  }
+
+  public LinkedList<FieldObj> getFieldObj(int foc) {
+    return fieldObj[foc];
+  }
+
+  public int getRow() {
+    return row;
+  }
+
+  public int getCol() {
+    return col;
+  }
+
+  public int getIndex() {
+    return index;
+  }
 }

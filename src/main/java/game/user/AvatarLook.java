@@ -26,73 +26,70 @@ import java.util.Objects;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class AvatarLook {
-    public static final int
-            Face        = 0x1,
-            Look        = 0x2,//Hack mask
-            Unknown2    = 0x4,
-            Unknown3    = 0x8
-    ;
-    
-    private final List<Integer> hairEquip;
-    
-    public AvatarLook() {
-        this.hairEquip = new ArrayList<>();
-        for (int i = 0; i < BodyPart.BP_Count + 1; i++) {
-            this.hairEquip.add(i, 0);
+  public static final int Face = 0x1,
+      Look = 0x2, // Hack mask
+      Unknown2 = 0x4,
+      Unknown3 = 0x8;
+
+  private final List<Integer> hairEquip;
+
+  public AvatarLook() {
+    this.hairEquip = new ArrayList<>();
+    for (int i = 0; i < BodyPart.BP_Count + 1; i++) {
+      this.hairEquip.add(i, 0);
+    }
+  }
+
+  public void load(CharacterStat cs, List<ItemSlotBase> equipped, List<ItemSlotBase> equipped2) {
+    this.hairEquip.set(0, cs.getHair());
+    for (int i = 1; i <= BodyPart.BP_Count; i++) {
+      if (equipped2.get(i) != null) {
+        this.hairEquip.set(i, equipped2.get(i).getItemID());
+      } else {
+        if (equipped.get(i) != null) {
+          this.hairEquip.set(i, equipped.get(i).getItemID());
         }
+      }
     }
-    
-    public void load(CharacterStat cs, List<ItemSlotBase> equipped, List<ItemSlotBase> equipped2) {
-        this.hairEquip.set(0, cs.getHair());
-        for (int i = 1; i <= BodyPart.BP_Count; i++) {
-            if (equipped2.get(i) != null) {
-                this.hairEquip.set(i, equipped2.get(i).getItemID());
-            } else {
-                if (equipped.get(i) != null) {
-                    this.hairEquip.set(i, equipped.get(i).getItemID());
-                }
-            }
-        }
+  }
+
+  public void encode(OutPacket packet) {
+    for (int pos = 0; pos < hairEquip.size(); pos++) {
+      if (hairEquip.get(pos) > 0) {
+        packet.encodeByte(pos);
+        packet.encodeInt(hairEquip.get(pos));
+      }
     }
-    
-    public void encode(OutPacket packet) {
-        for (int pos = 0; pos < hairEquip.size(); pos++) {
-            if (hairEquip.get(pos) > 0) {
-                packet.encodeByte(pos);
-                packet.encodeInt(hairEquip.get(pos));
-            }
-        }
-        packet.encodeByte(-1);
+    packet.encodeByte(-1);
+  }
+
+  public List<Integer> getEquipped() {
+    return hairEquip;
+  }
+
+  public final AvatarLook makeClone() {
+    AvatarLook al = new AvatarLook();
+    al.getEquipped().clear();
+    al.getEquipped().addAll(getEquipped());
+    return al;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof AvatarLook) {
+      AvatarLook al = (AvatarLook) o;
+      return this.hairEquip.equals(al.hairEquip);
     }
-    
-    public List<Integer> getEquipped() {
-        return hairEquip;
-    }
-    
-    public final AvatarLook makeClone() {
-        AvatarLook al = new AvatarLook();
-        al.getEquipped().clear();
-        al.getEquipped().addAll(getEquipped());
-        return al;
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof AvatarLook) {
-            AvatarLook al = (AvatarLook) o;
-            return this.hairEquip.equals(al.hairEquip);
-        }
-        return false;
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.hairEquip);
-        return hash;
-    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 23 * hash + Objects.hashCode(this.hairEquip);
+    return hash;
+  }
 }

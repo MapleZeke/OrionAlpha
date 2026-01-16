@@ -18,40 +18,39 @@
 package login;
 
 /**
- *
  * @author Eric
  */
 public class ChannelEntry {
-    private int userNo;
-    private final byte worldID;
-    private final byte channelID;
-    private final String addr;
-    private final short port;
-    
-    public ChannelEntry(byte worldID, byte channelID, String addr, short port) {
-        this.worldID = worldID;
-        this.channelID = channelID;
-        this.addr = addr;
-        this.port = port;
-    }
-    
-    public String getAddr() {
-        return addr;
-    }
-    
-    public byte getChannelID() {
-        return channelID;
-    }
-    
-    public short getPort() {
-        return port;
-    }
-    
-    public int getUserNo() {
-        return userNo;
-    }
-    
-    public byte getWorldID() {
-        return worldID;
-    }
+  private int userNo;
+  private final byte worldID;
+  private final byte channelID;
+  private final String addr;
+  private final short port;
+
+  public ChannelEntry(byte worldID, byte channelID, String addr, short port) {
+    this.worldID = worldID;
+    this.channelID = channelID;
+    this.addr = addr;
+    this.port = port;
+  }
+
+  public String getAddr() {
+    return addr;
+  }
+
+  public byte getChannelID() {
+    return channelID;
+  }
+
+  public short getPort() {
+    return port;
+  }
+
+  public int getUserNo() {
+    return userNo;
+  }
+
+  public byte getWorldID() {
+    return worldID;
+  }
 }

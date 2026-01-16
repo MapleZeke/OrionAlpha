@@ -21,46 +21,46 @@ import game.user.User;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public abstract class FieldObj {
-    private Field field;
-    private final FieldSplit[] split;
-    
-    public FieldObj() {
-        this(null);
-    }
-    
-    public FieldObj(Field field) {
-        this.field = field;
-        this.split = new FieldSplit[9];
-    }
-    
-    public boolean isShowTo(User user) {
-        return true;
-    }
-    
-    public FieldSplit[] getSplits() {
-        return split;
-    }
-    
-    public FieldSplit getSplit() {
-        return split[4];
-    }
-    
-    public void setSplit(int index, FieldSplit split) {
-        this.split[index] = split;
-    }
-    
-    public Field getField() {
-        return field;
-    }
-    
-    public void setField(Field field) {
-        this.field = field;
-    }
-    
-    public abstract OutPacket makeEnterFieldPacket();
-    public abstract OutPacket makeLeaveFieldPacket();
+  private Field field;
+  private final FieldSplit[] split;
+
+  public FieldObj() {
+    this(null);
+  }
+
+  public FieldObj(Field field) {
+    this.field = field;
+    this.split = new FieldSplit[9];
+  }
+
+  public boolean isShowTo(User user) {
+    return true;
+  }
+
+  public FieldSplit[] getSplits() {
+    return split;
+  }
+
+  public FieldSplit getSplit() {
+    return split[4];
+  }
+
+  public void setSplit(int index, FieldSplit split) {
+    this.split[index] = split;
+  }
+
+  public Field getField() {
+    return field;
+  }
+
+  public void setField(Field field) {
+    this.field = field;
+  }
+
+  public abstract OutPacket makeEnterFieldPacket();
+
+  public abstract OutPacket makeLeaveFieldPacket();
 }

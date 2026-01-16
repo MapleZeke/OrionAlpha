@@ -20,93 +20,93 @@ package util.wz;
 import java.awt.Point;
 
 /**
- *
  * @author Eric
  */
 public class WzUtil {
-    
-    public static boolean getBoolean(String value, boolean def) {
-        return getInt32(value, def ? 1 : 0) != 0;
+
+  public static boolean getBoolean(String value, boolean def) {
+    return getInt32(value, def ? 1 : 0) != 0;
+  }
+
+  public static byte getByte(String value, int def) {
+    return (byte) getInt32(value, def);
+  }
+
+  public static double getDouble(String value, double def) {
+    if (value != null) {
+      return Double.parseDouble(value);
     }
-    
-    public static byte getByte(String value, int def) {
-        return (byte) getInt32(value, def);
+    return def;
+  }
+
+  public static float getFloat(String value, float def) {
+    if (value != null) {
+      return Float.parseFloat(value);
     }
-    
-    public static double getDouble(String value, double def) {
-        if (value != null) {
-            return Double.parseDouble(value);
-        }
-        return def;
+    return def;
+  }
+
+  public static int getInt32(String value, int def) {
+    if (value != null) {
+      return Integer.parseInt(value);
     }
-    
-    public static float getFloat(String value, float def) {
-        if (value != null) {
-            return Float.parseFloat(value);
-        }
-        return def;
+    return def;
+  }
+
+  public static short getShort(String value, int def) {
+    return (short) getInt32(value, def);
+  }
+
+  public static boolean getBoolean(WzProperty p, boolean def) {
+    return getInt32(p, def ? 1 : 0) != 0;
+  }
+
+  public static byte getByte(WzProperty p, int def) {
+    return (byte) getInt32(p, (byte) def);
+  }
+
+  public static double getDouble(WzProperty p, double def) {
+    if (p != null && p.getNodeType() == WzNodeType.Double) {
+      return (Double) p.getNodeValue();
     }
-    
-    public static int getInt32(String value, int def) {
-        if (value != null) {
-            return Integer.parseInt(value);
-        }
-        return def;
+    return def;
+  }
+
+  public static float getFloat(WzProperty p, float def) {
+    if (p != null && p.getNodeType() == WzNodeType.Float) {
+      return (Float) p.getNodeValue();
     }
-    
-    public static short getShort(String value, int def) {
-        return (short) getInt32(value, def);
+    return def;
+  }
+
+  public static int getInt32(WzProperty p, int def) {
+    if (p != null) {
+      switch (p.getNodeType()) {
+        case Short:
+          return (Short) p.getNodeValue();
+        case Int:
+          return (Integer) p.getNodeValue();
+      }
     }
-    
-    public static boolean getBoolean(WzProperty p, boolean def) {
-        return getInt32(p, def ? 1 : 0) != 0;
+    return def;
+  }
+
+  public static Point getPoint(WzProperty p, Point def) {
+    if (p != null && p.getNodeType() == WzNodeType.WzVector2D) {
+      return (Point) p.getNodeValue();
     }
-    
-    public static byte getByte(WzProperty p, int def) {
-        return (byte) getInt32(p, (byte) def);
+    return def;
+  }
+
+  public static short getShort(WzProperty p, int def) {
+    return (short) getInt32(p, (short) def);
+  }
+
+  public static String getString(WzProperty p, String def) {
+    if (p != null
+        && (p.getNodeType() == WzNodeType.String || p.getNodeType() == WzNodeType.WzUOL)) {
+      return (String) p.getNodeValue();
     }
-    
-    public static double getDouble(WzProperty p, double def) {
-        if (p != null && p.getNodeType() == WzNodeType.Double) {
-            return (Double) p.getNodeValue();
-        }
-        return def;
-    }
-    
-    public static float getFloat(WzProperty p, float def) {
-        if (p != null && p.getNodeType() == WzNodeType.Float) {
-            return (Float) p.getNodeValue();
-        }
-        return def;
-    }
-    
-    public static int getInt32(WzProperty p, int def) {
-        if (p != null) {
-            switch (p.getNodeType()) {
-                case Short:
-                    return (Short) p.getNodeValue();
-                case Int:
-                    return (Integer) p.getNodeValue();
-            }
-        }
-        return def;
-    }
-    
-    public static Point getPoint(WzProperty p, Point def) {
-        if (p != null && p.getNodeType() == WzNodeType.WzVector2D) {
-            return (Point) p.getNodeValue();
-        }
-        return def;
-    }
-    
-    public static short getShort(WzProperty p, int def) {
-        return (short) getInt32(p, (short) def);
-    }
-    
-    public static String getString(WzProperty p, String def) {
-        if (p != null && (p.getNodeType() == WzNodeType.String || p.getNodeType() == WzNodeType.WzUOL)) {
-            return (String) p.getNodeValue();
-        }
-        return def;
-    }
+    return def;
+  }
 }

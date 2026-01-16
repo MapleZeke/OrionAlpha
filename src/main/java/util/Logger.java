@@ -19,24 +19,24 @@ package util;
 
 /**
  * Used for logging purposes within the JVM.
- * 
+ *
  * @author Eric
  */
 public class Logger {
-    
-    public static void logReport(String format) {
-        System.out.println(format);
-    }
-    
-    public static void logReport(String format, Object... args) {
-        System.out.println(String.format(format, args));
-    }
-    
-    public static void logError(String format) {
-        System.err.println(format);
-    }
-    
-    public static void logError(String format, Object... args) {
-        System.err.println(String.format(format, args));
-    }
+
+  public static void logReport(String format) {
+    System.out.println(format);
+  }
+
+  public static void logReport(String format, Object... args) {
+    System.out.println(String.format(format, args));
+  }
+
+  public static void logError(String format) {
+    System.err.println(format);
+  }
+
+  public static void logError(String format, Object... args) {
+    System.err.println(String.format(format, args));
+  }
 }

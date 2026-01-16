@@ -49,12 +49,6 @@
             <version>24.1.1</version>
             <type>pom</type>
         </dependency>
-        <!-- GraalPy JSR-223 ScriptEngine support -->
-        <dependency>
-            <groupId>org.graalvm.python</groupId>
-            <artifactId>python-scriptengine</artifactId>
-            <version>24.1.1</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>

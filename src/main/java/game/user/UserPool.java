@@ -22,51 +22,48 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class UserPool {
-    
-    /**
-     * Adds a user into the field.
-     * 
-     * @param user The user to enter into the field
-     * 
-     * @return The enter field packet
-     */
-    public static OutPacket onUserEnterField(User user) {
-        OutPacket packet = new OutPacket(LoopbackPacket.UserEnterField);
-        packet.encodeInt(user.getCharacterID());
-        
-        packet.encodeString(user.getCharacterName());
-        packet.encodeByte(user.getCharacter().getCharacterStat().getGender());
-        
-        user.getSecondaryStat().encodeForRemote(packet, SecondaryStat.FilterForRemote);
-        
-        packet.encodeInt(user.getCharacter().getCharacterStat().getFace());
-        packet.encodeInt(0); //AvatarLook.Unknown2 (unused int)
-        packet.encodeInt(0); //AvatarLook.Unknown3 (unused int)
-        
-        user.getAvatarLook().encode(packet);
-        packet.encodeInt(0); //Unknown (modifies *(v3 + 161) aka *(v1 + 644))
-        
-        packet.encodeShort(user.getCurrentPosition().x);
-        packet.encodeShort(user.getCurrentPosition().y);
-        packet.encodeByte(user.getMoveAction());
-        packet.encodeShort(user.getFootholdSN());
-        return packet;
-    }
-    
-    /**
-     * Removes a user from the field.
-     * 
-     * @param characterID The ID of the user to remove from the map
-     * 
-     * @return The leave field packet
-     */
-    public static OutPacket onUserLeaveField(int characterID) {
-        OutPacket packet = new OutPacket(LoopbackPacket.UserLeaveField);
-        packet.encodeInt(characterID);
-        return packet;
-    }
+
+  /**
+   * Adds a user into the field.
+   *
+   * @param user The user to enter into the field
+   * @return The enter field packet
+   */
+  public static OutPacket onUserEnterField(User user) {
+    OutPacket packet = new OutPacket(LoopbackPacket.UserEnterField);
+    packet.encodeInt(user.getCharacterID());
+
+    packet.encodeString(user.getCharacterName());
+    packet.encodeByte(user.getCharacter().getCharacterStat().getGender());
+
+    user.getSecondaryStat().encodeForRemote(packet, SecondaryStat.FilterForRemote);
+
+    packet.encodeInt(user.getCharacter().getCharacterStat().getFace());
+    packet.encodeInt(0); // AvatarLook.Unknown2 (unused int)
+    packet.encodeInt(0); // AvatarLook.Unknown3 (unused int)
+
+    user.getAvatarLook().encode(packet);
+    packet.encodeInt(0); // Unknown (modifies *(v3 + 161) aka *(v1 + 644))
+
+    packet.encodeShort(user.getCurrentPosition().x);
+    packet.encodeShort(user.getCurrentPosition().y);
+    packet.encodeByte(user.getMoveAction());
+    packet.encodeShort(user.getFootholdSN());
+    return packet;
+  }
+
+  /**
+   * Removes a user from the field.
+   *
+   * @param characterID The ID of the user to remove from the map
+   * @return The leave field packet
+   */
+  public static OutPacket onUserLeaveField(int characterID) {
+    OutPacket packet = new OutPacket(LoopbackPacket.UserLeaveField);
+    packet.encodeInt(characterID);
+    return packet;
+  }
 }

@@ -18,15 +18,13 @@
 package game.field.life.mob;
 
 /**
- *
  * @author Eric
  */
 public class AttackElemAttr {
-    public static final int
-            None        = 0, //Neutral
-            Damage0     = 1, //Immune
-            Damage50    = 2, //Strong
-            Damage150   = 3, //Weak
-            Damage200   = 4  //Normal (Doom? o.o)
-    ;
+  public static final int None = 0, // Neutral
+      Damage0 = 1, // Immune
+      Damage50 = 2, // Strong
+      Damage150 = 3, // Weak
+      Damage200 = 4 // Normal (Doom? o.o)
+  ;
 }

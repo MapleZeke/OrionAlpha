@@ -21,136 +21,135 @@ import common.item.ItemAccessor;
 import common.item.ItemSlotBase;
 
 /**
- *
  * @author Eric
  * @author sunnyboy
  */
 public class ExchangeElem {
 
-    public boolean add;
-    public Add a;
-    public Remove r;
+  public boolean add;
+  public Add a;
+  public Remove r;
 
-    public ExchangeElem() {
-        this.a = new Add();
-        this.r = new Remove();
+  public ExchangeElem() {
+    this.a = new Add();
+    this.r = new Remove();
+  }
+
+  public boolean isAdd() {
+    return add;
+  }
+
+  public void setAdd(boolean add) {
+    this.add = add;
+  }
+
+  public Add getAdd() {
+    return a;
+  }
+
+  public void setAdd(Add a) {
+    this.a = a;
+  }
+
+  public Remove getRemove() {
+    return r;
+  }
+
+  public void setRemove(Remove r) {
+    this.r = r;
+  }
+
+  public class Add {
+
+    public int itemID;
+    public short count;
+    public ItemSlotBase item;
+
+    public int getItemID() {
+      return itemID;
     }
 
-    public boolean isAdd() {
-        return add;
+    public void setItemID(int itemID) {
+      this.itemID = itemID;
     }
 
-    public void setAdd(boolean add) {
-        this.add = add;
+    public short getCount() {
+      return count;
     }
 
-    public Add getAdd() {
-        return a;
+    public void setCount(short count) {
+      this.count = count;
     }
 
-    public void setAdd(Add a) {
-        this.a = a;
+    public ItemSlotBase getItem() {
+      return item;
     }
 
-    public Remove getRemove() {
-        return r;
+    public void setItem(ItemSlotBase item) {
+      this.item = item;
+    }
+  }
+
+  public class Remove {
+
+    public int itemID;
+    public short count;
+    public byte ti;
+    public short pos;
+
+    public int getItemID() {
+      return itemID;
     }
 
-    public void setRemove(Remove r) {
-        this.r = r;
+    public void setItemID(int itemID) {
+      this.itemID = itemID;
     }
 
-    public class Add {
-
-        public int itemID;
-        public short count;
-        public ItemSlotBase item;
-
-        public int getItemID() {
-            return itemID;
-        }
-
-        public void setItemID(int itemID) {
-            this.itemID = itemID;
-        }
-
-        public short getCount() {
-            return count;
-        }
-
-        public void setCount(short count) {
-            this.count = count;
-        }
-
-        public ItemSlotBase getItem() {
-            return item;
-        }
-
-        public void setItem(ItemSlotBase item) {
-            this.item = item;
-        }
+    public short getCount() {
+      return count;
     }
 
-    public class Remove {
-
-        public int itemID;
-        public short count;
-        public byte ti;
-        public short pos;
-
-        public int getItemID() {
-            return itemID;
-        }
-
-        public void setItemID(int itemID) {
-            this.itemID = itemID;
-        }
-
-        public short getCount() {
-            return count;
-        }
-
-        public void setCount(short count) {
-            this.count = count;
-        }
-
-        public byte getTI() {
-            return ti;
-        }
-
-        public void setTI(byte ti) {
-            this.ti = ti;
-        }
-
-        public short getPOS() {
-            return pos;
-        }
-
-        public void setPOS(short pos) {
-            this.pos = pos;
-        }
+    public void setCount(short count) {
+      this.count = count;
     }
 
-    public boolean initAdd(int itemID, short count, ItemSlotBase item) {
-        this.add = true;
-        this.a.itemID = itemID;
-        this.a.count = count;
-        this.a.item = item;
-        if (item != null) {
-            itemID = item.getItemID();
-            count = item.getItemNumber();
-        }
-        if (ItemAccessor.isBundleTypeIndex(ItemAccessor.getItemTypeIndexFromID(itemID))) {
-            if (ItemAccessor.isRechargeableItem(itemID)) {
-                if (count > 2000) {
-                    return false;
-                }
-            } else {
-                if (ItemInfo.getBundleItem(itemID).getSlotMax() < count) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    public byte getTI() {
+      return ti;
     }
+
+    public void setTI(byte ti) {
+      this.ti = ti;
+    }
+
+    public short getPOS() {
+      return pos;
+    }
+
+    public void setPOS(short pos) {
+      this.pos = pos;
+    }
+  }
+
+  public boolean initAdd(int itemID, short count, ItemSlotBase item) {
+    this.add = true;
+    this.a.itemID = itemID;
+    this.a.count = count;
+    this.a.item = item;
+    if (item != null) {
+      itemID = item.getItemID();
+      count = item.getItemNumber();
+    }
+    if (ItemAccessor.isBundleTypeIndex(ItemAccessor.getItemTypeIndexFromID(itemID))) {
+      if (ItemAccessor.isRechargeableItem(itemID)) {
+        if (count > 2000) {
+          return false;
+        }
+      } else {
+        if (ItemInfo.getBundleItem(itemID).getSlotMax() < count) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }

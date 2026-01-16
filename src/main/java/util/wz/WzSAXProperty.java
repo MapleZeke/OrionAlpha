@@ -29,72 +29,72 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- *
  * @author Eric
  */
 public class WzSAXProperty {
-    private static SAXParser PARSER;
-    
-    private File file;
-    private List<WzXML> entities;
-    
-    public WzSAXProperty(File file) {
-        this.file = file;
-    }
-    
-    public void addEntity(WzXML entity) {
-        if (this.entities == null) {
-            this.entities = new ArrayList<>();
-        }
-        this.entities.add(entity);
-    }
-    
-    public String getFileName() {
-        if (file != null) {
-            return file.getName();
-        }
-        return "";
-    }
-    
-    public final void parse() {
-        try {
-            DefaultHandler handler = new DefaultHandler() {
-                String rootElement = null;
+  private static SAXParser PARSER;
 
-                @Override
-                public void startElement(String uri, String localName, String qName, Attributes attr) {
-                    String key = attr.getValue("", "name");
-                    String value = attr.getValue("", "value");
-                    WzNodeType type = WzNodeType.valueOf(qName.toUpperCase());
-                    for (WzXML entity : entities) {
-                        if (rootElement == null) {
-                            if (key != null && key.contains(".img")) {
-                                rootElement = key;
-                            }
-                        }
-                        entity.parse(rootElement, key, value, type);
-                    }
+  private File file;
+  private List<WzXML> entities;
+
+  public WzSAXProperty(File file) {
+    this.file = file;
+  }
+
+  public void addEntity(WzXML entity) {
+    if (this.entities == null) {
+      this.entities = new ArrayList<>();
+    }
+    this.entities.add(entity);
+  }
+
+  public String getFileName() {
+    if (file != null) {
+      return file.getName();
+    }
+    return "";
+  }
+
+  public final void parse() {
+    try {
+      DefaultHandler handler =
+          new DefaultHandler() {
+            String rootElement = null;
+
+            @Override
+            public void startElement(String uri, String localName, String qName, Attributes attr) {
+              String key = attr.getValue("", "name");
+              String value = attr.getValue("", "value");
+              WzNodeType type = WzNodeType.valueOf(qName.toUpperCase());
+              for (WzXML entity : entities) {
+                if (rootElement == null) {
+                  if (key != null && key.contains(".img")) {
+                    rootElement = key;
+                  }
                 }
-            };
-            
-            getParser().parse(file, handler);
-        } catch (ParserConfigurationException | SAXException | IOException ex) {
-            ex.printStackTrace(System.err);
-        }
+                entity.parse(rootElement, key, value, type);
+              }
+            }
+          };
+
+      getParser().parse(file, handler);
+    } catch (ParserConfigurationException | SAXException | IOException ex) {
+      ex.printStackTrace(System.err);
     }
-    
-    public void release() {
-        if (this.entities != null) {
-            this.entities.clear();
-        }
-        
-        this.file = null;
+  }
+
+  public void release() {
+    if (this.entities != null) {
+      this.entities.clear();
     }
-    
-    private static SAXParser getParser() throws ParserConfigurationException, SAXException {
-    	if (PARSER == null) {
-    		PARSER = SAXParserFactory.newInstance().newSAXParser();
-	    }
-	    return PARSER;
+
+    this.file = null;
+  }
+
+  private static SAXParser getParser() throws ParserConfigurationException, SAXException {
+    if (PARSER == null) {
+      PARSER = SAXParserFactory.newInstance().newSAXParser();
     }
+    return PARSER;
+  }
 }

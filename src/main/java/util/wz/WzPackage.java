@@ -23,98 +23,100 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
  * @author Eric
  */
 public class WzPackage {
-    private final Map<String, WzPackage> children;
-    private final Map<String, WzProperty> entries;
-    private final Map<String, WzSAXProperty> saxEntries;
-    
-    public WzPackage() {
-        this.children = new ConcurrentHashMap<>();
-        this.entries = new ConcurrentHashMap<>();
-        this.saxEntries = new ConcurrentHashMap<>();
+  private final Map<String, WzPackage> children;
+  private final Map<String, WzProperty> entries;
+  private final Map<String, WzSAXProperty> saxEntries;
+
+  public WzPackage() {
+    this.children = new ConcurrentHashMap<>();
+    this.entries = new ConcurrentHashMap<>();
+    this.saxEntries = new ConcurrentHashMap<>();
+  }
+
+  public WzPackage addPackage(File file) {
+    WzPackage pkg = new WzPackage();
+    children.put(file.getName(), pkg);
+    return pkg;
+  }
+
+  public void addEntry(File file) {
+    entries.put(file.getName().replaceAll(".xml", ""), new WzProperty(file));
+    saxEntries.put(file.getName().replaceAll(".xml", ""), new WzSAXProperty(file));
+  }
+
+  public Map<String, WzPackage> getChildren() {
+    return children;
+  }
+
+  public Map<String, WzProperty> getEntries() {
+    return entries;
+  }
+
+  public Map<String, WzSAXProperty> getSAXEntries() {
+    return saxEntries;
+  }
+
+  public WzProperty getItem(String path) {
+    WzPackage pkg = this;
+    while (path.contains("/")) {
+      String dir = path.substring(0, path.indexOf("/"));
+      if (pkg.children.containsKey(dir)) {
+        pkg = pkg.children.get(dir);
+
+        path = path.substring(path.indexOf("/") + 1);
+      } else {
+        return null;
+      }
     }
-    
-    public WzPackage addPackage(File file) {
-        WzPackage pkg = new WzPackage();
-        children.put(file.getName(), pkg);
-        return pkg;
+    return pkg.entries.get(path);
+  }
+
+  public WzSAXProperty getSAXItem(String path) {
+    WzPackage pkg = this;
+    while (path.contains("/")) {
+      String dir = path.substring(0, path.indexOf("/"));
+      if (pkg.children.containsKey(dir)) {
+        pkg = pkg.children.get(dir);
+
+        path = path.substring(path.indexOf("/") + 1);
+      } else {
+        return null;
+      }
     }
-    
-    public void addEntry(File file) {
-        entries.put(file.getName().replaceAll(".xml", ""), new WzProperty(file));
-        saxEntries.put(file.getName().replaceAll(".xml", ""), new WzSAXProperty(file));
+    return pkg.saxEntries.get(path);
+  }
+
+  public final void release() {
+    for (Iterator<Map.Entry<String, WzPackage>> it = children.entrySet().iterator();
+        it.hasNext(); ) {
+      Map.Entry<String, WzPackage> p = it.next();
+      if (p != null && p.getValue() != null) {
+        p.getValue().release();
+      }
+      it.remove();
     }
-    
-    public Map<String, WzPackage> getChildren() {
-        return children;
+    for (Iterator<Map.Entry<String, WzProperty>> it = entries.entrySet().iterator();
+        it.hasNext(); ) {
+      Map.Entry<String, WzProperty> p = it.next();
+      if (p != null && p.getValue() != null) {
+        p.getValue().release();
+      }
+      it.remove();
     }
-    
-    public Map<String, WzProperty> getEntries() {
-        return entries;
+    for (Iterator<Map.Entry<String, WzSAXProperty>> it = saxEntries.entrySet().iterator();
+        it.hasNext(); ) {
+      Map.Entry<String, WzSAXProperty> p = it.next();
+      if (p != null && p.getValue() != null) {
+        p.getValue().release();
+      }
+      it.remove();
     }
-    
-    public Map<String, WzSAXProperty> getSAXEntries() {
-        return saxEntries;
-    }
-    
-    public WzProperty getItem(String path) {
-        WzPackage pkg = this;
-        while (path.contains("/")) {
-            String dir = path.substring(0, path.indexOf("/"));
-            if (pkg.children.containsKey(dir)) {
-                pkg = pkg.children.get(dir);
-                
-                path = path.substring(path.indexOf("/") + 1);
-            } else {
-                return null;
-            }
-        }
-        return pkg.entries.get(path);
-    }
-    
-    public WzSAXProperty getSAXItem(String path) {
-        WzPackage pkg = this;
-        while (path.contains("/")) {
-            String dir = path.substring(0, path.indexOf("/"));
-            if (pkg.children.containsKey(dir)) {
-                pkg = pkg.children.get(dir);
-        
-                path = path.substring(path.indexOf("/") + 1);
-            } else {
-                return null;
-            }
-        }
-        return pkg.saxEntries.get(path);
-    }
-    
-    public final void release() {
-        for (Iterator<Map.Entry<String, WzPackage>> it = children.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<String, WzPackage> p = it.next();
-            if (p != null && p.getValue() != null) {
-                p.getValue().release();
-            }
-            it.remove();
-        }
-        for (Iterator<Map.Entry<String, WzProperty>> it = entries.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<String, WzProperty> p = it.next();
-            if (p != null && p.getValue() != null) {
-                p.getValue().release();
-            }
-            it.remove();
-        }
-        for (Iterator<Map.Entry<String, WzSAXProperty>> it = saxEntries.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<String, WzSAXProperty> p = it.next();
-            if (p != null && p.getValue() != null) {
-                p.getValue().release();
-            }
-            it.remove();
-        }
-        
-        this.children.clear();
-        this.entries.clear();
-        this.saxEntries.clear();
-    }
+
+    this.children.clear();
+    this.entries.clear();
+    this.saxEntries.clear();
+  }
 }

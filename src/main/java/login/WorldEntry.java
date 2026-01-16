@@ -22,53 +22,52 @@ import java.util.List;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class WorldEntry {
-    private final byte worldID;
-    private final String name;
-    private final List<ChannelEntry> channels;
-    private final GameSocket socket;
-    
-    public WorldEntry(GameSocket socket, byte worldID, String name) {
-        this.socket = socket;
-        this.worldID = worldID;
-        this.name = name;
-        this.channels = new ArrayList<>();
+  private final byte worldID;
+  private final String name;
+  private final List<ChannelEntry> channels;
+  private final GameSocket socket;
+
+  public WorldEntry(GameSocket socket, byte worldID, String name) {
+    this.socket = socket;
+    this.worldID = worldID;
+    this.name = name;
+    this.channels = new ArrayList<>();
+  }
+
+  public void addChannel(ChannelEntry ch) {
+    channels.add(ch);
+  }
+
+  public ChannelEntry getChannel(int channel) {
+    return channels.get(channel);
+  }
+
+  public final List<ChannelEntry> getChannels() {
+    return channels;
+  }
+
+  public final GameSocket getSocket() {
+    return socket;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public byte getWorldID() {
+    return worldID;
+  }
+
+  public void removeChannel(ChannelEntry ch) {
+    channels.remove(ch);
+  }
+
+  public void sendPacket(OutPacket packet) {
+    if (socket != null) {
+      socket.sendPacket(packet, false);
     }
-    
-    public void addChannel(ChannelEntry ch) {
-        channels.add(ch);
-    }
-    
-    public ChannelEntry getChannel(int channel) {
-        return channels.get(channel);
-    }
-    
-    public final List<ChannelEntry> getChannels() {
-        return channels;
-    }
-    
-    public final GameSocket getSocket() {
-        return socket;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public byte getWorldID() {
-        return worldID;
-    }
-    
-    public void removeChannel(ChannelEntry ch) {
-        channels.remove(ch);
-    }
-    
-    public void sendPacket(OutPacket packet) {
-        if (socket != null) {
-            socket.sendPacket(packet, false);
-        }
-    }
+  }
 }

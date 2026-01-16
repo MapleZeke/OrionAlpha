@@ -18,12 +18,8 @@
 package common;
 
 /**
- *
  * @author Eric
  */
 public class BroadcastMsg {
-    public static final byte
-            Notice  = 0,
-            Alert   = 1
-    ;
+  public static final byte Notice = 0, Alert = 1;
 }

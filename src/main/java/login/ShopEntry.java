@@ -22,41 +22,40 @@ import java.util.Map;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class ShopEntry {
-    private final String addr;
-    private final short port;
-    private final GameSocket socket;
-    private final Map<Integer, ChannelEntry> users;
-    
-    public ShopEntry(GameSocket socket, String addr, short port) {
-        this.socket = socket;
-        this.addr = addr;
-        this.port = port;
-        this.users = new HashMap<>();
+  private final String addr;
+  private final short port;
+  private final GameSocket socket;
+  private final Map<Integer, ChannelEntry> users;
+
+  public ShopEntry(GameSocket socket, String addr, short port) {
+    this.socket = socket;
+    this.addr = addr;
+    this.port = port;
+    this.users = new HashMap<>();
+  }
+
+  public String getAddr() {
+    return addr;
+  }
+
+  public short getPort() {
+    return port;
+  }
+
+  public final GameSocket getSocket() {
+    return socket;
+  }
+
+  public Map<Integer, ChannelEntry> getUsers() {
+    return users;
+  }
+
+  public void sendPacket(OutPacket packet) {
+    if (socket != null) {
+      socket.sendPacket(packet, false);
     }
-    
-    public String getAddr() {
-        return addr;
-    }
-    
-    public short getPort() {
-        return port;
-    }
-    
-    public final GameSocket getSocket() {
-        return socket;
-    }
-    
-    public Map<Integer, ChannelEntry> getUsers() {
-        return users;
-    }
-    
-    public void sendPacket(OutPacket packet) {
-        if (socket != null) {
-            socket.sendPacket(packet, false);
-        }
-    }
+  }
 }

@@ -18,18 +18,15 @@
 package common.user;
 
 /**
- *
  * @author Eric
  */
 public class DBChar {
-    public static final byte
-            Character       = 0x1,
-            ItemSlotEquip   = 0x2,
-            ItemSlotConsume = 0x4,
-            ItemSlotInstall = 0x8,
-            ItemSlotEtc     = 0x10,
-            SkillRecord     = 0x20,
-            QuestRecord     = 0x40,
-            All             = 0x7F
-    ;
+  public static final byte Character = 0x1,
+      ItemSlotEquip = 0x2,
+      ItemSlotConsume = 0x4,
+      ItemSlotInstall = 0x8,
+      ItemSlotEtc = 0x10,
+      SkillRecord = 0x20,
+      QuestRecord = 0x40,
+      All = 0x7F;
 }

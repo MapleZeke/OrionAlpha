@@ -23,17 +23,18 @@ package common;
  * @author Eric
  */
 public class OrionConfig {
-    // Version Info
-    public static final int CLIENT_VER = 223;
-    public static final String CLIENT_PATCH = "\0";
-    public static final int GAME_LOCALE = 1; //KR
+  // Version Info
+  public static final int CLIENT_VER = 223;
+  public static final String CLIENT_PATCH = "\0";
+  public static final int GAME_LOCALE = 1; // KR
 
-    // Maximum Active Network Sessions
-    public static final int MAX_CONNECTIONS = 1000;
+  // Maximum Active Network Sessions
+  public static final int MAX_CONNECTIONS = 1000;
 
-    // Master Password
-    public static final char[] MASTER_PASSWORD = "$2a$10$SdXGImegkpvdeHohjas29.ZBR7LwmvpXxNBy..chrmXiMFqyntJZm".toCharArray();
+  // Master Password
+  public static final char[] MASTER_PASSWORD =
+      "$2a$10$SdXGImegkpvdeHohjas29.ZBR7LwmvpXxNBy..chrmXiMFqyntJZm".toCharArray();
 
-    // Log Packets
-    public static final boolean LOG_PACKETS = false;
+  // Log Packets
+  public static final boolean LOG_PACKETS = false;
 }

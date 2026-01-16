@@ -18,34 +18,33 @@
 package game.field.life.npc;
 
 /**
- *
  * @author Eric
  */
 public class ShopItem {
-    public int itemID;
-    public int price;
-    public int stock;
-    public int stockMax;
-    public long lastFullStock;
-    public int period;
-    public int quantity;
-    public double unitPrice;
-    
-    public ShopItem(int itemID) {
-        this.itemID = itemID;
-    }
-    
-    public ShopItem(int itemID, int price, int stock, int period, double unitPrice) {
-        this.itemID = itemID;
-        this.price = price;
-        this.stockMax = stock;
-        this.period = period;
-        this.unitPrice = unitPrice;
-        this.stock = 0;
-        this.lastFullStock = 0;
-    }
-    
-    public ShopItem copy() {
-        return new ShopItem(itemID, price, stockMax, period, unitPrice);
-    }
+  public int itemID;
+  public int price;
+  public int stock;
+  public int stockMax;
+  public long lastFullStock;
+  public int period;
+  public int quantity;
+  public double unitPrice;
+
+  public ShopItem(int itemID) {
+    this.itemID = itemID;
+  }
+
+  public ShopItem(int itemID, int price, int stock, int period, double unitPrice) {
+    this.itemID = itemID;
+    this.price = price;
+    this.stockMax = stock;
+    this.period = period;
+    this.unitPrice = unitPrice;
+    this.stock = 0;
+    this.lastFullStock = 0;
+  }
+
+  public ShopItem copy() {
+    return new ShopItem(itemID, price, stockMax, period, unitPrice);
+  }
 }

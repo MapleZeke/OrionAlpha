@@ -19,36 +19,36 @@ package util;
 
 /**
  * tagRANGE
- * 
+ *
  * @author Eric
  */
 public class Range {
-    public int low;
-    public int high;
-    
-    public Range() {
-        this.low = 0;
-        this.high = 0;
-    }
-    
-    public Range(int low, int high) {
-        this.low = low;
-        this.high = high;
-    }
-    
-    public int getLow() {
-        return low;
-    }
-    
-    public int getHigh() {
-        return high;
-    }
-    
-    public void setLow(int low) {
-        this.low = low;
-    }
-    
-    public void setHigh(int high) {
-        this.high = high;
-    }
+  public int low;
+  public int high;
+
+  public Range() {
+    this.low = 0;
+    this.high = 0;
+  }
+
+  public Range(int low, int high) {
+    this.low = low;
+    this.high = high;
+  }
+
+  public int getLow() {
+    return low;
+  }
+
+  public int getHigh() {
+    return high;
+  }
+
+  public void setLow(int low) {
+    this.low = low;
+  }
+
+  public void setHigh(int high) {
+    this.high = high;
+  }
 }

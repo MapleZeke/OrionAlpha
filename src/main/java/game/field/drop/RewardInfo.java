@@ -18,76 +18,75 @@
 package game.field.drop;
 
 /**
- *
  * @author Eric
  */
 public class RewardInfo {
-    private byte type;
-    private final int money;
-    private final int prob;
-    private int itemId;
-    private int min;
-    private int max;
-    private int maxCount;
-    private int period;
-    private final boolean premiumMap;
-    
-    public RewardInfo(int money, int itemId, int prob, int min, int max, boolean premium) {
-        this.money = money;
-        this.prob = prob;
-        if (this.money == 0) {
-            this.itemId = itemId;
-            this.min = min;
-            this.max = max;
-        }
-        this.premiumMap = premium;
-    }
+  private byte type;
+  private final int money;
+  private final int prob;
+  private int itemId;
+  private int min;
+  private int max;
+  private int maxCount;
+  private int period;
+  private final boolean premiumMap;
 
-    public byte getType() {
-        return type;
+  public RewardInfo(int money, int itemId, int prob, int min, int max, boolean premium) {
+    this.money = money;
+    this.prob = prob;
+    if (this.money == 0) {
+      this.itemId = itemId;
+      this.min = min;
+      this.max = max;
     }
+    this.premiumMap = premium;
+  }
 
-    public int getMoney() {
-        return money;
-    }
+  public byte getType() {
+    return type;
+  }
 
-    public int getItemId() {
-        return itemId;
-    }
+  public int getMoney() {
+    return money;
+  }
 
-    public int getProb() {
-        return prob;
-    }
+  public int getItemId() {
+    return itemId;
+  }
 
-    public int getMin() {
-        return min;
-    }
+  public int getProb() {
+    return prob;
+  }
 
-    public int getMax() {
-        return max;
-    }
+  public int getMin() {
+    return min;
+  }
 
-    public int getMaxCount() {
-        return maxCount;
-    }
+  public int getMax() {
+    return max;
+  }
 
-    public int getPeriod() {
-        return period;
-    }
+  public int getMaxCount() {
+    return maxCount;
+  }
 
-    public boolean isPremiumMap() {
-        return premiumMap;
-    }
+  public int getPeriod() {
+    return period;
+  }
 
-    public void setType(byte type) {
-        this.type = type;
-    }
+  public boolean isPremiumMap() {
+    return premiumMap;
+  }
 
-    public void setMaxCount(int maxCount) {
-        this.maxCount = maxCount;
-    }
+  public void setType(byte type) {
+    this.type = type;
+  }
 
-    public void setPeriod(int period) {
-        this.period = period;
-    }
+  public void setMaxCount(int maxCount) {
+    this.maxCount = maxCount;
+  }
+
+  public void setPeriod(int period) {
+    this.period = period;
+  }
 }

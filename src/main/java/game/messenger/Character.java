@@ -21,43 +21,40 @@ import game.user.AvatarLook;
 import game.user.User;
 
 /**
- *
  * @author sunnyboy
  */
 public class Character {
 
-    private AvatarLook avatarLook;
-    private String id;
-    private User user;
+  private AvatarLook avatarLook;
+  private String id;
+  private User user;
 
+  public Character() {
+    this.id = "";
+    this.avatarLook = new AvatarLook();
+  }
 
-    public Character() {
-        this.id = "";
-        this.avatarLook = new AvatarLook();
-    }
+  public AvatarLook getAvatarLook() {
+    return avatarLook;
+  }
 
-    public AvatarLook getAvatarLook() {
-        return avatarLook;
-    }
+  public String getID() {
+    return id;
+  }
 
-    public String getID() {
-        return id;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public void setAvatarLook(AvatarLook avatarLook) {
+    this.avatarLook = avatarLook;
+  }
 
-    public void setAvatarLook(AvatarLook avatarLook) {
-        this.avatarLook = avatarLook;
-    }
+  public void setID(String id) {
+    this.id = id;
+  }
 
-    public void setID(String id) {
-        this.id = id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-    
+  public void setUser(User user) {
+    this.user = user;
+  }
 }

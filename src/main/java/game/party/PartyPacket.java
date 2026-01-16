@@ -21,68 +21,68 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class PartyPacket {
-    
-    public static OutPacket onPartyResult(byte retCode) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(retCode);
-        return packet;
+
+  public static OutPacket onPartyResult(byte retCode) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(retCode);
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(int inviterID, String applierName) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.InviteParty);
+    packet.encodeInt(inviterID);
+    packet.encodeString(applierName);
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(int partyID, String characterName, PartyData party) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.JoinParty_Done);
+    packet.encodeInt(partyID);
+    packet.encodeString(characterName);
+    party.encode(packet);
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(int partyID, PartyData party) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.LoadParty_Done);
+    packet.encodeInt(partyID);
+    party.encode(packet);
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(
+      int partyID, int characterID, boolean leave, boolean kicked, String name, PartyData party) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.WithdrawParty_Done);
+    packet.encodeInt(partyID);
+    packet.encodeInt(characterID);
+    packet.encodeBool(leave);
+    if (leave) {
+      packet.encodeBool(kicked);
+      packet.encodeString(name);
+      party.encode(packet);
     }
-    
-    public static OutPacket onPartyResult(int inviterID, String applierName) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.InviteParty);
-        packet.encodeInt(inviterID);
-        packet.encodeString(applierName);
-        return packet;
-    }
-    
-    public static OutPacket onPartyResult(int partyID, String characterName, PartyData party) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.JoinParty_Done);
-        packet.encodeInt(partyID);
-        packet.encodeString(characterName);
-        party.encode(packet);
-        return packet;
-    }
-    
-    public static OutPacket onPartyResult(int partyID, PartyData party) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.LoadParty_Done);
-        packet.encodeInt(partyID);
-        party.encode(packet);
-        return packet;
-    }
-    
-    public static OutPacket onPartyResult(int partyID, int characterID, boolean leave, boolean kicked, String name, PartyData party) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.WithdrawParty_Done);
-        packet.encodeInt(partyID);
-        packet.encodeInt(characterID);
-        packet.encodeBool(leave);
-        if (leave) {
-            packet.encodeBool(kicked);
-            packet.encodeString(name);
-            party.encode(packet);
-        }
-        return packet;
-    }
-    
-    public static OutPacket onPartyResult(int partyID) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.CreateNewParty_Done);
-        packet.encodeInt(partyID);
-        return packet;
-    }
-    
-    public static OutPacket onPartyResult(boolean accept, String name) {
-        OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
-        packet.encodeByte(PartyResCode.ServerMsg);
-        packet.encodeString(name);
-        packet.encodeBool(accept);
-        return packet;
-    }
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(int partyID) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.CreateNewParty_Done);
+    packet.encodeInt(partyID);
+    return packet;
+  }
+
+  public static OutPacket onPartyResult(boolean accept, String name) {
+    OutPacket packet = new OutPacket(LoopbackPacket.PartyResult);
+    packet.encodeByte(PartyResCode.ServerMsg);
+    packet.encodeString(name);
+    packet.encodeBool(accept);
+    return packet;
+  }
 }

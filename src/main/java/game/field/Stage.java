@@ -23,25 +23,24 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class Stage {
-    
-    public static OutPacket onSetField(User user, boolean characterData, int s1, int s2, int s3) {
-        OutPacket packet = new OutPacket(LoopbackPacket.SetField);
-        packet.encodeByte(user.getChannelID());
-        packet.encodeBool(characterData);
-        if (!characterData) {
-            packet.encodeInt(user.getPosMap());
-            packet.encodeByte(user.getPortal());
-            packet.encodeShort(user.getHP());
-        } else {
-            packet.encodeInt(s1);
-            packet.encodeInt(s2);
-            packet.encodeInt(s3);
-            user.getCharacter().encode(packet, DBChar.All);
-        }
-        return packet;
+
+  public static OutPacket onSetField(User user, boolean characterData, int s1, int s2, int s3) {
+    OutPacket packet = new OutPacket(LoopbackPacket.SetField);
+    packet.encodeByte(user.getChannelID());
+    packet.encodeBool(characterData);
+    if (!characterData) {
+      packet.encodeInt(user.getPosMap());
+      packet.encodeByte(user.getPortal());
+      packet.encodeShort(user.getHP());
+    } else {
+      packet.encodeInt(s1);
+      packet.encodeInt(s2);
+      packet.encodeInt(s3);
+      user.getCharacter().encode(packet, DBChar.All);
     }
+    return packet;
+  }
 }

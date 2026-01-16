@@ -18,10 +18,9 @@
 package util.wz;
 
 /**
- *
  * @author Eric
  */
 public interface WzXML {
-    
-    void parse(String root, String name, String value, WzNodeType type);
+
+  void parse(String root, String name, String value, WzNodeType type);
 }

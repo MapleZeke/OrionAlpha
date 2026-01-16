@@ -18,12 +18,8 @@
 package game.field.drop;
 
 /**
- *
  * @author Eric
  */
 public class RewardType {
-    public static final byte
-            MONEY   = 0,
-            ITEM    = 1
-    ;
+  public static final byte MONEY = 0, ITEM = 1;
 }

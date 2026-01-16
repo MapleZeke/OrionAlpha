@@ -18,28 +18,25 @@
 package game.user.stat;
 
 /**
- *
  * @author Eric
  */
 public class CharacterTemporaryStat {
-    public static final int
-            PAD         = 0x1,
-            PDD         = 0x2,
-            MAD         = 0x4,
-            MDD         = 0x8,
-            ACC         = 0x10,
-            EVA         = 0x20,
-            Craft       = 0x40,
-            Speed       = 0x80,
-            Jump        = 0x100,
-            MagicGuard  = 0x200,
-            DarkSight   = 0x400,
-            Booster     = 0x800,
-            Unknown     = 0x1000, // Unknown Stat
-            PowerGuard  = 0x2000,
-            MaxHP       = 0x4000,
-            MaxMP       = 0x8000,
-            Invincible  = 0x10000,
-            SoulArrow   = 0x20000
-    ;
+  public static final int PAD = 0x1,
+      PDD = 0x2,
+      MAD = 0x4,
+      MDD = 0x8,
+      ACC = 0x10,
+      EVA = 0x20,
+      Craft = 0x40,
+      Speed = 0x80,
+      Jump = 0x100,
+      MagicGuard = 0x200,
+      DarkSight = 0x400,
+      Booster = 0x800,
+      Unknown = 0x1000, // Unknown Stat
+      PowerGuard = 0x2000,
+      MaxHP = 0x4000,
+      MaxMP = 0x8000,
+      Invincible = 0x10000,
+      SoulArrow = 0x20000;
 }

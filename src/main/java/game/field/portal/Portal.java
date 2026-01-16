@@ -23,96 +23,96 @@ import game.field.GameObjectType;
 import java.awt.Point;
 
 /**
- *
  * @author Eric
  */
 public class Portal implements GameObject {
-    // baseclass_0
-    private final int id;
-    
-    public String name;
-    public String tname;
-    public String script;
-    public int fieldID;
-    public byte idx;
-    public boolean enable;
-    public int type;
-    public Point pos; 
-    public int tmap;
-    
-    public Portal() {
-        super();
-        
-        name = "";
-        tname = "";
-        script = "";
-        
-        GameObjectBase obj = construct();
-        
-        this.id = obj.getID();
-    }
-    
-    /**
-     * Uses the GameObjectBase to register this as a new GameObject. 
-     * 
-     * Due to multiple inheritance constraints, we use this to
-     * call a super() constructor of GameObject in a way.
-     */
-    private GameObjectBase construct() {
-        return GameObjectBase.registerGameObject(this);
-    }
-    
-    @Override
-    public int getGameObjectID() {
-        return id;
-    }
-    
-    @Override
-    public int getGameObjectTypeID() {
-        return GameObjectType.Portal;
-    }
-    
-    public byte getPortalIdx() {
-        return idx;
-    }
-    
-    public String getPortalName() {
-        return name;
-    }
-    
-    public Point getPortalPos() {
-        return pos;
-    }
-    
-    public String getPortalScriptName() {
-        return script;
-    }
-    
-    public int getPortalType() {
-        return type;
-    }
-    
-    public String getTargetPortalName() {
-        return tname;
-    }
-    
-    @Override
-    public int getTemplateID() {
-        return 0;
-    }
-    
-    /**
-     * Determines if the Portal is one who contains a script type
-     * and may execute a script request.
-     * 
-     * @return If the portal type is of type 'Script'
-     */
-    public boolean isScriptPortal() {
-        return type == PortalType.Script || type == PortalType.Script_Invisible
-                || type == PortalType.Collision_Script || type == PortalType.Script_Hidden;
-    }
-    
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
+  // baseclass_0
+  private final int id;
+
+  public String name;
+  public String tname;
+  public String script;
+  public int fieldID;
+  public byte idx;
+  public boolean enable;
+  public int type;
+  public Point pos;
+  public int tmap;
+
+  public Portal() {
+    super();
+
+    name = "";
+    tname = "";
+    script = "";
+
+    GameObjectBase obj = construct();
+
+    this.id = obj.getID();
+  }
+
+  /**
+   * Uses the GameObjectBase to register this as a new GameObject.
+   *
+   * <p>Due to multiple inheritance constraints, we use this to call a super() constructor of
+   * GameObject in a way.
+   */
+  private GameObjectBase construct() {
+    return GameObjectBase.registerGameObject(this);
+  }
+
+  @Override
+  public int getGameObjectID() {
+    return id;
+  }
+
+  @Override
+  public int getGameObjectTypeID() {
+    return GameObjectType.Portal;
+  }
+
+  public byte getPortalIdx() {
+    return idx;
+  }
+
+  public String getPortalName() {
+    return name;
+  }
+
+  public Point getPortalPos() {
+    return pos;
+  }
+
+  public String getPortalScriptName() {
+    return script;
+  }
+
+  public int getPortalType() {
+    return type;
+  }
+
+  public String getTargetPortalName() {
+    return tname;
+  }
+
+  @Override
+  public int getTemplateID() {
+    return 0;
+  }
+
+  /**
+   * Determines if the Portal is one who contains a script type and may execute a script request.
+   *
+   * @return If the portal type is of type 'Script'
+   */
+  public boolean isScriptPortal() {
+    return type == PortalType.Script
+        || type == PortalType.Script_Invisible
+        || type == PortalType.Collision_Script
+        || type == PortalType.Script_Hidden;
+  }
+
+  public void setEnable(boolean enable) {
+    this.enable = enable;
+  }
 }

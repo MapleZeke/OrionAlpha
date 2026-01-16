@@ -19,70 +19,70 @@ package game.user.item;
 
 /**
  * @author Arnah
-*/
+ */
 public class BundleItem {
 
-    private int itemID;
-    private String itemName;
-    private short incPAD;
-    private int sellPrice;// price
-    private double unitPrice;
-    private boolean cash;
-    private int slotMax;
+  private int itemID;
+  private String itemName;
+  private short incPAD;
+  private int sellPrice; // price
+  private double unitPrice;
+  private boolean cash;
+  private int slotMax;
 
-    public int getItemID() {
-        return itemID;
-    }
+  public int getItemID() {
+    return itemID;
+  }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+  public void setItemID(int itemID) {
+    this.itemID = itemID;
+  }
 
-    public String getItemName() {
-        return itemName;
-    }
+  public String getItemName() {
+    return itemName;
+  }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
+  }
 
-    public short getIncPAD() {
-        return incPAD;
-    }
+  public short getIncPAD() {
+    return incPAD;
+  }
 
-    public void setIncPAD(short incPAD) {
-        this.incPAD = incPAD;
-    }
+  public void setIncPAD(short incPAD) {
+    this.incPAD = incPAD;
+  }
 
-    public int getSellPrice() {
-        return sellPrice;
-    }
+  public int getSellPrice() {
+    return sellPrice;
+  }
 
-    public void setSellPrice(int sellPrice) {
-        this.sellPrice = sellPrice;
-    }
+  public void setSellPrice(int sellPrice) {
+    this.sellPrice = sellPrice;
+  }
 
-    public double getUnitPrice() {
-        return unitPrice;
-    }
+  public double getUnitPrice() {
+    return unitPrice;
+  }
 
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+  public void setUnitPrice(double unitPrice) {
+    this.unitPrice = unitPrice;
+  }
 
-    public boolean isCash() {
-        return cash;
-    }
+  public boolean isCash() {
+    return cash;
+  }
 
-    public void setCash(boolean cash) {
-        this.cash = cash;
-    }
+  public void setCash(boolean cash) {
+    this.cash = cash;
+  }
 
-    public int getSlotMax() {
-        return slotMax;
-    }
+  public int getSlotMax() {
+    return slotMax;
+  }
 
-    public void setSlotMax(int slotMax) {
-        this.slotMax = slotMax;
-    }
+  public void setSlotMax(int slotMax) {
+    this.slotMax = slotMax;
+  }
 }

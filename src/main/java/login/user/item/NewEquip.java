@@ -18,29 +18,28 @@
 package login.user.item;
 
 /**
- *
  * @author Eric
  */
 public class NewEquip {
-    private byte gender;
-    private byte type;
-    private int itemID;
-    
-    public NewEquip(int gender, int type, int itemID) {
-        this.gender = (byte) gender;
-        this.type = (byte) type;
-        this.itemID = itemID;
-    }
-    
-    public byte getGender() {
-        return gender;
-    }
-    
-    public byte getType() {
-        return type;
-    }
-    
-    public int getItemID() {
-        return itemID;
-    }
+  private byte gender;
+  private byte type;
+  private int itemID;
+
+  public NewEquip(int gender, int type, int itemID) {
+    this.gender = (byte) gender;
+    this.type = (byte) type;
+    this.itemID = itemID;
+  }
+
+  public byte getGender() {
+    return gender;
+  }
+
+  public byte getType() {
+    return type;
+  }
+
+  public int getItemID() {
+    return itemID;
+  }
 }

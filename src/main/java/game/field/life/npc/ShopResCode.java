@@ -18,21 +18,19 @@
 package game.field.life.npc;
 
 /**
- *
  * @author Eric
  */
 public class ShopResCode {
-    public static final int
-            // SHOP_REQ
-            Buy         = 0,
-            Sell        = 1,
-            Recharge    = 2,
-            Close       = 3,
-            // SHOP_RES
-            Success     = 0,
-            NoStock     = 1,
-            Unknown2    = 2,//BuyNoMoney?
-            Unknown3    = 3,
-            Unknown4    = 4
-    ;
+  public static final int
+      // SHOP_REQ
+      Buy = 0,
+      Sell = 1,
+      Recharge = 2,
+      Close = 3,
+      // SHOP_RES
+      Success = 0,
+      NoStock = 1,
+      Unknown2 = 2, // BuyNoMoney?
+      Unknown3 = 3,
+      Unknown4 = 4;
 }

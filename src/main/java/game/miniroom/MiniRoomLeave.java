@@ -24,38 +24,38 @@ package game.miniroom;
  */
 public enum MiniRoomLeave {
 
-    // NOT EVEN SURE IF THIS IS EVEN A THING YET, KMS 1.23 is probably too old for it
-    
-    // MiniRoomLeave
-    UserRequest(0),// idk 
-    WrongPosition(1),// idk 
-    Closed(2), // doesn't exist
-    HostOut(3),// doesn't exist ?
-    Booked(4), // doesn't exist
-    Kicked(5), // doesn't exist
-    OpenTimeOver(6), // doesn't exist
-    // TradingRoomLeave
-    TradeDone(7), // idk 
-    TradeFail(8),// idk 
-    TradeFail_OnlyItem(9),// idk 
-    TradeFail_Expired(10),// idk 
-    TradeFail_Denied(11);// idk 
-    private final int type;
+  // NOT EVEN SURE IF THIS IS EVEN A THING YET, KMS 1.23 is probably too old for it
 
-    private MiniRoomLeave(int type) {
-        this.type = type;
-    }
+  // MiniRoomLeave
+  UserRequest(0), // idk
+  WrongPosition(1), // idk
+  Closed(2), // doesn't exist
+  HostOut(3), // doesn't exist ?
+  Booked(4), // doesn't exist
+  Kicked(5), // doesn't exist
+  OpenTimeOver(6), // doesn't exist
+  // TradingRoomLeave
+  TradeDone(7), // idk
+  TradeFail(8), // idk
+  TradeFail_OnlyItem(9), // idk
+  TradeFail_Expired(10), // idk
+  TradeFail_Denied(11); // idk
+  private final int type;
 
-    public int getType() {
-        return type;
-    }
+  private MiniRoomLeave(int type) {
+    this.type = type;
+  }
 
-    public static MiniRoomLeave Get(int type) {
-        for (MiniRoomLeave mrl : MiniRoomLeave.values()) {
-            if (mrl.type == type) {
-                return mrl;
-            }
-        }
-        return null;
+  public int getType() {
+    return type;
+  }
+
+  public static MiniRoomLeave Get(int type) {
+    for (MiniRoomLeave mrl : MiniRoomLeave.values()) {
+      if (mrl.type == type) {
+        return mrl;
+      }
     }
+    return null;
+  }
 }
