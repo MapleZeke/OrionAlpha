@@ -1,0 +1,16 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.orionalpha.Modernize
+displayName: OrionAlpha Modernization Recipe
+description: Comprehensive modernization recipe for the OrionAlpha project including Java 11 migration, Netty 4.2 upgrade, security fixes, and code quality improvements.
+recipeList:
+  # Core Migration
+  - org.openrewrite.java.migrate.Java8toJava11
+  - org.openrewrite.netty.UpgradeNetty_4_1_to_4_2
+  
+  # Static Analysis
+  - org.openrewrite.staticanalysis.CommonStaticAnalysis
+  
+  # Security - OWASP Top 10
+  - org.openrewrite.java.security.OwaspTopTen
+  - org.openrewrite.java.security.JavaSecurityBestPractices

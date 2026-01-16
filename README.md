@@ -8,13 +8,87 @@ OrionAlpha - A Nexon Replica Emulator Project
  * You can download the named client IDB [here](https://mega.nz/#!KgdRna6Q!T5Op7_b_JF62QEvHqeYFp2NJcEYeoigqFdOHpREf5pI)
 ## Requirements/Dependencies
  * Java JDK (11 or higher)
- * javax.json (or Java EE)
- * Netty (4.1.31 or higher)
- * HikariCP (3.1.0 or higher)
- * MariaDB Connector/J (2.2.3 or higher)
- * slf4j (1.7.4 or higher)
- * Jython (2.7.1 or higher)
- * favr.lib.BCrypt (0.9.0 or higher)
+ * javax.json 1.1.4
+ * Netty 4.2.9.Final
+ * HikariCP 5.1.0
+ * MariaDB Connector/J 3.4.0
+ * slf4j 2.0.17
+ * Jython 2.7.4
+ * favr.lib.BCrypt 0.9.0
+ ----------------------------------------------------------------------
+ ## Building the Project
+ 
+ ### Using Maven
+ 
+ Build the project using Maven:
+ ```bash
+ mvn clean package
+ ```
+ 
+ Or use the Maven Wrapper (recommended for consistent builds):
+ ```bash
+ ./mvnw clean package
+ ```
+ 
+ On Windows:
+ ```cmd
+ mvnw.cmd clean package
+ ```
+ 
+ ### Code Formatting with Spotless
+ 
+ This project uses [Spotless](https://github.com/diffplug/spotless) with Google Java Format for consistent code formatting.
+ 
+ **Check code formatting:**
+ ```bash
+ mvn spotless:check
+ # or
+ ./mvnw spotless:check
+ ```
+ 
+ **Apply code formatting:**
+ ```bash
+ mvn spotless:apply
+ # or
+ ./mvnw spotless:apply
+ ```
+ 
+ ### Code Modernization with OpenRewrite
+ 
+ This project includes [OpenRewrite](https://docs.openrewrite.org/) recipes for automated code modernization, including:
+ 
+ - **Java 11 Migration**: Upgrades code from Java 8 to Java 11
+ - **Netty 4.2 Migration**: Updates Netty API usage from 4.1 to 4.2
+ - **Static Analysis**: Applies common code quality improvements
+ - **Security Fixes**: Implements OWASP Top 10 security best practices
+ - **API Modernization**: Updates to modern Java APIs (NIO, concurrency, etc.)
+ 
+ **Dry run (preview changes without applying):**
+ ```bash
+ mvn rewrite:dryRun
+ # or
+ ./mvnw rewrite:dryRun
+ ```
+ 
+ **Apply modernization recipes:**
+ ```bash
+ mvn rewrite:run
+ # or
+ ./mvnw rewrite:run
+ ```
+ 
+ **Run a specific recipe:**
+ ```bash
+ mvn rewrite:run -Drewrite.activeRecipes=org.openrewrite.java.security.OwaspTopTen
+ ```
+ 
+ **Use the custom OrionAlpha composite recipe** (defined in `rewrite.yml`):
+ ```bash
+ mvn rewrite:run -Drewrite.activeRecipes=com.orionalpha.Modernize
+ ```
+ 
+ For more information on available recipes, see the [OpenRewrite documentation](https://docs.openrewrite.org/).
+ 
  ----------------------------------------------------------------------
  ## Architecture
  The OrionAlpha Emulator is split up into two parts: *Login*, and *Game*, each executing on their own thread. 
