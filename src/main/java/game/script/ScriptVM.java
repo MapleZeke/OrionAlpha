@@ -50,7 +50,19 @@ public class ScriptVM {
             Pending     = 3,
             Finishing   = 4
     ;
-    private static final ScriptEngine PYTHON_ENGINE = new ScriptEngineManager().getEngineByName("python");
+    private static final ScriptEngine PYTHON_ENGINE;
+    static {
+        ScriptEngineManager manager = new ScriptEngineManager();
+        // Try different engine names for GraalPy
+        ScriptEngine engine = manager.getEngineByName("graal.python");
+        if (engine == null) {
+            engine = manager.getEngineByName("python");
+        }
+        if (engine == null) {
+            throw new RuntimeException("GraalPy ScriptEngine not found. Ensure GraalPy dependencies are on the classpath.");
+        }
+        PYTHON_ENGINE = engine;
+    }
     private static final ExecutorService POOL = Executors.newCachedThreadPool();
     private static final String PATH = "data/Script/";
     

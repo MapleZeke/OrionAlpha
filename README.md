@@ -7,13 +7,13 @@ OrionAlpha - A Nexon Replica Emulator Project
  * To emulate a korean locale in the client, you can download LocaleEmulator [here](https://mega.nz/#!T5t00IwA!YByix3DVt-_Pi0IpU-OwUnvhCDyZEPz4JQ6S-kbYHks)
  * You can download the named client IDB [here](https://mega.nz/#!KgdRna6Q!T5Op7_b_JF62QEvHqeYFp2NJcEYeoigqFdOHpREf5pI)
 ## Requirements/Dependencies
- * Java JDK (11 or higher)
+ * Java JDK (21 or higher)
  * javax.json 1.1.4
  * Netty 4.2.9.Final
  * HikariCP 5.1.0
  * MariaDB Connector/J 3.4.0
  * slf4j 2.0.17
- * Jython 2.7.4
+ * GraalPy 24.1.1 (Python 3.12 compatible)
  * favr.lib.BCrypt 0.9.0
  ----------------------------------------------------------------------
  ## Building the Project
@@ -57,7 +57,7 @@ OrionAlpha - A Nexon Replica Emulator Project
  
  This project includes [OpenRewrite](https://docs.openrewrite.org/) recipes for automated code modernization, including:
  
- - **Java 11 Migration**: Upgrades code from Java 8 to Java 11
+ - **Java 21 Migration**: Upgrades code through Java 6→7→8→11→17→21
  - **Netty 4.2 Migration**: Updates Netty API usage from 4.1 to 4.2
  - **Static Analysis**: Applies common code quality improvements
  - **Security Fixes**: Implements OWASP Top 10 security best practices
