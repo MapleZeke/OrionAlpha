@@ -18,15 +18,8 @@
 package game.field.life;
 
 /**
- *
  * @author Eric
  */
 public class AttackIndex {
-    public static final byte
-            Mob_Physical    = 0,
-            Mob_Magic       = -1,
-            Counter         = -2,
-            Obstacle        = -3,
-            Stat            = -4
-    ;
+  public static final byte Mob_Physical = 0, Mob_Magic = -1, Counter = -2, Obstacle = -3, Stat = -4;
 }

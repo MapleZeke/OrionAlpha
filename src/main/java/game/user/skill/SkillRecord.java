@@ -18,35 +18,32 @@
 package game.user.skill;
 
 /**
- *
  * @author Eric
  */
 public class SkillRecord {
-    private int skillID;
-    private int info;
-    
-    public SkillRecord() {
-        
-    }
-    
-    public SkillRecord(int skillID, int info) {
-        this.skillID = skillID;
-        this.info = info;
-    }
-    
-    public int getSkillID() {
-        return skillID;
-    }
-    
-    public int getInfo() {
-        return info;
-    }
-    
-    public void setSkillID(int skill) {
-        this.skillID = skill;
-    }
-    
-    public void setInfo(int info) {
-        this.info = info;
-    }
+  private int skillID;
+  private int info;
+
+  public SkillRecord() {}
+
+  public SkillRecord(int skillID, int info) {
+    this.skillID = skillID;
+    this.info = info;
+  }
+
+  public int getSkillID() {
+    return skillID;
+  }
+
+  public int getInfo() {
+    return info;
+  }
+
+  public void setSkillID(int skill) {
+    this.skillID = skill;
+  }
+
+  public void setInfo(int info) {
+    this.info = info;
+  }
 }

@@ -18,23 +18,20 @@
 package game.field.life;
 
 /**
- *
  * @author Eric
  */
 public class MoveActionType {
-    public static final byte
-            Walk                = 1,
-            Move                = 1,
-            Stand               = 2,
-            Jump                = 3,
-            Alert               = 4,
-            Prone               = 5,
-            Fly1                = 6,
-            Ladder              = 7,
-            Rope                = 8,
-            Dead                = 9,
-            Sit                 = 10,
-            Stand0              = 11,
-            NO                  = 12
-    ;
+  public static final byte Walk = 1,
+      Move = 1,
+      Stand = 2,
+      Jump = 3,
+      Alert = 4,
+      Prone = 5,
+      Fly1 = 6,
+      Ladder = 7,
+      Rope = 8,
+      Dead = 9,
+      Sit = 10,
+      Stand0 = 11,
+      NO = 12;
 }

@@ -21,105 +21,99 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Eric
  * @author Arnah
  */
 public class SkillEntry {
 
-    private int skillID;
-    private String name;
-    private int skillType;
-    private final List<SkillRecord> skillRequirements;
-    private int weapon;
-    private int elemAttr;
-    private SkillLevelData[] levelData;
-    
-    public SkillEntry() {
-        this.skillRequirements = new ArrayList<>();
-        this.levelData = null;
-    }
+  private int skillID;
+  private String name;
+  private int skillType;
+  private final List<SkillRecord> skillRequirements;
+  private int weapon;
+  private int elemAttr;
+  private SkillLevelData[] levelData;
 
-    public int getSkillID() {
-        return skillID;
-    }
+  public SkillEntry() {
+    this.skillRequirements = new ArrayList<>();
+    this.levelData = null;
+  }
 
-    public void setSkillID(int skillID) {
-        this.skillID = skillID;
-    }
+  public int getSkillID() {
+    return skillID;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setSkillID(int skillID) {
+    this.skillID = skillID;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public int getSkillType() {
-        return skillType;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setSkillType(int skillType) {
-        this.skillType = skillType;
-    }
+  public int getSkillType() {
+    return skillType;
+  }
 
-    public List<SkillRecord> getSkillRequirements() {
-        return skillRequirements;
-    }
+  public void setSkillType(int skillType) {
+    this.skillType = skillType;
+  }
 
-    public int getWeapon() {
-        return weapon;
-    }
+  public List<SkillRecord> getSkillRequirements() {
+    return skillRequirements;
+  }
 
-    public void setWeapon(int weapon) {
-        this.weapon = weapon;
-    }
+  public int getWeapon() {
+    return weapon;
+  }
 
-    public int getElemAttr() {
-        return elemAttr;
-    }
+  public void setWeapon(int weapon) {
+    this.weapon = weapon;
+  }
 
-    public void setElemAttr(int elemAttr) {
-        this.elemAttr = elemAttr;
-    }
+  public int getElemAttr() {
+    return elemAttr;
+  }
 
-    public void setLevelData(int maxLevel) {
-        levelData = new SkillLevelData[maxLevel];
-    }
+  public void setElemAttr(int elemAttr) {
+    this.elemAttr = elemAttr;
+  }
 
-    public SkillLevelData[] getLevelData() {
-        return levelData;
-    }
+  public void setLevelData(int maxLevel) {
+    levelData = new SkillLevelData[maxLevel];
+  }
 
-    public SkillLevelData getLevelData(int level) {
-        return levelData[level - 1];
-    }
+  public SkillLevelData[] getLevelData() {
+    return levelData;
+  }
 
-    public void setLevelData(int level, SkillLevelData levelData) {
-        this.levelData[level - 1] = levelData;
-    }
+  public SkillLevelData getLevelData(int level) {
+    return levelData[level - 1];
+  }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + skillID;
-        return result;
-    }
+  public void setLevelData(int level, SkillLevelData levelData) {
+    this.levelData[level - 1] = levelData;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof SkillEntry))
-            return false;
-        SkillEntry other = (SkillEntry) obj;
-        if (skillID != other.skillID)
-            return false;
-        return true;
-    }
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + skillID;
+    return result;
+  }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (!(obj instanceof SkillEntry)) return false;
+    SkillEntry other = (SkillEntry) obj;
+    if (skillID != other.skillID) return false;
+    return true;
+  }
 }

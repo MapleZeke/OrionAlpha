@@ -23,358 +23,355 @@ import java.util.concurrent.atomic.AtomicInteger;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class CharacterStat {
-    private int characterID;
-    private String name;
-    private byte gender;
-    private int face;
-    private int hair;
-    private byte skin;
-    private byte level;
-    private short job;
-    private short STR;
-    private short DEX;
-    private short INT;
-    private short LUK;
-    private short hp;
-    private short mhp;
-    private short mp;
-    private short mmp;
-    private short ap;
-    private short sp;
-    private final AtomicInteger exp;
-    private short pop;
-    private final AtomicInteger money;
-    private int posMap;
-    private byte portal;
-    
-    public CharacterStat() {
-        this.exp = new AtomicInteger(0);
-        this.money = new AtomicInteger(0);
-    }
-    
-    public void encode(OutPacket packet) {
-        packet.encodeInt(characterID);
-        packet.encodeString(name, 13);
-        packet.encodeByte(gender);
-        packet.encodeInt(face);
-        packet.encodeInt(hair);
-        packet.encodeByte(skin);
-        packet.encodeInt(0); //Unknown
-        packet.encodeByte(level);
-        packet.encodeShort(job);
-        packet.encodeShort(STR);
-        packet.encodeShort(DEX);
-        packet.encodeShort(INT);
-        packet.encodeShort(LUK);
-        packet.encodeShort(hp);
-        packet.encodeShort(mhp);
-        packet.encodeShort(mp);
-        packet.encodeShort(mmp);
-        packet.encodeShort(ap);
-        packet.encodeShort(sp);
-        packet.encodeInt(exp.get());
-        packet.encodeShort(pop);
-        packet.encodeInt(money.get());
-        packet.encodeInt(posMap);
-        packet.encodeByte(portal);
-    }
-    
-    public void encodeChangeStat(OutPacket packet, int flag) {
-        packet.encodeInt(flag);
-        if ((flag & CharacterStatType.Face) > 0) {
-            packet.encodeInt(this.face);
-        }
-        if ((flag & CharacterStatType.Hair) > 0) {
-            packet.encodeInt(this.hair);
-        }
-        if ((flag & CharacterStatType.Skin) > 0) {
-            packet.encodeInt(this.skin);
-        }
-        if ((flag & CharacterStatType.PetSN) > 0) {
-            packet.encodeInt(0);
-        }
-        if ((flag & CharacterStatType.LEV) > 0) {
-            packet.encodeByte(this.level);
-        }
-        if ((flag & CharacterStatType.Job) > 0) {
-            packet.encodeShort(this.job);
-        }
-        if ((flag & CharacterStatType.STR) > 0) {
-            packet.encodeShort(this.STR);
-        }
-        if ((flag & CharacterStatType.DEX) > 0) {
-            packet.encodeShort(this.DEX);
-        }
-        if ((flag & CharacterStatType.INT) > 0) {
-            packet.encodeShort(this.INT);
-        }
-        if ((flag & CharacterStatType.LUK) > 0) {
-            packet.encodeShort(this.LUK);
-        }
-        if ((flag & CharacterStatType.HP) > 0) {
-            packet.encodeShort(this.hp);
-        }
-        if ((flag & CharacterStatType.MHP) > 0) {
-            packet.encodeShort(this.mhp);
-        }
-        if ((flag & CharacterStatType.MP) > 0) {
-            packet.encodeShort(this.mp);
-        }
-        if ((flag & CharacterStatType.MMP) > 0) {
-            packet.encodeShort(this.mmp);
-        }
-        if ((flag & CharacterStatType.AP) > 0) {
-            packet.encodeShort(this.ap);
-        }
-        if ((flag & CharacterStatType.SP) > 0) {
-            packet.encodeShort(this.sp);
-        }
-        if ((flag & CharacterStatType.EXP) > 0) {
-            packet.encodeInt(this.exp.get());
-        }
-        if ((flag & CharacterStatType.POP) > 0) {
-            packet.encodeInt(this.pop);//wtf?
-        }
-        if ((flag & CharacterStatType.Money) > 0) {
-            packet.encodeInt(this.money.get());
-        }
-    }
-    
-    public int getCharacterID() {
-        return characterID;
-    }
+  private int characterID;
+  private String name;
+  private byte gender;
+  private int face;
+  private int hair;
+  private byte skin;
+  private byte level;
+  private short job;
+  private short STR;
+  private short DEX;
+  private short INT;
+  private short LUK;
+  private short hp;
+  private short mhp;
+  private short mp;
+  private short mmp;
+  private short ap;
+  private short sp;
+  private final AtomicInteger exp;
+  private short pop;
+  private final AtomicInteger money;
+  private int posMap;
+  private byte portal;
 
-    public String getName() {
-        return name;
-    }
+  public CharacterStat() {
+    this.exp = new AtomicInteger(0);
+    this.money = new AtomicInteger(0);
+  }
 
-    public byte getGender() {
-        return gender;
-    }
+  public void encode(OutPacket packet) {
+    packet.encodeInt(characterID);
+    packet.encodeString(name, 13);
+    packet.encodeByte(gender);
+    packet.encodeInt(face);
+    packet.encodeInt(hair);
+    packet.encodeByte(skin);
+    packet.encodeInt(0); // Unknown
+    packet.encodeByte(level);
+    packet.encodeShort(job);
+    packet.encodeShort(STR);
+    packet.encodeShort(DEX);
+    packet.encodeShort(INT);
+    packet.encodeShort(LUK);
+    packet.encodeShort(hp);
+    packet.encodeShort(mhp);
+    packet.encodeShort(mp);
+    packet.encodeShort(mmp);
+    packet.encodeShort(ap);
+    packet.encodeShort(sp);
+    packet.encodeInt(exp.get());
+    packet.encodeShort(pop);
+    packet.encodeInt(money.get());
+    packet.encodeInt(posMap);
+    packet.encodeByte(portal);
+  }
 
-    public int getFace() {
-        return face;
+  public void encodeChangeStat(OutPacket packet, int flag) {
+    packet.encodeInt(flag);
+    if ((flag & CharacterStatType.Face) > 0) {
+      packet.encodeInt(this.face);
     }
+    if ((flag & CharacterStatType.Hair) > 0) {
+      packet.encodeInt(this.hair);
+    }
+    if ((flag & CharacterStatType.Skin) > 0) {
+      packet.encodeInt(this.skin);
+    }
+    if ((flag & CharacterStatType.PetSN) > 0) {
+      packet.encodeInt(0);
+    }
+    if ((flag & CharacterStatType.LEV) > 0) {
+      packet.encodeByte(this.level);
+    }
+    if ((flag & CharacterStatType.Job) > 0) {
+      packet.encodeShort(this.job);
+    }
+    if ((flag & CharacterStatType.STR) > 0) {
+      packet.encodeShort(this.STR);
+    }
+    if ((flag & CharacterStatType.DEX) > 0) {
+      packet.encodeShort(this.DEX);
+    }
+    if ((flag & CharacterStatType.INT) > 0) {
+      packet.encodeShort(this.INT);
+    }
+    if ((flag & CharacterStatType.LUK) > 0) {
+      packet.encodeShort(this.LUK);
+    }
+    if ((flag & CharacterStatType.HP) > 0) {
+      packet.encodeShort(this.hp);
+    }
+    if ((flag & CharacterStatType.MHP) > 0) {
+      packet.encodeShort(this.mhp);
+    }
+    if ((flag & CharacterStatType.MP) > 0) {
+      packet.encodeShort(this.mp);
+    }
+    if ((flag & CharacterStatType.MMP) > 0) {
+      packet.encodeShort(this.mmp);
+    }
+    if ((flag & CharacterStatType.AP) > 0) {
+      packet.encodeShort(this.ap);
+    }
+    if ((flag & CharacterStatType.SP) > 0) {
+      packet.encodeShort(this.sp);
+    }
+    if ((flag & CharacterStatType.EXP) > 0) {
+      packet.encodeInt(this.exp.get());
+    }
+    if ((flag & CharacterStatType.POP) > 0) {
+      packet.encodeInt(this.pop); // wtf?
+    }
+    if ((flag & CharacterStatType.Money) > 0) {
+      packet.encodeInt(this.money.get());
+    }
+  }
 
-    public int getHair() {
-        return hair;
-    }
+  public int getCharacterID() {
+    return characterID;
+  }
 
-    public byte getSkin() {
-        return skin;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public byte getLevel() {
-        return level;
-    }
+  public byte getGender() {
+    return gender;
+  }
 
-    public short getJob() {
-        return job;
-    }
+  public int getFace() {
+    return face;
+  }
 
-    public short getSTR() {
-        return STR;
-    }
+  public int getHair() {
+    return hair;
+  }
 
-    public short getDEX() {
-        return DEX;
-    }
+  public byte getSkin() {
+    return skin;
+  }
 
-    public short getINT() {
-        return INT;
-    }
+  public byte getLevel() {
+    return level;
+  }
 
-    public short getLUK() {
-        return LUK;
-    }
+  public short getJob() {
+    return job;
+  }
 
-    public short getHP() {
-        return hp;
-    }
+  public short getSTR() {
+    return STR;
+  }
 
-    public short getMHP() {
-        return mhp;
-    }
+  public short getDEX() {
+    return DEX;
+  }
 
-    public short getMP() {
-        return mp;
-    }
+  public short getINT() {
+    return INT;
+  }
 
-    public short getMMP() {
-        return mmp;
-    }
+  public short getLUK() {
+    return LUK;
+  }
 
-    public short getAP() {
-        return ap;
-    }
+  public short getHP() {
+    return hp;
+  }
 
-    public short getSP() {
-        return sp;
-    }
+  public short getMHP() {
+    return mhp;
+  }
 
-    public int getEXP() {
-        return exp.get();
-    }
+  public short getMP() {
+    return mp;
+  }
 
-    public short getPOP() {
-        return pop;
-    }
+  public short getMMP() {
+    return mmp;
+  }
 
-    public int getMoney() {
-        return money.get();
-    }
+  public short getAP() {
+    return ap;
+  }
 
-    public int getPosMap() {
-        return posMap;
-    }
+  public short getSP() {
+    return sp;
+  }
 
-    public byte getPortal() {
-        return portal;
-    }
-    
-    public void load(ResultSet rs) throws SQLException {
-        setCharacterID(rs.getInt("CharacterID"));
-        setName(rs.getString("CharacterName"));
-        setGender(rs.getByte("Gender"));
-        setSkin(rs.getByte("Skin"));
-        setFace(rs.getInt("Face"));
-        setHair(rs.getInt("Hair"));
-        setLevel(rs.getByte("Level"));
-        setJob(rs.getShort("Job"));
-        setSTR(rs.getShort("STR"));
-        setDEX(rs.getShort("DEX"));
-        setINT(rs.getShort("INT"));
-        setLUK(rs.getShort("LUK"));
-        setHP(rs.getShort("HP"));
-        setMP(rs.getShort("MP"));
-        setMHP(rs.getShort("MaxHP"));
-        setMMP(rs.getShort("MaxMP"));
-        setAP(rs.getShort("AP"));
-        setSP(rs.getShort("SP"));
-        setEXP(rs.getInt("EXP"));
-        setPOP(rs.getShort("POP"));
-        setMoney(rs.getInt("Money"));
-        setPosMap(rs.getInt("Map"));
-        setPortal(rs.getByte("Portal"));
-    }
-    
-    private void setCharacterID(int characterID) {
-        this.characterID = characterID;
-    }
+  public int getEXP() {
+    return exp.get();
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public short getPOP() {
+    return pop;
+  }
 
-    public void setGender(byte gender) {
-        this.gender = gender;
-    }
+  public int getMoney() {
+    return money.get();
+  }
 
-    public void setFace(int face) {
-        this.face = face;
-    }
+  public int getPosMap() {
+    return posMap;
+  }
 
-    public void setHair(int hair) {
-        this.hair = hair;
-    }
+  public byte getPortal() {
+    return portal;
+  }
 
-    public void setSkin(int skin) {
-        this.skin = (byte) skin;
-    }
+  public void load(ResultSet rs) throws SQLException {
+    setCharacterID(rs.getInt("CharacterID"));
+    setName(rs.getString("CharacterName"));
+    setGender(rs.getByte("Gender"));
+    setSkin(rs.getByte("Skin"));
+    setFace(rs.getInt("Face"));
+    setHair(rs.getInt("Hair"));
+    setLevel(rs.getByte("Level"));
+    setJob(rs.getShort("Job"));
+    setSTR(rs.getShort("STR"));
+    setDEX(rs.getShort("DEX"));
+    setINT(rs.getShort("INT"));
+    setLUK(rs.getShort("LUK"));
+    setHP(rs.getShort("HP"));
+    setMP(rs.getShort("MP"));
+    setMHP(rs.getShort("MaxHP"));
+    setMMP(rs.getShort("MaxMP"));
+    setAP(rs.getShort("AP"));
+    setSP(rs.getShort("SP"));
+    setEXP(rs.getInt("EXP"));
+    setPOP(rs.getShort("POP"));
+    setMoney(rs.getInt("Money"));
+    setPosMap(rs.getInt("Map"));
+    setPortal(rs.getByte("Portal"));
+  }
 
-    public void setLevel(int level) {
-        this.level = (byte) level;
-    }
+  private void setCharacterID(int characterID) {
+    this.characterID = characterID;
+  }
 
-    public void setJob(short job) {
-        this.job = job;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setSTR(short STR) {
-        this.STR = STR;
-    }
+  public void setGender(byte gender) {
+    this.gender = gender;
+  }
 
-    public void setDEX(short DEX) {
-        this.DEX = DEX;
-    }
+  public void setFace(int face) {
+    this.face = face;
+  }
 
-    public void setINT(short INT) {
-        this.INT = INT;
-    }
+  public void setHair(int hair) {
+    this.hair = hair;
+  }
 
-    public void setLUK(short LUK) {
-        this.LUK = LUK;
-    }
+  public void setSkin(int skin) {
+    this.skin = (byte) skin;
+  }
 
-    public void setHP(int hp) {
-        this.hp = (short) hp;
-    }
+  public void setLevel(int level) {
+    this.level = (byte) level;
+  }
 
-    public void setMHP(short mhp) {
-        this.mhp = mhp;
-    }
+  public void setJob(short job) {
+    this.job = job;
+  }
 
-    public void setMP(int mp) {
-        this.mp = (short) mp;
-    }
+  public void setSTR(short STR) {
+    this.STR = STR;
+  }
 
-    public void setMMP(short mmp) {
-        this.mmp = mmp;
-    }
+  public void setDEX(short DEX) {
+    this.DEX = DEX;
+  }
 
-    public void setAP(int ap) {
-        this.ap = (short) ap;
-    }
+  public void setINT(short INT) {
+    this.INT = INT;
+  }
 
-    public void setSP(short sp) {
-        this.sp = sp;
-    }
+  public void setLUK(short LUK) {
+    this.LUK = LUK;
+  }
 
-    public void setPOP(short pop) {
-        this.pop = pop;
-    }
+  public void setHP(int hp) {
+    this.hp = (short) hp;
+  }
 
-    public void setPosMap(int posMap) {
-        this.posMap = posMap;
-    }
+  public void setMHP(short mhp) {
+    this.mhp = mhp;
+  }
 
-    public void setPortal(byte portal) {
-        this.portal = portal;
-    }
-    
-    public void setEXP(int exp) {
-        this.exp.set(exp);
-    }
-    
-    public void setMoney(int money) {
-        this.money.set(money);
-    }
-    
-    public class CharacterStatType {
-        public static final int
-                Face    = 0x1,
-                Hair    = 0x2,
-                Skin    = 0x4,//Incorrect (does this correspond to AvatarModified's 0x4 flag?)
-                PetSN   = 0x8,//Incorrect (does this correspond to AvatarModified's 0x8 flag?)
-                LEV     = 0x10,
-                Job     = 0x20,
-                STR     = 0x40,
-                DEX     = 0x80,
-                INT     = 0x100,
-                LUK     = 0x200,
-                HP      = 0x400,
-                MHP     = 0x800,
-                MP      = 0x1000,
-                MMP     = 0x2000,
-                AP      = 0x4000,
-                SP      = 0x8000,
-                EXP     = 0x10000,
-                POP     = 0x20000,
-                Money   = 0x40000
-        ;
-    }
+  public void setMP(int mp) {
+    this.mp = (short) mp;
+  }
+
+  public void setMMP(short mmp) {
+    this.mmp = mmp;
+  }
+
+  public void setAP(int ap) {
+    this.ap = (short) ap;
+  }
+
+  public void setSP(short sp) {
+    this.sp = sp;
+  }
+
+  public void setPOP(short pop) {
+    this.pop = pop;
+  }
+
+  public void setPosMap(int posMap) {
+    this.posMap = posMap;
+  }
+
+  public void setPortal(byte portal) {
+    this.portal = portal;
+  }
+
+  public void setEXP(int exp) {
+    this.exp.set(exp);
+  }
+
+  public void setMoney(int money) {
+    this.money.set(money);
+  }
+
+  public class CharacterStatType {
+    public static final int Face = 0x1,
+        Hair = 0x2,
+        Skin = 0x4, // Incorrect (does this correspond to AvatarModified's 0x4 flag?)
+        PetSN = 0x8, // Incorrect (does this correspond to AvatarModified's 0x8 flag?)
+        LEV = 0x10,
+        Job = 0x20,
+        STR = 0x40,
+        DEX = 0x80,
+        INT = 0x100,
+        LUK = 0x200,
+        HP = 0x400,
+        MHP = 0x800,
+        MP = 0x1000,
+        MMP = 0x2000,
+        AP = 0x4000,
+        SP = 0x8000,
+        EXP = 0x10000,
+        POP = 0x20000,
+        Money = 0x40000;
+  }
 }

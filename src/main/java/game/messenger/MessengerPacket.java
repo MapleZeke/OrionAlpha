@@ -18,19 +18,16 @@
 package game.messenger;
 
 /**
- *
  * @author Eric
  */
 public class MessengerPacket {
-    public static final byte
-            Enter           = 0,
-            SelfEnterResult = 1,
-            Leave           = 2,
-            Invite          = 3,
-            InviteResult    = 4,
-            Blocked         = 5,
-            Chat            = 6,
-            Avatar          = 7,
-            Migrated        = 8
-    ;
+  public static final byte Enter = 0,
+      SelfEnterResult = 1,
+      Leave = 2,
+      Invite = 3,
+      InviteResult = 4,
+      Blocked = 5,
+      Chat = 6,
+      Avatar = 7,
+      Migrated = 8;
 }

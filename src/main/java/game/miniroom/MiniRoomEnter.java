@@ -18,13 +18,12 @@
 package game.miniroom;
 
 /**
- *
  * @author sunnyboy
  */
 public class MiniRoomEnter {
 
-    public static final int Success = 0;
-    public static final int NoRoom = 1;
-    public static final int Full = 2;
-    public static final int Busy = 3;
+  public static final int Success = 0;
+  public static final int NoRoom = 1;
+  public static final int Full = 2;
+  public static final int Busy = 3;
 }

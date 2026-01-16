@@ -19,7 +19,6 @@ package game.user.command;
 
 import common.Request;
 import game.user.User;
-
 import java.lang.reflect.Method;
 
 /**
@@ -27,36 +26,36 @@ import java.lang.reflect.Method;
  */
 public class UserCommands {
 
-    @CommandAlias({"dispose", "excl", "check"})
-    public static String fixme(User user) {
-        if (user.getScriptVM() != null) {
-            user.setScriptVM(null);
-        }
-        user.sendCharacterStat(Request.Excl, 0);
-        return null;
+  @CommandAlias({"dispose", "excl", "check"})
+  public static String fixme(User user) {
+    if (user.getScriptVM() != null) {
+      user.setScriptVM(null);
     }
+    user.sendCharacterStat(Request.Excl, 0);
+    return null;
+  }
 
-    public static String help(User user) {
-        for (UserGradeCode role : UserGradeCode.values()) {
-            if (user.getGradeCode() < role.getGrade()) {
-                continue;
-            }
-            Class<?> clazz;
-            try {
-                clazz = Class.forName("game.user.command." + role.name() + "Commands");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace(System.err);
-                continue;
-            }
-            user.sendSystemMessage(role.name());
-            for (Method method : clazz.getMethods()) {
-                CommandDesc desc = method.getAnnotation(CommandDesc.class);
-                if (desc == null) {
-                    continue;
-                }
-                user.sendSystemMessage("@" + method.getName() + " - " + desc.value());
-            }
+  public static String help(User user) {
+    for (UserGradeCode role : UserGradeCode.values()) {
+      if (user.getGradeCode() < role.getGrade()) {
+        continue;
+      }
+      Class<?> clazz;
+      try {
+        clazz = Class.forName("game.user.command." + role.name() + "Commands");
+      } catch (ClassNotFoundException ex) {
+        ex.printStackTrace(System.err);
+        continue;
+      }
+      user.sendSystemMessage(role.name());
+      for (Method method : clazz.getMethods()) {
+        CommandDesc desc = method.getAnnotation(CommandDesc.class);
+        if (desc == null) {
+          continue;
         }
-        return null;
+        user.sendSystemMessage("@" + method.getName() + " - " + desc.value());
+      }
     }
+    return null;
+  }
 }

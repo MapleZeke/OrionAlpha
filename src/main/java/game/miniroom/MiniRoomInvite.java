@@ -18,13 +18,11 @@
 package game.miniroom;
 
 /**
- *
  * @author sunnyboy
  */
 public class MiniRoomInvite {
 
-    public static final int Success = 0;
-    public static final int NoCharacter = 1;
-    public static final int CannotInvite = 2;
-
+  public static final int Success = 0;
+  public static final int NoCharacter = 1;
+  public static final int CannotInvite = 2;
 }

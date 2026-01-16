@@ -21,23 +21,21 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class UserCommon {
-    
-    /**
-     * The character chat packet that sends a chat message to the field.
-     * 
-     * @param characterID The ID of the user sending the message
-     * @param text The message itself
-     * 
-     * @return The chat packet
-     */
-    public static OutPacket onChat(int characterID, String text) {
-        OutPacket packet = new OutPacket(LoopbackPacket.UserChat);
-        packet.encodeInt(characterID);
-        packet.encodeString(text);
-        return packet;
-    }
+
+  /**
+   * The character chat packet that sends a chat message to the field.
+   *
+   * @param characterID The ID of the user sending the message
+   * @param text The message itself
+   * @return The chat packet
+   */
+  public static OutPacket onChat(int characterID, String text) {
+    OutPacket packet = new OutPacket(LoopbackPacket.UserChat);
+    packet.encodeInt(characterID);
+    packet.encodeString(text);
+    return packet;
+  }
 }

@@ -18,30 +18,23 @@
 package common;
 
 /**
- *
  * @author Eric
  */
 public class WhisperFlags {
-    public class WhisperFlag {
-        public static final byte
-                Location    = 0x1,
-                Whisper     = 0x2,
-                Request     = 0x4,
-                Result      = 0x8,
-                Receive     = 0x10,
-                Blocked     = 0x20
-        ;
-    }
-    
-    public static final byte
-            FindRequest       = WhisperFlag.Request | WhisperFlag.Location,
-            ReplyRequest      = WhisperFlag.Request | WhisperFlag.Whisper,
-            
-            FindResult        = WhisperFlag.Result  | WhisperFlag.Location,
-            ReplyResult       = WhisperFlag.Result  | WhisperFlag.Whisper,
-            ReplyReceive      = WhisperFlag.Receive | WhisperFlag.Whisper,
-            BlockedResult     = WhisperFlag.Blocked | WhisperFlag.Whisper,
-            
-            None = -1
-    ;
+  public class WhisperFlag {
+    public static final byte Location = 0x1,
+        Whisper = 0x2,
+        Request = 0x4,
+        Result = 0x8,
+        Receive = 0x10,
+        Blocked = 0x20;
+  }
+
+  public static final byte FindRequest = WhisperFlag.Request | WhisperFlag.Location,
+      ReplyRequest = WhisperFlag.Request | WhisperFlag.Whisper,
+      FindResult = WhisperFlag.Result | WhisperFlag.Location,
+      ReplyResult = WhisperFlag.Result | WhisperFlag.Whisper,
+      ReplyReceive = WhisperFlag.Receive | WhisperFlag.Whisper,
+      BlockedResult = WhisperFlag.Blocked | WhisperFlag.Whisper,
+      None = -1;
 }

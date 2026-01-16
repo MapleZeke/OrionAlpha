@@ -18,14 +18,8 @@
 package game.field.drop;
 
 /**
- *
  * @author Eric
  */
 public class DropPickup {
-    public static final byte
-            AddInventoryItem    = 0,
-            Messo               = 1,
-            Done                = 2,
-            NOMSG               = 3
-    ;
+  public static final byte AddInventoryItem = 0, Messo = 1, Done = 2, NOMSG = 3;
 }

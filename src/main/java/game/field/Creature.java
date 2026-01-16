@@ -21,59 +21,58 @@ import network.packet.OutPacket;
 
 /**
  * CCreature
- * 
- * In official terms, Creature is truly CCreature : CGameObject.
- * 
- * To keep the inheritance the same as what Nexon is doing
- * and not causing any inheritance clashing, we will extend
- * FieldObj in addition to implementing GameObject.
- * 
+ *
+ * <p>In official terms, Creature is truly CCreature : CGameObject.
+ *
+ * <p>To keep the inheritance the same as what Nexon is doing and not causing any inheritance
+ * clashing, we will extend FieldObj in addition to implementing GameObject.
+ *
  * @author Eric
  */
 public class Creature extends FieldObj implements GameObject {
-    // baseclass_0
-    private final int id;
-    
-    public Creature() {
-        super();
-        
-        GameObjectBase obj = construct();
-        
-        this.id = obj.getID();
-    }
-    
-    /**
-     * Uses the GameObjectBase to register this as a new GameObject. 
-     * 
-     * Due to multiple inheritance constraints, we use this to
-     * call a super() constructor of GameObject in a way.
-     */
-    private GameObjectBase construct() {
-        return GameObjectBase.registerGameObject(this);
-    }
-    
-    @Override
-    public int getGameObjectID() {
-        return id;
-    }
-    
-    @Override
-    public int getGameObjectTypeID() {
-        return GameObjectType.Creature;
-    }
-    
-    @Override
-    public int getTemplateID() {
-        return 0;
-    }
-    
-    @Override
-    public OutPacket makeEnterFieldPacket() {
-        return null;
-    }
-    
-    @Override
-    public OutPacket makeLeaveFieldPacket() {
-        return null;
-    }
+  // baseclass_0
+  private final int id;
+
+  public Creature() {
+    super();
+
+    GameObjectBase obj = construct();
+
+    this.id = obj.getID();
+  }
+
+  /**
+   * Uses the GameObjectBase to register this as a new GameObject.
+   *
+   * <p>Due to multiple inheritance constraints, we use this to call a super() constructor of
+   * GameObject in a way.
+   */
+  private GameObjectBase construct() {
+    return GameObjectBase.registerGameObject(this);
+  }
+
+  @Override
+  public int getGameObjectID() {
+    return id;
+  }
+
+  @Override
+  public int getGameObjectTypeID() {
+    return GameObjectType.Creature;
+  }
+
+  @Override
+  public int getTemplateID() {
+    return 0;
+  }
+
+  @Override
+  public OutPacket makeEnterFieldPacket() {
+    return null;
+  }
+
+  @Override
+  public OutPacket makeLeaveFieldPacket() {
+    return null;
+  }
 }

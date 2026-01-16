@@ -18,58 +18,57 @@
 package game.field.life.mob;
 
 /**
- *
  * @author Eric
  */
 public class MobStatOption {
-    private short skillOption;
-    private int skillReason;
-    private int skillModOption;
-    private long skillDuration;
-    
-    public MobStatOption() {
-        this.skillOption = 0;
-        this.skillReason = 0;
-        this.skillDuration = 0;
-        this.skillModOption = 0;
-    }
-    
-    public MobStatOption(int option, int reason, long duration) {
-        this.skillOption = (short) option;
-        this.skillReason = reason;
-        this.skillDuration = duration;
-        this.skillModOption = 0;
-    }
-    
-    public int getModOption() {
-        return skillModOption;
-    }
-    
-    public short getOption() {
-        return skillOption;
-    }
-    
-    public int getReason() {
-        return skillReason;
-    }
-    
-    public long getDuration() {
-        return skillDuration;
-    }
-    
-    public void setModOption(int mod) {
-        this.skillModOption = mod;
-    }
-    
-    public void setOption(int option) {
-        this.skillOption = (short) option;
-    }
-    
-    public void setReason(int reason) {
-        this.skillReason = reason;
-    }
-    
-    public void setDuration(long duration) {
-        this.skillDuration = duration;
-    }
+  private short skillOption;
+  private int skillReason;
+  private int skillModOption;
+  private long skillDuration;
+
+  public MobStatOption() {
+    this.skillOption = 0;
+    this.skillReason = 0;
+    this.skillDuration = 0;
+    this.skillModOption = 0;
+  }
+
+  public MobStatOption(int option, int reason, long duration) {
+    this.skillOption = (short) option;
+    this.skillReason = reason;
+    this.skillDuration = duration;
+    this.skillModOption = 0;
+  }
+
+  public int getModOption() {
+    return skillModOption;
+  }
+
+  public short getOption() {
+    return skillOption;
+  }
+
+  public int getReason() {
+    return skillReason;
+  }
+
+  public long getDuration() {
+    return skillDuration;
+  }
+
+  public void setModOption(int mod) {
+    this.skillModOption = mod;
+  }
+
+  public void setOption(int option) {
+    this.skillOption = (short) option;
+  }
+
+  public void setReason(int reason) {
+    this.skillReason = reason;
+  }
+
+  public void setDuration(long duration) {
+    this.skillDuration = duration;
+  }
 }

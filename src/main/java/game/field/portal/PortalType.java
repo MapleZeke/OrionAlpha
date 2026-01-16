@@ -18,41 +18,38 @@
 package game.field.portal;
 
 /**
- *
  * @author Eric
  */
 public class PortalType {
-    public static final int
-            StartPoint              = 0,
-            Invisible               = 1,
-            Visible                 = 2,
-            Collision               = 3,
-            Changable               = 4,
-            Changable_Invisible     = 5,
-            TownPortal_Point        = 6,
-            Script                  = 7,
-            Script_Invisible        = 8,
-            Collision_Script        = 9,
-            Hidden                  = 10,
-            Script_Hidden           = 11,
-            Collision_VerticalJump  = 12,
-            Collision_CustomImpact  = 13
-    ;
-    
-    /*
-        FFFFFFFF PORTALTYPE_STARTPOINT  = 0
-        FFFFFFFF PORTALTYPE_INVISIBLE  = 1
-        FFFFFFFF PORTALTYPE_VISIBLE  = 2
-        FFFFFFFF PORTALTYPE_COLLISION  = 3
-        FFFFFFFF PORTALTYPE_CHANGABLE  = 4
-        FFFFFFFF PORTALTYPE_CHANGABLE_INVISIBLE  = 5
-        FFFFFFFF PORTALTYPE_TOWNPORTAL_POINT  = 6
-        FFFFFFFF PORTALTYPE_SCRIPT  = 7
-        FFFFFFFF PORTALTYPE_SCRIPT_INVISIBLE  = 8
-        FFFFFFFF PORTALTYPE_COLLISION_SCRIPT  = 9
-        FFFFFFFF PORTALTYPE_HIDDEN  = 0Ah
-        FFFFFFFF PORTALTYPE_SCRIPT_HIDDEN  = 0Bh
-        FFFFFFFF PORTALTYPE_COLLISION_VERTICAL_JUMP  = 0Ch
-        FFFFFFFF PORTALTYPE_COLLISION_CUSTOM_IMPACT  = 0Dh
-    */
+  public static final int StartPoint = 0,
+      Invisible = 1,
+      Visible = 2,
+      Collision = 3,
+      Changable = 4,
+      Changable_Invisible = 5,
+      TownPortal_Point = 6,
+      Script = 7,
+      Script_Invisible = 8,
+      Collision_Script = 9,
+      Hidden = 10,
+      Script_Hidden = 11,
+      Collision_VerticalJump = 12,
+      Collision_CustomImpact = 13;
+
+  /*
+      FFFFFFFF PORTALTYPE_STARTPOINT  = 0
+      FFFFFFFF PORTALTYPE_INVISIBLE  = 1
+      FFFFFFFF PORTALTYPE_VISIBLE  = 2
+      FFFFFFFF PORTALTYPE_COLLISION  = 3
+      FFFFFFFF PORTALTYPE_CHANGABLE  = 4
+      FFFFFFFF PORTALTYPE_CHANGABLE_INVISIBLE  = 5
+      FFFFFFFF PORTALTYPE_TOWNPORTAL_POINT  = 6
+      FFFFFFFF PORTALTYPE_SCRIPT  = 7
+      FFFFFFFF PORTALTYPE_SCRIPT_INVISIBLE  = 8
+      FFFFFFFF PORTALTYPE_COLLISION_SCRIPT  = 9
+      FFFFFFFF PORTALTYPE_HIDDEN  = 0Ah
+      FFFFFFFF PORTALTYPE_SCRIPT_HIDDEN  = 0Bh
+      FFFFFFFF PORTALTYPE_COLLISION_VERTICAL_JUMP  = 0Ch
+      FFFFFFFF PORTALTYPE_COLLISION_CUSTOM_IMPACT  = 0Dh
+  */
 }

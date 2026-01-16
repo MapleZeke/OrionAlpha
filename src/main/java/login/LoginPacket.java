@@ -25,78 +25,77 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class LoginPacket {
-    
-    public static OutPacket onCheckPasswordResult(ClientSocket socket, int result) {
-        OutPacket packet = new OutPacket(LoopbackPacket.CheckPasswordResult);
-        packet.encodeByte(result);
-        if (result == 1) {
-            packet.encodeInt(socket.getAccountID());
-            packet.encodeByte(socket.getGender());
-            packet.encodeByte(socket.getGradeCode());
-            packet.encodeString(socket.getNexonClubID());
-            packet.encodeByte(LoginApp.getInstance().getWorlds().size());
-            for (WorldEntry world : LoginApp.getInstance().getWorlds()) {
-                packet.encodeByte(world.getChannels().size());
-                for (ChannelEntry channel : world.getChannels()) {
-                    packet.encodeString(world.getName() + "-" + (channel.getChannelID() + 1));
-                    packet.encodeInt(channel.getUserNo());
-                    packet.encodeByte(channel.getWorldID());
-                    packet.encodeByte(channel.getChannelID());
-                }
-            }
+
+  public static OutPacket onCheckPasswordResult(ClientSocket socket, int result) {
+    OutPacket packet = new OutPacket(LoopbackPacket.CheckPasswordResult);
+    packet.encodeByte(result);
+    if (result == 1) {
+      packet.encodeInt(socket.getAccountID());
+      packet.encodeByte(socket.getGender());
+      packet.encodeByte(socket.getGradeCode());
+      packet.encodeString(socket.getNexonClubID());
+      packet.encodeByte(LoginApp.getInstance().getWorlds().size());
+      for (WorldEntry world : LoginApp.getInstance().getWorlds()) {
+        packet.encodeByte(world.getChannels().size());
+        for (ChannelEntry channel : world.getChannels()) {
+          packet.encodeString(world.getName() + "-" + (channel.getChannelID() + 1));
+          packet.encodeInt(channel.getUserNo());
+          packet.encodeByte(channel.getWorldID());
+          packet.encodeByte(channel.getChannelID());
         }
-        return packet;
+      }
     }
-    
-    public static OutPacket onSelectWorldResult(int msg, int ssn, List<CharacterData> characters) {
-        OutPacket packet = new OutPacket(LoopbackPacket.SelectWorldResult);
-        packet.encodeByte(msg);
-        if (msg == 1) {
-            packet.encodeInt(ssn);
-            
-            packet.encodeByte(characters.size());
-            for (CharacterData character : characters) {
-                character.encode(packet, DBChar.Character | DBChar.ItemSlotEquip);
-            }
-        }
-        return packet;
+    return packet;
+  }
+
+  public static OutPacket onSelectWorldResult(int msg, int ssn, List<CharacterData> characters) {
+    OutPacket packet = new OutPacket(LoopbackPacket.SelectWorldResult);
+    packet.encodeByte(msg);
+    if (msg == 1) {
+      packet.encodeInt(ssn);
+
+      packet.encodeByte(characters.size());
+      for (CharacterData character : characters) {
+        character.encode(packet, DBChar.Character | DBChar.ItemSlotEquip);
+      }
     }
-    
-    public static OutPacket onCheckDuplicateIDResult(String checkedName, boolean nameUsed) {
-        OutPacket packet = new OutPacket(LoopbackPacket.CheckDuplicatedIDResult);
-        packet.encodeString(checkedName);
-        packet.encodeBool(nameUsed);
-        return packet;
+    return packet;
+  }
+
+  public static OutPacket onCheckDuplicateIDResult(String checkedName, boolean nameUsed) {
+    OutPacket packet = new OutPacket(LoopbackPacket.CheckDuplicatedIDResult);
+    packet.encodeString(checkedName);
+    packet.encodeBool(nameUsed);
+    return packet;
+  }
+
+  public static OutPacket onCreateNewCharacterResult(int msg, CharacterData character) {
+    OutPacket packet = new OutPacket(LoopbackPacket.CreateNewCharacterResult);
+    packet.encodeByte(msg);
+    if (msg == 0) {
+      character.encode(packet, DBChar.Character | DBChar.ItemSlotEquip);
     }
-    
-    public static OutPacket onCreateNewCharacterResult(int msg, CharacterData character) {
-        OutPacket packet = new OutPacket(LoopbackPacket.CreateNewCharacterResult);
-        packet.encodeByte(msg);
-        if (msg == 0) {
-            character.encode(packet, DBChar.Character | DBChar.ItemSlotEquip);
-        }
-        return packet;
+    return packet;
+  }
+
+  public static OutPacket onDeleteCharacterResult(int characterID, int msg) {
+    OutPacket packet = new OutPacket(LoopbackPacket.DeleteCharacterResult);
+    packet.encodeInt(characterID);
+    packet.encodeByte(msg);
+    return packet;
+  }
+
+  public static OutPacket onSelectCharacterResult(int result, int ip, short port, int characterID) {
+    OutPacket packet = new OutPacket(LoopbackPacket.SelectCharacterResult);
+    packet.encodeByte(result);
+    if (result == 1) {
+      packet.encodeInt(ip);
+      packet.encodeShort(port);
+      packet.encodeInt(characterID);
     }
-    
-    public static OutPacket onDeleteCharacterResult(int characterID, int msg) {
-        OutPacket packet = new OutPacket(LoopbackPacket.DeleteCharacterResult);
-        packet.encodeInt(characterID);
-        packet.encodeByte(msg);
-        return packet;
-    }
-    
-    public static OutPacket onSelectCharacterResult(int result, int ip, short port, int characterID) {
-        OutPacket packet = new OutPacket(LoopbackPacket.SelectCharacterResult);
-        packet.encodeByte(result);
-        if (result == 1) {
-            packet.encodeInt(ip);
-            packet.encodeShort(port);
-            packet.encodeInt(characterID);
-        }
-        return packet;
-    }
+    return packet;
+  }
 }

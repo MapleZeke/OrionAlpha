@@ -18,17 +18,15 @@
 package common.item;
 
 /**
- *
  * @author Eric
  */
 public class ItemType {
-    public static final byte
-            // ItemType
-            NotDefine       = 0,
-            Equip           = 1,
-            Consume         = 2,
-            Install         = 3,
-            Etc             = 4,
-            NO              = 5
-    ;
+  public static final byte
+      // ItemType
+      NotDefine = 0,
+      Equip = 1,
+      Consume = 2,
+      Install = 3,
+      Etc = 4,
+      NO = 5;
 }

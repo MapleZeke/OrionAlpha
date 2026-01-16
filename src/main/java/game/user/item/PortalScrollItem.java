@@ -19,25 +19,25 @@ package game.user.item;
 
 /**
  * @author Arnah
-*/
+ */
 public class PortalScrollItem {
 
-    private int itemID;
-    private int moveTo;
+  private int itemID;
+  private int moveTo;
 
-    public int getItemID() {
-        return itemID;
-    }
+  public int getItemID() {
+    return itemID;
+  }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+  public void setItemID(int itemID) {
+    this.itemID = itemID;
+  }
 
-    public int getMoveTo() {
-        return moveTo;
-    }
+  public int getMoveTo() {
+    return moveTo;
+  }
 
-    public void setMoveTo(int moveTo) {
-        this.moveTo = moveTo;
-    }
+  public void setMoveTo(int moveTo) {
+    this.moveTo = moveTo;
+  }
 }

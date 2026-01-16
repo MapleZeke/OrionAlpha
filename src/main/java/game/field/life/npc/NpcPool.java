@@ -22,42 +22,41 @@ import network.packet.LoopbackPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class NpcPool {
-    
-    public static OutPacket onNpcEnterField(Npc npc) {
-        OutPacket packet = new OutPacket(LoopbackPacket.NpcEnterField);
-        npc.encodeInitData(packet);
-        return packet;
+
+  public static OutPacket onNpcEnterField(Npc npc) {
+    OutPacket packet = new OutPacket(LoopbackPacket.NpcEnterField);
+    npc.encodeInitData(packet);
+    return packet;
+  }
+
+  public static OutPacket onNpcLeaveField(int id) {
+    OutPacket packet = new OutPacket(LoopbackPacket.NpcLeaveField);
+    packet.encodeInt(id);
+    return packet;
+  }
+
+  public static OutPacket onNpcChangeController(Npc npc, boolean ctrl) {
+    OutPacket packet = new OutPacket(LoopbackPacket.NpcChangeController);
+    packet.encodeBool(ctrl);
+    if (ctrl) {
+      npc.encodeInitData(packet);
+    } else {
+      packet.encodeInt(npc.getGameObjectID());
     }
-    
-    public static OutPacket onNpcLeaveField(int id) {
-        OutPacket packet = new OutPacket(LoopbackPacket.NpcLeaveField);
-        packet.encodeInt(id);
-        return packet;
+    return packet;
+  }
+
+  public static OutPacket onMove(int id, byte action, byte chatIdx, MovePath mp) {
+    OutPacket packet = new OutPacket(LoopbackPacket.NpcMove);
+    packet.encodeInt(id);
+    packet.encodeByte(action);
+    packet.encodeByte(chatIdx);
+    if (mp != null) {
+      mp.encode(packet);
     }
-    
-    public static OutPacket onNpcChangeController(Npc npc, boolean ctrl) {
-        OutPacket packet = new OutPacket(LoopbackPacket.NpcChangeController);
-        packet.encodeBool(ctrl);
-        if (ctrl) {
-            npc.encodeInitData(packet);
-        } else {
-            packet.encodeInt(npc.getGameObjectID());
-        }
-        return packet;
-    }
-    
-    public static OutPacket onMove(int id, byte action, byte chatIdx, MovePath mp) {
-        OutPacket packet = new OutPacket(LoopbackPacket.NpcMove);
-        packet.encodeInt(id);
-        packet.encodeByte(action);
-        packet.encodeByte(chatIdx);
-        if (mp != null) {
-            mp.encode(packet);
-        }
-        return packet;
-    }
+    return packet;
+  }
 }

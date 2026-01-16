@@ -32,178 +32,184 @@ import network.packet.OutPacket;
 import util.Logger;
 
 /**
- *
  * @author Eric
  */
 public class GameSocket extends SimpleChannelInboundHandler {
-    private final Channel channel;
-    private final Lock lockSend;
-    private boolean closePosted;
-    private String addr;
-    
-    public byte worldID;
-    public String worldName;
-    
-    public GameSocket(Channel channel) {
-        this.channel = channel;
-        this.lockSend = new ReentrantLock();
-        this.closePosted = false;
-        this.addr = "";
-        this.worldName = "";
-    }
-    
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-	    channel.pipeline().addBefore("GameSocket", "CenterEncoder", new CenterEncoder());
-	    channel.pipeline().addBefore("GameSocket", "CenterDecoder", new CenterDecoder());
-    }
-    
-    @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        try {
-            onClose();
-        } finally {
-            ctx.channel().close();
-        }
-    }
-    
-    @Override
-    public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if (ctx == null || msg == null) {
-            return;
-        }
-        InPacket packet = (InPacket) msg;
-        if (packet.getDataLen() < 1) {
-            return;
-        }
-        processPacket(packet);
-    }
-    
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        if (ctx == null || (cause instanceof IOException || cause instanceof ClassCastException)) {
-            return;
-        }
-        super.exceptionCaught(ctx, cause);
-    }
-    
-    public final String getAddr() {
-        if (addr.isEmpty() && channel != null) {
-            return ((InetSocketAddress) channel.remoteAddress()).getAddress().getHostAddress().split(":")[0];
-        }
-        return addr;
-    }
-    
-    public void onClose() {
-        LoginApp.getInstance().getCenterAcceptor().removeSocket(this);
-	
-	    WorldEntry world = LoginApp.getInstance().getWorld(worldID);
-	    if (world != null) {
-	    	world.getChannels().clear();
-	    	
-	    	LoginApp.getInstance().getWorlds().remove(world);
-	    }
-    }
-    
-    public void onGameConnected(InPacket packet) {
-        this.worldID = packet.decodeByte();
-        this.worldName = packet.decodeString();
+  private final Channel channel;
+  private final Lock lockSend;
+  private boolean closePosted;
+  private String addr;
 
-        WorldEntry world = LoginApp.getInstance().getWorld(worldID);
-        if (world == null) {
-            world = new WorldEntry(this, worldID, worldName);
+  public byte worldID;
+  public String worldName;
 
-            LoginApp.getInstance().addWorld(world);
-        }
+  public GameSocket(Channel channel) {
+    this.channel = channel;
+    this.lockSend = new ReentrantLock();
+    this.closePosted = false;
+    this.addr = "";
+    this.worldName = "";
+  }
 
-        world.addChannel(new ChannelEntry(world.getWorldID(), packet.decodeByte(), packet.decodeString(), packet.decodeShort()));
-        LoginApp.getInstance().getCenterAcceptor().addSocket(this);
+  @Override
+  public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    channel.pipeline().addBefore("GameSocket", "CenterEncoder", new CenterEncoder());
+    channel.pipeline().addBefore("GameSocket", "CenterDecoder", new CenterDecoder());
+  }
+
+  @Override
+  public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    try {
+      onClose();
+    } finally {
+      ctx.channel().close();
     }
-    
-    public void onGameMigrateRequest(int characterID) {
-        ShopEntry shop = LoginApp.getInstance().getShop();
-        
-        OutPacket packet = new OutPacket(CenterPacket.GameMigrateRes);
-        packet.encodeInt(characterID);
-        if (shop != null) {
-            if (shop.getUsers().containsKey(characterID)) {
-                ChannelEntry ch = shop.getUsers().remove(characterID);
-                
-                packet.encodeBool(true);
-                packet.encodeString(ch.getAddr());
-                packet.encodeShort(ch.getPort());
-            } else {
-                packet.encodeBool(false);
-            }
-        } else {
-            packet.encodeBool(false);
+  }
+
+  @Override
+  public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+    if (ctx == null || msg == null) {
+      return;
+    }
+    InPacket packet = (InPacket) msg;
+    if (packet.getDataLen() < 1) {
+      return;
+    }
+    processPacket(packet);
+  }
+
+  @Override
+  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    if (ctx == null || (cause instanceof IOException || cause instanceof ClassCastException)) {
+      return;
+    }
+    super.exceptionCaught(ctx, cause);
+  }
+
+  public final String getAddr() {
+    if (addr.isEmpty() && channel != null) {
+      return ((InetSocketAddress) channel.remoteAddress())
+          .getAddress()
+          .getHostAddress()
+          .split(":")[0];
+    }
+    return addr;
+  }
+
+  public void onClose() {
+    LoginApp.getInstance().getCenterAcceptor().removeSocket(this);
+
+    WorldEntry world = LoginApp.getInstance().getWorld(worldID);
+    if (world != null) {
+      world.getChannels().clear();
+
+      LoginApp.getInstance().getWorlds().remove(world);
+    }
+  }
+
+  public void onGameConnected(InPacket packet) {
+    this.worldID = packet.decodeByte();
+    this.worldName = packet.decodeString();
+
+    WorldEntry world = LoginApp.getInstance().getWorld(worldID);
+    if (world == null) {
+      world = new WorldEntry(this, worldID, worldName);
+
+      LoginApp.getInstance().addWorld(world);
+    }
+
+    world.addChannel(
+        new ChannelEntry(
+            world.getWorldID(), packet.decodeByte(), packet.decodeString(), packet.decodeShort()));
+    LoginApp.getInstance().getCenterAcceptor().addSocket(this);
+  }
+
+  public void onGameMigrateRequest(int characterID) {
+    ShopEntry shop = LoginApp.getInstance().getShop();
+
+    OutPacket packet = new OutPacket(CenterPacket.GameMigrateRes);
+    packet.encodeInt(characterID);
+    if (shop != null) {
+      if (shop.getUsers().containsKey(characterID)) {
+        ChannelEntry ch = shop.getUsers().remove(characterID);
+
+        packet.encodeBool(true);
+        packet.encodeString(ch.getAddr());
+        packet.encodeShort(ch.getPort());
+      } else {
+        packet.encodeBool(false);
+      }
+    } else {
+      packet.encodeBool(false);
+    }
+    sendPacket(packet, false);
+  }
+
+  public void onShopConnected(InPacket packet) {
+    ShopEntry shop = new ShopEntry(this, packet.decodeString(), packet.decodeShort());
+
+    LoginApp.getInstance().setShop(shop);
+  }
+
+  public void onShopMigrateRequest(int characterID, byte worldID, byte channelID) {
+    ShopEntry shop = LoginApp.getInstance().getShop();
+
+    OutPacket packet = new OutPacket(CenterPacket.ShopMigrateRes);
+    packet.encodeInt(characterID);
+    if (shop != null) {
+      shop.getUsers()
+          .put(characterID, LoginApp.getInstance().getWorld(worldID).getChannel(channelID));
+
+      packet.encodeBool(true);
+      packet.encodeString(shop.getAddr());
+      packet.encodeShort(shop.getPort());
+      sendPacket(packet, false);
+    } else {
+      packet.encodeBool(false);
+    }
+  }
+
+  public boolean postClose() {
+    if (!closePosted) {
+      closePosted = true;
+      return false;
+    } else {
+      onClose();
+      return true;
+    }
+  }
+
+  public void processPacket(InPacket packet) {
+    final byte type = packet.decodeByte();
+
+    switch (type) {
+      case CenterPacket.InitGameSvr:
+        onGameConnected(packet);
+        break;
+      case CenterPacket.InitShopSvr:
+        onShopConnected(packet);
+        break;
+      case CenterPacket.ShopMigrateReq:
+        onShopMigrateRequest(packet.decodeInt(), packet.decodeByte(), packet.decodeByte());
+        break;
+      case CenterPacket.GameMigrateReq:
+        onGameMigrateRequest(packet.decodeInt());
+        break;
+      default:
+        {
+          Logger.logReport("Unidentified Center Packet [%d] : %s", type, packet.dumpString());
         }
-        sendPacket(packet, false);
     }
-    
-    public void onShopConnected(InPacket packet) {
-        ShopEntry shop = new ShopEntry(this, packet.decodeString(), packet.decodeShort());
-            
-        LoginApp.getInstance().setShop(shop);
+  }
+
+  public void sendPacket(OutPacket packet, boolean force) {
+    lockSend.lock();
+    try {
+      if (!closePosted || force) {
+        channel.writeAndFlush(packet.toArray());
+      }
+    } finally {
+      lockSend.unlock();
     }
-    
-    public void onShopMigrateRequest(int characterID, byte worldID, byte channelID) {
-        ShopEntry shop = LoginApp.getInstance().getShop();
-            
-        OutPacket packet = new OutPacket(CenterPacket.ShopMigrateRes);
-        packet.encodeInt(characterID);
-        if (shop != null) {
-            shop.getUsers().put(characterID, LoginApp.getInstance().getWorld(worldID).getChannel(channelID));
-            
-            packet.encodeBool(true);
-            packet.encodeString(shop.getAddr());
-            packet.encodeShort(shop.getPort());
-            sendPacket(packet, false);
-        } else {
-            packet.encodeBool(false);
-        }
-    }
-    
-    public boolean postClose() {
-        if (!closePosted) {
-            closePosted = true;
-            return false;
-        } else {
-            onClose();
-            return true;
-        }
-    }
-    
-    public void processPacket(InPacket packet) {
-        final byte type = packet.decodeByte();
-        
-        switch (type) {
-            case CenterPacket.InitGameSvr:
-                onGameConnected(packet);
-                break;
-            case CenterPacket.InitShopSvr:
-                onShopConnected(packet);
-                break;
-            case CenterPacket.ShopMigrateReq:
-                onShopMigrateRequest(packet.decodeInt(), packet.decodeByte(), packet.decodeByte());
-                break;
-            case CenterPacket.GameMigrateReq:
-                onGameMigrateRequest(packet.decodeInt());
-                break;
-            default: {
-                Logger.logReport("Unidentified Center Packet [%d] : %s", type, packet.dumpString());
-            }
-        }
-    }
-    
-    public void sendPacket(OutPacket packet, boolean force) {
-        lockSend.lock();
-        try {
-            if (!closePosted || force) {
-                channel.writeAndFlush(packet.toArray());
-            }
-        } finally {
-            lockSend.unlock();
-        }
-    }
+  }
 }

@@ -18,13 +18,8 @@
 package common.user;
 
 /**
- *
  * @author Eric
  */
 public class UserEffect {
-    public static final byte
-            LevelUp         = 0,
-            SkillUse        = 1,
-            SkillAffected   = 2
-    ;
+  public static final byte LevelUp = 0, SkillUse = 1, SkillAffected = 2;
 }

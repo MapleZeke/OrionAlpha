@@ -18,17 +18,14 @@
 package login.user.item;
 
 /**
- *
  * @author Eric
  */
 public class NewCharEquipType {
-    public static final byte
-            Face        = 0,
-            HairStyle   = 1,
-            Clothes     = 2,
-            Pants       = 3,
-            Shoes       = 4,
-            Weapon      = 5,
-            Type        = 6
-    ;
+  public static final byte Face = 0,
+      HairStyle = 1,
+      Clothes = 2,
+      Pants = 3,
+      Shoes = 4,
+      Weapon = 5,
+      Type = 6;
 }

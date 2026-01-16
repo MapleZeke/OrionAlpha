@@ -20,111 +20,106 @@ package game.field.life.heapbase;
 import game.field.life.Controller;
 
 /**
- *
  * @author Eric
  */
 public class CompareCtrlMin extends HeapBase {
-    
-    public CompareCtrlMin(int increment) {
-        super(increment);
-    }
 
-    @Override
-    public int adjust(int parentCnt) {
-        int childCnt = 2 * parentCnt + 1;
-        if (childCnt < getCount()) {
-            Controller child = getHeap().get(childCnt);
-            Controller parent = getHeap().get(parentCnt);
-            if (parent.getCtrlCount() > child.getCtrlCount()) {
-                if (childCnt < getCount() - 1) {
-                    child = getHeap().get(2 * parentCnt + 2);
-                    parent = getHeap().get(childCnt);
-                    if (parent.getCtrlCount() > child.getCtrlCount())
-                        childCnt = 2 * parentCnt + 2;
-                }
-                swap(parentCnt, childCnt);
-                return childCnt;
-            }
-            childCnt = 2 * parentCnt + 2;
-            if (childCnt < getCount()) {
-                child = getHeap().get(childCnt);
-                parent = getHeap().get(parentCnt);
-                if (parent.getCtrlCount() > child.getCtrlCount()) {
-                    swap(parentCnt, childCnt);
-                    return childCnt;
-                }
-            }
-        }
-        return 0;
-    }
+  public CompareCtrlMin(int increment) {
+    super(increment);
+  }
 
-    @Override
-    public void adjustUpward() {
-        int count = getCount() - 1;
-        while (adjust(count) > 0) {
-            count = (count - 1) >> 1;
+  @Override
+  public int adjust(int parentCnt) {
+    int childCnt = 2 * parentCnt + 1;
+    if (childCnt < getCount()) {
+      Controller child = getHeap().get(childCnt);
+      Controller parent = getHeap().get(parentCnt);
+      if (parent.getCtrlCount() > child.getCtrlCount()) {
+        if (childCnt < getCount() - 1) {
+          child = getHeap().get(2 * parentCnt + 2);
+          parent = getHeap().get(childCnt);
+          if (parent.getCtrlCount() > child.getCtrlCount()) childCnt = 2 * parentCnt + 2;
         }
+        swap(parentCnt, childCnt);
+        return childCnt;
+      }
+      childCnt = 2 * parentCnt + 2;
+      if (childCnt < getCount()) {
+        child = getHeap().get(childCnt);
+        parent = getHeap().get(parentCnt);
+        if (parent.getCtrlCount() > child.getCtrlCount()) {
+          swap(parentCnt, childCnt);
+          return childCnt;
+        }
+      }
     }
+    return 0;
+  }
 
-    @Override
-    public int insert(Controller t) {
-        if (getHeap().size() <= getCount()) {
-            int alloc = getIncrement();
-            if (alloc == 0 && !getHeap().isEmpty())
-                alloc = getHeap().size();
-            if (alloc == 0)
-                alloc = 4;
-            for (int i = 0; i < alloc; i++) {
-                getHeap().add(null);
-            }
-        }
+  @Override
+  public void adjustUpward() {
+    int count = getCount() - 1;
+    while (adjust(count) > 0) {
+      count = (count - 1) >> 1;
+    }
+  }
+
+  @Override
+  public int insert(Controller t) {
+    if (getHeap().size() <= getCount()) {
+      int alloc = getIncrement();
+      if (alloc == 0 && !getHeap().isEmpty()) alloc = getHeap().size();
+      if (alloc == 0) alloc = 4;
+      for (int i = 0; i < alloc; i++) {
+        getHeap().add(null);
+      }
+    }
+    t.setPosMinHeap(getCount());
+    getHeap().set(incCount(), t);
+    adjustUpward();
+    return t.getPosMinHeap();
+  }
+
+  @Override
+  public void removeAt(int index) {
+    getHeap().set(index, null);
+    boolean last = decCount() == 1;
+    if (!last && index < getCount()) {
+      getHeap().set(index, getHeap().get(getCount()));
+      for (int i = index; ; ) {
+        i = adjust(i);
+        if (i == 0) break;
+      }
+    }
+  }
+
+  @Override
+  public void swap(int index1, int index2) {
+    getHeap().get(index1).setPosMinHeap(index2);
+    getHeap().get(index2).setPosMinHeap(index1);
+
+    Controller t = getHeap().get(index1);
+    getHeap().set(index1, getHeap().get(index2));
+    getHeap().set(index2, t);
+  }
+
+  @Override
+  public void updateAt(int index) {
+    if (getCount() != 1) {
+      decCount();
+      if (index < getCount()) {
+        Controller t = getHeap().get(index);
+
+        getHeap().set(index, getHeap().get(getCount()));
+        getHeap().get(index).setPosMinHeap(index);
+        do {
+          index = adjust(index);
+        } while (index != 0);
         t.setPosMinHeap(getCount());
-        getHeap().set(incCount(), t);
-        adjustUpward();
-        return t.getPosMinHeap();
+        getHeap().set(getCount(), t);
+      }
+      incCount();
+      adjustUpward();
     }
-
-    @Override
-    public void removeAt(int index) {
-        getHeap().set(index, null);
-        boolean last = decCount() == 1;
-        if (!last && index < getCount()) {
-            getHeap().set(index, getHeap().get(getCount()));
-            for (int i = index;;) {
-                i = adjust(i);
-                if (i == 0)
-                    break;
-            }
-        }
-    }
-
-    @Override
-    public void swap(int index1, int index2) {
-        getHeap().get(index1).setPosMinHeap(index2);
-        getHeap().get(index2).setPosMinHeap(index1);
-    
-        Controller t = getHeap().get(index1);
-        getHeap().set(index1, getHeap().get(index2));
-        getHeap().set(index2, t);
-    }
-
-    @Override
-    public void updateAt(int index) {
-        if (getCount() != 1) {
-            decCount();
-            if (index < getCount()) {
-                Controller t = getHeap().get(index);
-    
-                getHeap().set(index, getHeap().get(getCount()));
-                getHeap().get(index).setPosMinHeap(index);
-                do {
-                    index = adjust(index);
-                } while (index != 0);
-                t.setPosMinHeap(getCount());
-                getHeap().set(getCount(), t);
-            }
-            incCount();
-            adjustUpward();
-        }
-    }
+  }
 }

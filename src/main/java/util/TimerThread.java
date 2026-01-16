@@ -24,101 +24,102 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *
  * @author Eric
  */
 public class TimerThread {
-    public static final TimerThread
-            World       = new TimerThread("World_Timer"),
-            Field       = new TimerThread("Field_Timer"),
-            Etc         = new TimerThread("Etc_Timer")
-    ;
-    private final String threadName;
-    private ScheduledThreadPoolExecutor threadPool;
-    
-    public TimerThread(String threadName) {
-        this.threadName = threadName;
-    }
-    
-    public static final void createTimerThread() {
-        World.start();
-        Field.start();
-        Etc.start();
-        Logger.logReport("Timer thread started");
-    }
-    
-    public static final void terminate() {
-        World.stop();
-        Field.stop();
-        Etc.stop();
-    }
+  public static final TimerThread World = new TimerThread("World_Timer"),
+      Field = new TimerThread("Field_Timer"),
+      Etc = new TimerThread("Etc_Timer");
+  private final String threadName;
+  private ScheduledThreadPoolExecutor threadPool;
 
-    public void start() {
-        if (threadPool != null && !threadPool.isShutdown() && !threadPool.isTerminated()) {
-            return;
-        }
-	final String name = threadName + Rand32.getInstance().random();
-        final ThreadFactory thread = new ThreadFactory() {
-            private final AtomicInteger threadCounter = new AtomicInteger(0);
-            @Override
-            public Thread newThread(Runnable r) {
-                final Thread t = new Thread(r);
-                t.setName(name + "-Worker-" + threadCounter.incrementAndGet());
-                return t;
-            }
+  public TimerThread(String threadName) {
+    this.threadName = threadName;
+  }
+
+  public static final void createTimerThread() {
+    World.start();
+    Field.start();
+    Etc.start();
+    Logger.logReport("Timer thread started");
+  }
+
+  public static final void terminate() {
+    World.stop();
+    Field.stop();
+    Etc.stop();
+  }
+
+  public void start() {
+    if (threadPool != null && !threadPool.isShutdown() && !threadPool.isTerminated()) {
+      return;
+    }
+    final String name = threadName + Rand32.getInstance().random();
+    final ThreadFactory thread =
+        new ThreadFactory() {
+          private final AtomicInteger threadCounter = new AtomicInteger(0);
+
+          @Override
+          public Thread newThread(Runnable r) {
+            final Thread t = new Thread(r);
+            t.setName(name + "-Worker-" + threadCounter.incrementAndGet());
+            return t;
+          }
         };
-        threadPool = new ScheduledThreadPoolExecutor(5, thread);
-        threadPool.setKeepAliveTime(10, TimeUnit.MINUTES);
-        threadPool.allowCoreThreadTimeOut(true);
-        threadPool.setMaximumPoolSize(8);
-        threadPool.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
+    threadPool = new ScheduledThreadPoolExecutor(5, thread);
+    threadPool.setKeepAliveTime(10, TimeUnit.MINUTES);
+    threadPool.allowCoreThreadTimeOut(true);
+    threadPool.setMaximumPoolSize(8);
+    threadPool.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
+  }
+
+  public void stop() {
+    if (threadPool != null) {
+      threadPool.shutdown();
+    }
+  }
+
+  public ScheduledFuture<?> Register(Runnable r, long repeat, long delay) {
+    if (threadPool == null) {
+      return null;
+    }
+    return threadPool.scheduleAtFixedRate(
+        new LoggingSaveRunnable(r), delay, repeat, TimeUnit.MILLISECONDS);
+  }
+
+  public ScheduledFuture<?> Register(Runnable r, long repeat) {
+    if (threadPool == null) {
+      return null;
+    }
+    return threadPool.scheduleAtFixedRate(
+        new LoggingSaveRunnable(r), 0, repeat, TimeUnit.MILLISECONDS);
+  }
+
+  public ScheduledFuture<?> Schedule(Runnable r, long delay) {
+    if (threadPool == null) {
+      return null;
+    }
+    return threadPool.schedule(new LoggingSaveRunnable(r), delay, TimeUnit.MILLISECONDS);
+  }
+
+  public ScheduledFuture<?> ScheduleAtTimestamp(Runnable r, long timestamp) {
+    return Schedule(r, timestamp - System.currentTimeMillis());
+  }
+
+  private static class LoggingSaveRunnable implements Runnable {
+    Runnable r;
+
+    public LoggingSaveRunnable(final Runnable r) {
+      this.r = r;
     }
 
-    public void stop() {
-        if (threadPool != null) {
-            threadPool.shutdown();
-        }
+    @Override
+    public void run() {
+      try {
+        r.run();
+      } catch (Throwable t) {
+        t.printStackTrace(System.err);
+      }
     }
-
-    public ScheduledFuture<?> Register(Runnable r, long repeat, long delay) {
-	if (threadPool == null) {
-	    return null;
-	}
-        return threadPool.scheduleAtFixedRate(new LoggingSaveRunnable(r), delay, repeat, TimeUnit.MILLISECONDS);
-    }
-    
-    public ScheduledFuture<?> Register(Runnable r, long repeat) {
-	if (threadPool == null) {
-            return null;
-        }
-        return threadPool.scheduleAtFixedRate(new LoggingSaveRunnable(r), 0, repeat, TimeUnit.MILLISECONDS);
-    }
-
-    public ScheduledFuture<?> Schedule(Runnable r, long delay) {
-	if (threadPool == null) {
-            return null;
-        }
-        return threadPool.schedule(new LoggingSaveRunnable(r), delay, TimeUnit.MILLISECONDS);
-    }
-
-    public ScheduledFuture<?> ScheduleAtTimestamp(Runnable r, long timestamp) {
-        return Schedule(r, timestamp - System.currentTimeMillis());
-    }
-
-    private static class LoggingSaveRunnable implements Runnable {
-	Runnable r;
-        
-	public LoggingSaveRunnable(final Runnable r) {
-	    this.r = r;
-	}
-
-	@Override
-	public void run() {
-	    try {
-		r.run();
-	    } catch (Throwable t) {
-                t.printStackTrace(System.err);
-	    }
-	}
-    }
+  }
 }

@@ -21,95 +21,90 @@ import util.Rand32;
 import util.Utilities;
 
 /**
- * The crypter class to encrypt/decrypt KMS Alpha packets.
- * This crypto is different compared to the rest of the MapleStory clients.
- * 
+ * The crypter class to encrypt/decrypt KMS Alpha packets. This crypto is different compared to the
+ * rest of the MapleStory clients.
+ *
  * @author Eric
  */
 public class XORCrypter {
-    private int seqSnd;
-    private int seqRcv;
-    
-    public XORCrypter(int seqSnd, int seqRcv) {
-        this.seqSnd = seqSnd;
-        this.seqRcv = seqRcv;
+  private int seqSnd;
+  private int seqRcv;
+
+  public XORCrypter(int seqSnd, int seqRcv) {
+    this.seqSnd = seqSnd;
+    this.seqRcv = seqRcv;
+  }
+
+  /**
+   * Retrieves the current send sequencing of this crypter.
+   *
+   * @return The value of the send sequence
+   */
+  public int getSeqSnd() {
+    return seqSnd;
+  }
+
+  /**
+   * Retrieves the current receive sequencing of this crypter.
+   *
+   * @return The value of the receive sequence
+   */
+  public int getSeqRcv() {
+    return seqRcv;
+  }
+
+  /**
+   * Decrypts the raw buffer using this crypter's receive sequencing.
+   *
+   * @param buffer The encrypted buffer to decrypt
+   * @return The decrypted buffer
+   */
+  public byte[] decrypt(byte[] buffer) {
+    byte iv = (byte) (Utilities.getBytes(seqRcv)[0] & 0xFF);
+
+    for (int i = 0; i < buffer.length; i++) {
+      buffer[i] =
+          (byte)
+              ((byte) (16 * (iv ^ (buffer[i] & 0xFF)))
+                  | (byte) (((iv ^ (buffer[i] & 0xFF)) >> 4) & 0xFF0F0F0F));
     }
-    
-    /**
-     * Retrieves the current send sequencing of this crypter.
-     * 
-     * @return The value of the send sequence
-     */
-    public int getSeqSnd() {
-        return seqSnd;
+
+    return buffer;
+  }
+
+  /**
+   * Encrypts the raw buffer using this crypter's send sequencing.
+   *
+   * @param buffer The decrypted buffer to encrypt
+   * @return The encrypted buffer
+   */
+  public byte[] encrypt(byte[] buffer) {
+    byte iv = (byte) (Utilities.getBytes(seqSnd)[0] & 0xFF);
+
+    for (int i = 0; i < buffer.length; i++) {
+      buffer[i] = (byte) (iv ^ (byte) (16 * (buffer[i] & 0xFF) | (byte) ((buffer[i] & 0xFF) >> 4)));
     }
-    
-    /**
-     * Retrieves the current receive sequencing of this crypter.
-     * 
-     * @return The value of the receive sequence
-     */
-    public int getSeqRcv() {
-        return seqRcv;
-    }
-    
-    /**
-     * Decrypts the raw buffer using this crypter's receive sequencing.
-     * 
-     * @param buffer The encrypted buffer to decrypt
-     * 
-     * @return The decrypted buffer
-     */
-    public byte[] decrypt(byte[] buffer) {
-        byte iv = (byte) (Utilities.getBytes(seqRcv)[0] & 0xFF);
-        
-        for (int i = 0; i < buffer.length; i++) {
-            buffer[i] = (byte) ((byte) (16 * (iv ^ (buffer[i] & 0xFF))) | (byte) (((iv ^ (buffer[i] & 0xFF)) >> 4) & 0xFF0F0F0F));
-        }
-        
-        return buffer;
-    }
-    
-    /**
-     * Encrypts the raw buffer using this crypter's send sequencing.
-     * 
-     * @param buffer The decrypted buffer to encrypt
-     * 
-     * @return The encrypted buffer
-     */
-    public byte[] encrypt(byte[] buffer) {
-        byte iv = (byte) (Utilities.getBytes(seqSnd)[0] & 0xFF);
-        
-        for (int i = 0; i < buffer.length; i++) {
-            buffer[i] = (byte) (iv ^ (byte) (16 * (buffer[i] & 0xFF) | (byte) ((buffer[i] & 0xFF) >> 4)));
-        }
-        
-        return buffer;
-    }
-    
-    /**
-     * Updates this crypter's send sequence to sync with the client.
-     * 
-     */
-    public void updateSeqSnd() {
-        this.seqSnd = Rand32.crtRand(this.seqSnd);
-    }
-    
-    /**
-     * Updates this crypter's receive sequence to sync with the client.
-     * 
-     */
-    public void updateSeqRcv() {
-        this.seqRcv = Rand32.crtRand(this.seqRcv);
-    }
-    
-    /**
-     * Returns a readable string of the IV's for this crypter's instance.
-     * 
-     * @return The send/receive initialization vectors
-     */
-    @Override
-    public String toString() {
-        return "Send IV: " + this.seqSnd + " | RecvIV: " + this.seqRcv;
-    }
+
+    return buffer;
+  }
+
+  /** Updates this crypter's send sequence to sync with the client. */
+  public void updateSeqSnd() {
+    this.seqSnd = Rand32.crtRand(this.seqSnd);
+  }
+
+  /** Updates this crypter's receive sequence to sync with the client. */
+  public void updateSeqRcv() {
+    this.seqRcv = Rand32.crtRand(this.seqRcv);
+  }
+
+  /**
+   * Returns a readable string of the IV's for this crypter's instance.
+   *
+   * @return The send/receive initialization vectors
+   */
+  @Override
+  public String toString() {
+    return "Send IV: " + this.seqSnd + " | RecvIV: " + this.seqRcv;
+  }
 }

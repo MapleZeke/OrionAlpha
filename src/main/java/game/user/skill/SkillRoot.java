@@ -27,62 +27,56 @@ import util.wz.WzXML;
  */
 public class SkillRoot implements WzXML {
 
-    private int skillRootID;
-    private String bookName;
-    private final List<SkillEntry> skills;
-    
-    public SkillRoot() {
-        this.skills = new ArrayList<>();
-    }
-    
-    @Override
-    public void parse(String root, String name, String value, WzNodeType type) {
-        if (name.equals("bookName")) {
-            this.bookName = value;
-        }
-        
-    }
+  private int skillRootID;
+  private String bookName;
+  private final List<SkillEntry> skills;
 
-    public int getSkillRootID() {
-        return skillRootID;
-    }
+  public SkillRoot() {
+    this.skills = new ArrayList<>();
+  }
 
-    public void setSkillRootID(int skillRootID) {
-        this.skillRootID = skillRootID;
+  @Override
+  public void parse(String root, String name, String value, WzNodeType type) {
+    if (name.equals("bookName")) {
+      this.bookName = value;
     }
+  }
 
-    public String getBookName() {
-        return bookName;
-    }
+  public int getSkillRootID() {
+    return skillRootID;
+  }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
+  public void setSkillRootID(int skillRootID) {
+    this.skillRootID = skillRootID;
+  }
 
-    public List<SkillEntry> getSkills() {
-        return skills;
-    }
+  public String getBookName() {
+    return bookName;
+  }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + skillRootID;
-        return result;
-    }
+  public void setBookName(String bookName) {
+    this.bookName = bookName;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof SkillRoot))
-            return false;
-        SkillRoot other = (SkillRoot) obj;
-        if (skillRootID != other.skillRootID)
-            return false;
-        return true;
-    }
+  public List<SkillEntry> getSkills() {
+    return skills;
+  }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + skillRootID;
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (!(obj instanceof SkillRoot)) return false;
+    SkillRoot other = (SkillRoot) obj;
+    if (skillRootID != other.skillRootID) return false;
+    return true;
+  }
 }

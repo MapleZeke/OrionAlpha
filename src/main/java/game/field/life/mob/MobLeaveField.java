@@ -18,13 +18,8 @@
 package game.field.life.mob;
 
 /**
- *
  * @author Eric
  */
 public class MobLeaveField {
-    public static final byte
-            ETC                 = 0,
-            RemainHP            = 1,
-            SelfDestruct        = 2
-    ;
+  public static final byte ETC = 0, RemainHP = 1, SelfDestruct = 2;
 }

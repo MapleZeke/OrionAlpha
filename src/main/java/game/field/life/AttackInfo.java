@@ -23,22 +23,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Eric
  */
 public class AttackInfo {
-    public int mobID;
-    public int templateID;
-    public Mob deadMob;
-    public byte hitAction;
-    public byte left;
-    public Point hit;
-    public short delay;
-    public byte attackCount;
-    public final List<Short> damageCli;
-    
-    public AttackInfo() {
-        this.hit = new Point(0, 0);
-        this.damageCli = new ArrayList<>(15);
-    }
+  public int mobID;
+  public int templateID;
+  public Mob deadMob;
+  public byte hitAction;
+  public byte left;
+  public Point hit;
+  public short delay;
+  public byte attackCount;
+  public final List<Short> damageCli;
+
+  public AttackInfo() {
+    this.hit = new Point(0, 0);
+    this.damageCli = new ArrayList<>(15);
+  }
 }

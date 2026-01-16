@@ -18,18 +18,15 @@
 package game.field;
 
 /**
- *
  * @author Eric
  */
 public class FieldType {
-    public static final int
-            Default                     = 0,
-            Snowball                    = 1,
-            CONTIMOVE                   = 2,
-            Tournament                  = 3,
-            Coconut                     = 4,
-            OXQuiz                      = 5,
-            PersonalTimeLimit           = 6,
-            WaitingRoom                 = 7
-    ;
+  public static final int Default = 0,
+      Snowball = 1,
+      CONTIMOVE = 2,
+      Tournament = 3,
+      Coconut = 4,
+      OXQuiz = 5,
+      PersonalTimeLimit = 6,
+      WaitingRoom = 7;
 }

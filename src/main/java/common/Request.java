@@ -18,13 +18,8 @@
 package common;
 
 /**
- *
  * @author Eric
  */
 public class Request {
-    public static final byte
-            Normal  = -1,
-            None    = 0,
-            Excl    = 1
-    ;
+  public static final byte Normal = -1, None = 0, Excl = 1;
 }

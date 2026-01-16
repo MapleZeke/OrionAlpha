@@ -24,83 +24,79 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Eric
  */
 public class UserSkillRecord {
-    
-    public static void sendCharacterSkillRecord(User user, byte onExclRequest, List<SkillRecord> change) {
-        if (user.lock()) {
-            try {
-                user.sendPacket(WvsContext.onChangeSkillRecordResult(onExclRequest, change));
-            } finally {
-                user.unlock();
-            }
-        }
+
+  public static void sendCharacterSkillRecord(
+      User user, byte onExclRequest, List<SkillRecord> change) {
+    if (user.lock()) {
+      try {
+        user.sendPacket(WvsContext.onChangeSkillRecordResult(onExclRequest, change));
+      } finally {
+        user.unlock();
+      }
     }
-    
-    public static boolean skillUp(User user, int skillID, boolean decSP, List<SkillRecord> change) {
-        if (user.lock()) {
-            try {
-                if (user.getHP() == 0) {
-                    return false;
-                }
-                int skillRoot = skillID / 10000;
-                if (user.getCharacter().getCharacterStat().getSP() <= 0) {
-                    return false;
-                }
-                List<Integer> curSkillRoot = new ArrayList<>();
-                SkillAccessor.getSkillRootFromJob(user.getCharacter().getCharacterStat().getJob(), curSkillRoot);
-                int i = 0;
-                for (;;) {
-                    if (curSkillRoot.isEmpty())
-                        break;
-                    if (i >= curSkillRoot.size() || curSkillRoot.get(i) == skillRoot)
-                        break;
-                    ++i;
-                }
-                if (curSkillRoot.isEmpty() || i >= curSkillRoot.size())
-                    return false;
-                curSkillRoot.clear();
-                SkillEntry skillEntry = SkillInfo.getInstance().getSkill(skillID);
-                if (skillEntry == null) {
-                    return false;
-                }
-                for (SkillRecord skill : skillEntry.getSkillRequirements()) {
-                    if (!user.getCharacter().getSkillRecord().containsKey(skill.getSkillID()))
-                        return false;
-                    if (user.getCharacter().getSkillRecord().get(skill.getSkillID()) < skill.getInfo())
-                        return false;
-                }
-                int slv = 0;
-                if (user.getCharacter().getSkillRecord().containsKey(skillID))
-                    slv = user.getCharacter().getSkillRecord().get(skillID);
-                if (slv >= skillEntry.getLevelData().length) {
-                    return false;
-                }
-                if ((skillRoot % 100) != 0) {
-                    if (!canSkillUp(user, skillEntry)) {
-                        return false;
-                    }
-                }
-                if (decSP && !user.incSP(-1, true))
-                    return false;
-                ++slv;
-                
-                user.getCharacter().getSkillRecord().put(skillID, slv);
-                change.add(new SkillRecord(skillID, slv));
-                user.addCharacterDataMod(DBChar.SkillRecord);
-                return true;
-            } finally {
-                user.unlock();
-            }
+  }
+
+  public static boolean skillUp(User user, int skillID, boolean decSP, List<SkillRecord> change) {
+    if (user.lock()) {
+      try {
+        if (user.getHP() == 0) {
+          return false;
         }
-        return false;
-    }
-    
-    private static boolean canSkillUp(User user, SkillEntry skill) {
-        // TODO: Calculate skill information to validate if they can raise SLV.
-        
+        int skillRoot = skillID / 10000;
+        if (user.getCharacter().getCharacterStat().getSP() <= 0) {
+          return false;
+        }
+        List<Integer> curSkillRoot = new ArrayList<>();
+        SkillAccessor.getSkillRootFromJob(
+            user.getCharacter().getCharacterStat().getJob(), curSkillRoot);
+        int i = 0;
+        for (; ; ) {
+          if (curSkillRoot.isEmpty()) break;
+          if (i >= curSkillRoot.size() || curSkillRoot.get(i) == skillRoot) break;
+          ++i;
+        }
+        if (curSkillRoot.isEmpty() || i >= curSkillRoot.size()) return false;
+        curSkillRoot.clear();
+        SkillEntry skillEntry = SkillInfo.getInstance().getSkill(skillID);
+        if (skillEntry == null) {
+          return false;
+        }
+        for (SkillRecord skill : skillEntry.getSkillRequirements()) {
+          if (!user.getCharacter().getSkillRecord().containsKey(skill.getSkillID())) return false;
+          if (user.getCharacter().getSkillRecord().get(skill.getSkillID()) < skill.getInfo())
+            return false;
+        }
+        int slv = 0;
+        if (user.getCharacter().getSkillRecord().containsKey(skillID))
+          slv = user.getCharacter().getSkillRecord().get(skillID);
+        if (slv >= skillEntry.getLevelData().length) {
+          return false;
+        }
+        if ((skillRoot % 100) != 0) {
+          if (!canSkillUp(user, skillEntry)) {
+            return false;
+          }
+        }
+        if (decSP && !user.incSP(-1, true)) return false;
+        ++slv;
+
+        user.getCharacter().getSkillRecord().put(skillID, slv);
+        change.add(new SkillRecord(skillID, slv));
+        user.addCharacterDataMod(DBChar.SkillRecord);
         return true;
+      } finally {
+        user.unlock();
+      }
     }
+    return false;
+  }
+
+  private static boolean canSkillUp(User user, SkillEntry skill) {
+    // TODO: Calculate skill information to validate if they can raise SLV.
+
+    return true;
+  }
 }

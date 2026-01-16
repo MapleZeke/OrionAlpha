@@ -20,40 +20,38 @@ package game.field.life.mob;
 import util.Logger;
 
 /**
- *
  * @author Eric
  */
 public class AttackElem {
-    public static final int
-            Physical    = 0,
-            Ice         = 1,
-            Fire        = 2,
-            Light       = 3,
-            Poison      = 4,
-            Holy        = 5,
-            Count       = 6
-    ;
-    
-    public static final int getElementAttribute(char elemAttr) {
-        switch (Character.toUpperCase(elemAttr)) {
-            case '\0'://(null)
-            case 'P'://80 & 112
-                return Physical;
-            case 'I'://73 & 105
-                return Ice;
-            case 'F'://70 & 102
-                return Fire;
-            case 'L'://76 & 108
-                return Light;
-            case 'S'://83 & 115
-                return Poison;
-            case 'H'://72 & 104
-                return Holy;
-            default: {
-                Logger.logError("Undefined element found: '%c'", elemAttr);
-                
-                return Physical;
-            }
+  public static final int Physical = 0,
+      Ice = 1,
+      Fire = 2,
+      Light = 3,
+      Poison = 4,
+      Holy = 5,
+      Count = 6;
+
+  public static final int getElementAttribute(char elemAttr) {
+    switch (Character.toUpperCase(elemAttr)) {
+      case '\0': // (null)
+      case 'P': // 80 & 112
+        return Physical;
+      case 'I': // 73 & 105
+        return Ice;
+      case 'F': // 70 & 102
+        return Fire;
+      case 'L': // 76 & 108
+        return Light;
+      case 'S': // 83 & 115
+        return Poison;
+      case 'H': // 72 & 104
+        return Holy;
+      default:
+        {
+          Logger.logError("Undefined element found: '%c'", elemAttr);
+
+          return Physical;
         }
     }
+  }
 }

@@ -18,30 +18,29 @@
 package util.wz;
 
 /**
- *
  * @author Eric
  */
 public enum WzNodeType {
-    // DOM Node
-    WzProperty,
-    WzCanvas,
-    WzConvex2D,
-    WzVector2D,
-    WzSound,
-    WzUOL,
-    Short,
-    Int,
-    Float,
-    Double,
-    String,
-    // SAX Node
-    IMGDIR,
-    CANVAS,
-    VECTOR,
-    UOL,
-    SHORT,
-    INT,
-    FLOAT,
-    DOUBLE,
-    STRING
+  // DOM Node
+  WzProperty,
+  WzCanvas,
+  WzConvex2D,
+  WzVector2D,
+  WzSound,
+  WzUOL,
+  Short,
+  Int,
+  Float,
+  Double,
+  String,
+  // SAX Node
+  IMGDIR,
+  CANVAS,
+  VECTOR,
+  UOL,
+  SHORT,
+  INT,
+  FLOAT,
+  DOUBLE,
+  STRING
 }

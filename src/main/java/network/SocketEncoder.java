@@ -24,26 +24,25 @@ import java.util.Arrays;
 import network.security.XORCrypter;
 
 /**
- * The server-end networking encoder. 
- * Sends the incoming socket buffer list to the remote socket.
- * 
+ * The server-end networking encoder. Sends the incoming socket buffer list to the remote socket.
+ *
  * @author Eric
  */
 public class SocketEncoder extends MessageToByteEncoder<byte[]> {
-    private final XORCrypter cipher;
-    
-    public SocketEncoder(XORCrypter cipher) {
-        this.cipher = cipher;
-    }
-    
-    @Override
-    protected void encode(ChannelHandlerContext ctx, byte[] message, ByteBuf out) throws Exception {
-        byte[] oPacket = (byte[]) message;
-        
-        out.writeBytes(Arrays.copyOf(oPacket, oPacket.length));
-    }
-    
-    public final XORCrypter getCipher() {
-        return cipher;
-    }
+  private final XORCrypter cipher;
+
+  public SocketEncoder(XORCrypter cipher) {
+    this.cipher = cipher;
+  }
+
+  @Override
+  protected void encode(ChannelHandlerContext ctx, byte[] message, ByteBuf out) throws Exception {
+    byte[] oPacket = (byte[]) message;
+
+    out.writeBytes(Arrays.copyOf(oPacket, oPacket.length));
+  }
+
+  public final XORCrypter getCipher() {
+    return cipher;
+  }
 }

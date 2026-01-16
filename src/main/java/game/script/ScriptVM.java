@@ -38,186 +38,201 @@ import javax.script.ScriptException;
 import util.Logger;
 
 /**
- *
  * @author Eric
  */
 public class ScriptVM {
-    // VM Decoder Status
-    public static final int 
-            Ready       = 0,
-            Decoding    = 1,
-            Message     = 2,
-            Pending     = 3,
-            Finishing   = 4
-    ;
-    private static final ScriptEngine PYTHON_ENGINE = new ScriptEngineManager().getEngineByName("python");
-    private static final ExecutorService POOL = Executors.newCachedThreadPool();
-    private static final String PATH = "data/Script/";
-    
-    private final Lock lock;
-    private final LinkedList<MsgHistory> msgHistory;
-    private final AtomicInteger status;
-    private ScriptSysFunc scriptSys;
-    private int posMsgHistory;
-    private User target;
-    private GameObject self;
-    private Point curPos;
-    private File script;
-    
-    public ScriptVM() {
-        this.lock = new ReentrantLock();
-        this.scriptSys = new ScriptSysFunc(this);
-        this.msgHistory = new LinkedList<>();
-        this.status = new AtomicInteger(Ready);
-        this.posMsgHistory = 0;
-        this.curPos = new Point();
+  // VM Decoder Status
+  public static final int Ready = 0, Decoding = 1, Message = 2, Pending = 3, Finishing = 4;
+  private static final ScriptEngine PYTHON_ENGINE;
+
+  static {
+    ScriptEngineManager manager = new ScriptEngineManager();
+    // Try different engine names for GraalPy
+    ScriptEngine engine = manager.getEngineByName("graal.python");
+    if (engine == null) {
+      engine = manager.getEngineByName("python");
     }
-    
-    public void destroy(User target) {
-        lock.lock();
-        try {
-            if (this.target == target) {
-                if (target.lock()) {
-                    try {
-                        this.target.setScriptVM(null);
-                        
-                        if (this.script != null) {
-                            this.script = null;
-                        }
-                        if (this.scriptSys != null) {
-                            this.scriptSys = null;
-                        }
-                        if (this.target != null) {
-                            this.target = null;
-                        }
-                    } finally {
-                        target.unlock();
-                    }
+    if (engine == null) {
+      throw new RuntimeException(
+          "GraalPy ScriptEngine not found. Ensure GraalPy dependencies are on the classpath.");
+    }
+    PYTHON_ENGINE = engine;
+  }
+
+  private static final ExecutorService POOL = Executors.newCachedThreadPool();
+  private static final String PATH = "data/Script/";
+
+  private final Lock lock;
+  private final LinkedList<MsgHistory> msgHistory;
+  private final AtomicInteger status;
+  private ScriptSysFunc scriptSys;
+  private int posMsgHistory;
+  private User target;
+  private GameObject self;
+  private Point curPos;
+  private File script;
+
+  public ScriptVM() {
+    this.lock = new ReentrantLock();
+    this.scriptSys = new ScriptSysFunc(this);
+    this.msgHistory = new LinkedList<>();
+    this.status = new AtomicInteger(Ready);
+    this.posMsgHistory = 0;
+    this.curPos = new Point();
+  }
+
+  public void destroy(User target) {
+    lock.lock();
+    try {
+      if (this.target == target) {
+        if (target.lock()) {
+          try {
+            this.target.setScriptVM(null);
+
+            if (this.script != null) {
+              this.script = null;
+            }
+            if (this.scriptSys != null) {
+              this.scriptSys = null;
+            }
+            if (this.target != null) {
+              this.target = null;
+            }
+          } finally {
+            target.unlock();
+          }
+        }
+      }
+    } finally {
+      lock.unlock();
+    }
+  }
+
+  public void destruct() {
+    posMsgHistory = 0;
+    msgHistory.clear();
+    if (self != null) {
+      this.self = null;
+    }
+    // Nullify target in Destroy
+  }
+
+  public Point getCurrentPos() {
+    return curPos;
+  }
+
+  public int getHistoryPos() {
+    return posMsgHistory;
+  }
+
+  public LinkedList<MsgHistory> getMsgHistory() {
+    return msgHistory;
+  }
+
+  public ScriptSysFunc getScriptSys() {
+    return scriptSys;
+  }
+
+  public GameObject getSelf() {
+    return self;
+  }
+
+  public AtomicInteger getStatus() {
+    return status;
+  }
+
+  public User getTarget() {
+    return target;
+  }
+
+  public void setHistoryPos(int pos) {
+    this.posMsgHistory = pos;
+  }
+
+  public boolean setScript(User target, String scriptName, GameObject s) {
+    lock.lock();
+    try {
+      if (this.target == null) {
+        if (target.lock()) {
+          try {
+            if (target.canAttachAdditionalProcess() && scriptName != null) {
+              // target.setScriptVM(this);
+              this.target = target;
+              this.self = s;
+
+              Npc npc = null;
+              if (s instanceof Creature) {
+                Creature obj = (Creature) s;
+                if (obj instanceof Npc) {
+                  npc = (Npc) obj;
+                  curPos.x = npc.getCurrentPos().x;
+                  curPos.y = npc.getCurrentPos().y;
                 }
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-    
-    public void destruct() {
-        posMsgHistory = 0;
-        msgHistory.clear();
-        if (self != null) {
-            this.self = null;
-        }
-        // Nullify target in Destroy
-    }
-    
-    public Point getCurrentPos() {
-        return curPos;
-    }
-    
-    public int getHistoryPos() {
-        return posMsgHistory;
-    }
-    
-    public LinkedList<MsgHistory> getMsgHistory() {
-        return msgHistory;
-    }
-    
-    public ScriptSysFunc getScriptSys() {
-        return scriptSys;
-    }
-    
-    public GameObject getSelf() {
-        return self;
-    }
-    
-    public AtomicInteger getStatus() {
-        return status;
-    }
-    
-    public User getTarget() {
-        return target;
-    }
-    
-    public void setHistoryPos(int pos) {
-        this.posMsgHistory = pos;
-    }
-    
-    public boolean setScript(User target, String scriptName, GameObject s) {
-        lock.lock();
-        try {
-            if (this.target == null) {
-                if (target.lock()) {
-                    try {
-                        if (target.canAttachAdditionalProcess() && scriptName != null) {
-                            //target.setScriptVM(this);
-                            this.target = target;
-                            this.self = s;
-                            
-                            Npc npc = null;
-                            if (s instanceof Creature) {
-                                Creature obj = (Creature) s;
-                                if (obj instanceof Npc) {
-                                    npc = (Npc) obj;
-                                    curPos.x = npc.getCurrentPos().x;
-                                    curPos.y = npc.getCurrentPos().y;
-                                }
-                            }
-                            
-                            File file = new File(PATH + scriptName + ".py");
-                            if (!file.exists()) {
-                                if (npc != null) {
-                                    file = new File(PATH + s.getTemplateID() + ".py");
-                                }
-                            }
-                            
-                            if (file.exists()) {
-                                this.script = file;
-                                return true;
-                            } else {
-                                target.sendSystemMessage("The script {" + scriptName + "} has not yet been implemented.");
-                                Logger.logError("inexistent script '%s' (TemplateID: %d)", scriptName, s != null ? s.getTemplateID() : -1);
-                            }
-                        }
-                    } finally {
-                        target.unlock();
-                    }
+              }
+
+              File file = new File(PATH + scriptName + ".py");
+              if (!file.exists()) {
+                if (npc != null) {
+                  file = new File(PATH + s.getTemplateID() + ".py");
                 }
+              }
+
+              if (file.exists()) {
+                this.script = file;
+                return true;
+              } else {
+                target.sendSystemMessage(
+                    "The script {" + scriptName + "} has not yet been implemented.");
+                Logger.logError(
+                    "inexistent script '%s' (TemplateID: %d)",
+                    scriptName, s != null ? s.getTemplateID() : -1);
+              }
             }
-            destroy(target);
-            return false;
-        } finally {
-            lock.unlock();
+          } finally {
+            target.unlock();
+          }
         }
+      }
+      destroy(target);
+      return false;
+    } finally {
+      lock.unlock();
     }
-    
-    public void run(User target) {
-        lock.lock();
-        try {
-            if (this.target != target || self == null || (!(self instanceof Creature) && !(self instanceof Portal))) {
-                return;
-            }
-            target.setScriptVM(this);
-        } finally {
-            lock.unlock();
-        }
-        
-        getPool().submit(() -> {
-            try {
+  }
+
+  public void run(User target) {
+    lock.lock();
+    try {
+      if (this.target != target
+          || self == null
+          || (!(self instanceof Creature) && !(self instanceof Portal))) {
+        return;
+      }
+      target.setScriptVM(this);
+    } finally {
+      lock.unlock();
+    }
+
+    getPool()
+        .submit(
+            () -> {
+              try {
                 getEngine().put("target", getTarget());
                 getEngine().put("self", getScriptSys());
                 getEngine().eval(new FileReader(script));
-            } catch (FileNotFoundException | ScriptException ex) {
+              } catch (FileNotFoundException | ScriptException ex) {
                 ex.printStackTrace(System.err);
-            } finally {
+              } finally {
                 destroy(getTarget());
-            }
-        });
-    }
-    
-    private static ScriptEngine getEngine() {
-        return PYTHON_ENGINE;
-    }
-    
-    private static ExecutorService getPool() {
-        return POOL;
-    }
+              }
+            });
+  }
+
+  private static ScriptEngine getEngine() {
+    return PYTHON_ENGINE;
+  }
+
+  private static ExecutorService getPool() {
+    return POOL;
+  }
 }

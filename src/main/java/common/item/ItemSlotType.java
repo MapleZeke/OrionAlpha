@@ -19,13 +19,9 @@ package common.item;
 
 /**
  * ItemSlotType
- * 
+ *
  * @author Eric
  */
 public class ItemSlotType {
-    public static final byte
-            Equip   = 1,
-            Bundle  = 2,
-            Pet     = 3
-    ;
+  public static final byte Equip = 1, Bundle = 2, Pet = 3;
 }

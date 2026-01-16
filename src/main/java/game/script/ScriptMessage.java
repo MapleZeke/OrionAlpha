@@ -18,16 +18,13 @@
 package game.script;
 
 /**
- *
  * @author Eric
  */
 public class ScriptMessage {
-    public static final byte
-            Say         = 0,
-            AskYesNo    = 1,
-            AskText     = 2,
-            AskNumber   = 3,
-            AskMenu     = 4,
-            AskAvatar   = 5
-    ;
+  public static final byte Say = 0,
+      AskYesNo = 1,
+      AskText = 2,
+      AskNumber = 3,
+      AskMenu = 4,
+      AskAvatar = 5;
 }

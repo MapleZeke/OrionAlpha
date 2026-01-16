@@ -18,67 +18,64 @@
 package shop;
 
 /**
- *
  * @author sunnyboy
  */
 public class Commodity {
 
-    private long sn;
-    private int itemID;
-    private short count;
-    private int price;
-    private byte period;
-    private byte priority;
+  private long sn;
+  private int itemID;
+  private short count;
+  private int price;
+  private byte period;
+  private byte priority;
 
-    public Commodity() {
+  public Commodity() {}
 
-    }
+  public long getSN() {
+    return sn;
+  }
 
-    public long getSN() {
-        return sn;
-    }
+  public void setSN(long sn) {
+    this.sn = sn;
+  }
 
-    public void setSN(long sn) {
-        this.sn = sn;
-    }
+  public int getItemID() {
+    return itemID;
+  }
 
-    public int getItemID() {
-        return itemID;
-    }
+  public void setItemID(int itemID) {
+    this.itemID = itemID;
+  }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+  public short getCount() {
+    return count;
+  }
 
-    public short getCount() {
-        return count;
-    }
+  public void setCount(short count) {
+    this.count = count;
+  }
 
-    public void setCount(short count) {
-        this.count = count;
-    }
+  public int getPrice() {
+    return price;
+  }
 
-    public int getPrice() {
-        return price;
-    }
+  public void setPrice(int price) {
+    this.price = price;
+  }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+  public byte getPeriod() {
+    return period;
+  }
 
-    public byte getPeriod() {
-        return period;
-    }
+  public void setPeriod(byte period) {
+    this.period = period;
+  }
 
-    public void setPeriod(byte period) {
-        this.period = period;
-    }
+  public byte getPriority() {
+    return priority;
+  }
 
-    public byte getPriority() {
-        return priority;
-    }
-
-    public void setPriority(byte priority) {
-        this.priority = priority;
-    }
+  public void setPriority(byte priority) {
+    this.priority = priority;
+  }
 }

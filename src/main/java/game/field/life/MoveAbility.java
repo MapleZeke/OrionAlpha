@@ -18,14 +18,8 @@
 package game.field.life;
 
 /**
- *
  * @author Eric
  */
 public class MoveAbility {
-    public static final byte
-            Stop            = 0,
-            Walk            = 1,
-            Jump            = 2,
-            Fly             = 3
-    ;
+  public static final byte Stop = 0, Walk = 1, Jump = 2, Fly = 3;
 }

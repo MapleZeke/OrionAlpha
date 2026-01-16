@@ -19,25 +19,25 @@ package game.user.item;
 
 /**
  * @author Arnah
-*/
+ */
 public class StateChangeItem {
 
-    private int itemID;
-    private final StateChangeInfo sciInfo;
-    
-    public StateChangeItem() {
-        this.sciInfo = new StateChangeInfo();
-    }
-    
-    public StateChangeInfo getInfo() {
-        return sciInfo;
-    }
+  private int itemID;
+  private final StateChangeInfo sciInfo;
 
-    public int getItemID() {
-        return itemID;
-    }
+  public StateChangeItem() {
+    this.sciInfo = new StateChangeInfo();
+  }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
+  public StateChangeInfo getInfo() {
+    return sciInfo;
+  }
+
+  public int getItemID() {
+    return itemID;
+  }
+
+  public void setItemID(int itemID) {
+    this.itemID = itemID;
+  }
 }

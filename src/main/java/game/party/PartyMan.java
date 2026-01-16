@@ -18,9 +18,6 @@
 package game.party;
 
 /**
- *
  * @author Eric
  */
-public class PartyMan {
-    
-}
+public class PartyMan {}

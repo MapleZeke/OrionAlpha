@@ -18,17 +18,14 @@
 package common;
 
 /**
- *
  * @author Eric
  */
 public class JobCategory {
-    public static final int
-            None = 0,
-            /* Normal */
-            Fighter = 1,
-            Wizard = 2,
-            Archer = 3,
-            Thief = 4,
-            NO = 5
-    ;
+  public static final int None = 0,
+      /* Normal */
+      Fighter = 1,
+      Wizard = 2,
+      Archer = 3,
+      Thief = 4,
+      NO = 5;
 }

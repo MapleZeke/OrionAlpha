@@ -18,46 +18,44 @@
 package shop.user;
 
 /**
- *
  * @author sunnyboy
  */
 public class ReceivedGift {
 
-    private int accountID;
-    private int characterID;
-    private int birthDate;
-    private int gender;
-    
-    public int getAccountID() {
-        return accountID;
-    }
+  private int accountID;
+  private int characterID;
+  private int birthDate;
+  private int gender;
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
-    }
+  public int getAccountID() {
+    return accountID;
+  }
 
-    public int getCharacterID() {
-        return characterID;
-    }
+  public void setAccountID(int accountID) {
+    this.accountID = accountID;
+  }
 
-    public void setCharacterID(int characterID) {
-        this.characterID = characterID;
-    }
+  public int getCharacterID() {
+    return characterID;
+  }
 
-    public int getBirthDate() {
-        return birthDate;
-    }
+  public void setCharacterID(int characterID) {
+    this.characterID = characterID;
+  }
 
-    public void setBirthDate(int birthDate) {
-        this.birthDate = birthDate;
-    }
+  public int getBirthDate() {
+    return birthDate;
+  }
 
-    public int getGender() {
-        return gender;
-    }
+  public void setBirthDate(int birthDate) {
+    this.birthDate = birthDate;
+  }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+  public int getGender() {
+    return gender;
+  }
 
+  public void setGender(int gender) {
+    this.gender = gender;
+  }
 }

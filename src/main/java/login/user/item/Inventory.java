@@ -23,31 +23,30 @@ import common.item.ItemSlotEquip;
 import login.LoginApp;
 
 /**
- *
  * @author Eric
  */
 public class Inventory {
-    
-    /**
-     * Global way to update an item's serial number.
-     * 
-     * @param item The object of the item to update SN
-     * @param cash Whether or not to increment CashSN or SN
-     * @return The item's new SN assigned
-     */
-    public static final long getNextSN(ItemSlotBase item, boolean cash) {
-        if (cash) {
-            item.setCashItemSN(LoginApp.getInstance().getNextCashSN());
-            return item.getCashItemSN();
-        } else {
-            if (item instanceof ItemSlotBundle) {
-                ((ItemSlotBundle) item).setItemSN(LoginApp.getInstance().getNextSN());
-            } else if (item instanceof ItemSlotEquip) {
-                ((ItemSlotEquip) item).setItemSN(LoginApp.getInstance().getNextSN());
-            } else if (item instanceof ItemSlotBase) {
-                return LoginApp.getInstance().getNextSN();
-            }
-            return item.getSN();
-        }
+
+  /**
+   * Global way to update an item's serial number.
+   *
+   * @param item The object of the item to update SN
+   * @param cash Whether or not to increment CashSN or SN
+   * @return The item's new SN assigned
+   */
+  public static final long getNextSN(ItemSlotBase item, boolean cash) {
+    if (cash) {
+      item.setCashItemSN(LoginApp.getInstance().getNextCashSN());
+      return item.getCashItemSN();
+    } else {
+      if (item instanceof ItemSlotBundle) {
+        ((ItemSlotBundle) item).setItemSN(LoginApp.getInstance().getNextSN());
+      } else if (item instanceof ItemSlotEquip) {
+        ((ItemSlotEquip) item).setItemSN(LoginApp.getInstance().getNextSN());
+      } else if (item instanceof ItemSlotBase) {
+        return LoginApp.getInstance().getNextSN();
+      }
+      return item.getSN();
     }
+  }
 }

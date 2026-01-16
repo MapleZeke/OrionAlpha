@@ -22,142 +22,141 @@ import network.packet.InPacket;
 import network.packet.OutPacket;
 
 /**
- *
  * @author Eric
  */
 public class MovePath {
+  private short x;
+  private short y;
+  private final LinkedList<Elem> elements;
+
+  public MovePath() {
+    this.elements = new LinkedList<>();
+  }
+
+  public void decode(InPacket packet) {
+    this.x = packet.decodeShort();
+    this.y = packet.decodeShort();
+
+    int count = packet.decodeByte();
+    for (int i = 0; i < count; i++) {
+      Elem elem = new Elem();
+      elem.setAttr(packet.decodeByte());
+      elem.setX(packet.decodeShort());
+      elem.setY(packet.decodeShort());
+      elem.setVx(packet.decodeShort());
+      elem.setVy(packet.decodeShort());
+      elem.setMoveAction(packet.decodeByte());
+      elem.setFh(packet.decodeShort());
+      elem.setElapse(packet.decodeShort());
+      elements.add(elem);
+    }
+  }
+
+  public void encode(OutPacket packet) {
+    packet.encodeShort(getX());
+    packet.encodeShort(getY());
+
+    packet.encodeByte(elements.size());
+    for (Elem elem : elements) {
+      packet.encodeByte(elem.getAttr());
+      packet.encodeShort(elem.getX());
+      packet.encodeShort(elem.getY());
+      packet.encodeShort(elem.getVx());
+      packet.encodeShort(elem.getVy());
+      packet.encodeByte(elem.getMoveAction());
+      packet.encodeShort(elem.getFh());
+      packet.encodeShort(elem.getElapse());
+    }
+  }
+
+  public LinkedList<Elem> getElem() {
+    return elements;
+  }
+
+  public short getX() {
+    return x;
+  }
+
+  public short getY() {
+    return y;
+  }
+
+  public class Elem {
+    private byte attr;
     private short x;
     private short y;
-    private final LinkedList<Elem> elements;
-    
-    public MovePath() {
-        this.elements = new LinkedList<>();
+    private short vx;
+    private short vy;
+    private byte moveAction;
+    private short fh;
+    private short elapse;
+
+    public Elem() {
+      // dummy
     }
-    
-    public void decode(InPacket packet) {
-        this.x = packet.decodeShort();
-        this.y = packet.decodeShort();
-        
-        int count = packet.decodeByte();
-        for (int i = 0; i < count; i++) {
-            Elem elem = new Elem();
-            elem.setAttr(packet.decodeByte());
-            elem.setX(packet.decodeShort());
-            elem.setY(packet.decodeShort());
-            elem.setVx(packet.decodeShort());
-            elem.setVy(packet.decodeShort());
-            elem.setMoveAction(packet.decodeByte());
-            elem.setFh(packet.decodeShort());
-            elem.setElapse(packet.decodeShort());
-            elements.add(elem);
-        }
+
+    public byte getAttr() {
+      return attr;
     }
-    
-    public void encode(OutPacket packet) {
-        packet.encodeShort(getX());
-        packet.encodeShort(getY());
-        
-        packet.encodeByte(elements.size());
-        for (Elem elem : elements) {
-            packet.encodeByte(elem.getAttr());
-            packet.encodeShort(elem.getX());
-            packet.encodeShort(elem.getY());
-            packet.encodeShort(elem.getVx());
-            packet.encodeShort(elem.getVy());
-            packet.encodeByte(elem.getMoveAction());
-            packet.encodeShort(elem.getFh());
-            packet.encodeShort(elem.getElapse());
-        }
-    }
-    
-    public LinkedList<Elem> getElem() {
-        return elements;
-    }
-    
+
     public short getX() {
-        return x;
+      return x;
     }
-    
+
     public short getY() {
-        return y;
+      return y;
     }
-    
-    public class Elem {
-        private byte attr;
-        private short x;
-        private short y;
-        private short vx;
-        private short vy;
-        private byte moveAction;
-        private short fh;
-        private short elapse;
-        
-        public Elem() {
-            // dummy
-        }
 
-        public byte getAttr() {
-            return attr;
-        }
-
-        public short getX() {
-            return x;
-        }
-
-        public short getY() {
-            return y;
-        }
-
-        public short getVx() {
-            return vx;
-        }
-
-        public short getVy() {
-            return vy;
-        }
-
-        public byte getMoveAction() {
-            return moveAction;
-        }
-
-        public short getFh() {
-            return fh;
-        }
-
-        public short getElapse() {
-            return elapse;
-        }
-
-        public void setAttr(byte attr) {
-            this.attr = attr;
-        }
-
-        public void setX(short x) {
-            this.x = x;
-        }
-
-        public void setY(short y) {
-            this.y = y;
-        }
-
-        public void setVx(short vx) {
-            this.vx = vx;
-        }
-
-        public void setVy(short vy) {
-            this.vy = vy;
-        }
-
-        public void setMoveAction(byte moveAction) {
-            this.moveAction = moveAction;
-        }
-
-        public void setFh(short fh) {
-            this.fh = fh;
-        }
-
-        public void setElapse(short elapse) {
-            this.elapse = elapse;
-        }
+    public short getVx() {
+      return vx;
     }
+
+    public short getVy() {
+      return vy;
+    }
+
+    public byte getMoveAction() {
+      return moveAction;
+    }
+
+    public short getFh() {
+      return fh;
+    }
+
+    public short getElapse() {
+      return elapse;
+    }
+
+    public void setAttr(byte attr) {
+      this.attr = attr;
+    }
+
+    public void setX(short x) {
+      this.x = x;
+    }
+
+    public void setY(short y) {
+      this.y = y;
+    }
+
+    public void setVx(short vx) {
+      this.vx = vx;
+    }
+
+    public void setVy(short vy) {
+      this.vy = vy;
+    }
+
+    public void setMoveAction(byte moveAction) {
+      this.moveAction = moveAction;
+    }
+
+    public void setFh(short fh) {
+      this.fh = fh;
+    }
+
+    public void setElapse(short elapse) {
+      this.elapse = elapse;
+    }
+  }
 }

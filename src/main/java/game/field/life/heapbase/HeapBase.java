@@ -22,49 +22,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Eric
  */
 public abstract class HeapBase {
-    private final int increment;
-    private int count;
-    private final List<Controller> heap;
-    
-    public HeapBase(int increment) {
-        this.increment = increment;
-        this.count = 0;
-        this.heap = new ArrayList<>();
-    }
-    
-    public int getIncrement() {
-        return increment;
-    }
-    
-    public int getCount() {
-        return count;
-    }
-    
-    public List<Controller> getHeap() {
-        return heap;
-    }
-    
-    public int decCount() {
-        return count--;
-    }
-    
-    public int incCount() {
-        return count++;
-    }
-    
-    public void removeAll() {
-        heap.clear();
-        count = 0;
-    }
-    
-    public abstract int adjust(int parentCnt);
-    public abstract void adjustUpward();
-    public abstract int insert(Controller t);
-    public abstract void removeAt(int index);
-    public abstract void swap(int index1, int index2);
-    public abstract void updateAt(int index);
+  private final int increment;
+  private int count;
+  private final List<Controller> heap;
+
+  public HeapBase(int increment) {
+    this.increment = increment;
+    this.count = 0;
+    this.heap = new ArrayList<>();
+  }
+
+  public int getIncrement() {
+    return increment;
+  }
+
+  public int getCount() {
+    return count;
+  }
+
+  public List<Controller> getHeap() {
+    return heap;
+  }
+
+  public int decCount() {
+    return count--;
+  }
+
+  public int incCount() {
+    return count++;
+  }
+
+  public void removeAll() {
+    heap.clear();
+    count = 0;
+  }
+
+  public abstract int adjust(int parentCnt);
+
+  public abstract void adjustUpward();
+
+  public abstract int insert(Controller t);
+
+  public abstract void removeAt(int index);
+
+  public abstract void swap(int index1, int index2);
+
+  public abstract void updateAt(int index);
 }

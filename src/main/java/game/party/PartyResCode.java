@@ -18,32 +18,30 @@
 package game.party;
 
 /**
- *
  * @author Eric
  */
 public class PartyResCode {
-    public static final byte
-            // PartyReq
-            LoadParty                       = 0,
-            CreateNewParty                  = 1,
-            WithdrawParty                   = 2,
-            JoinParty                       = 3,
-            InviteParty                     = 4,
-            KickParty                       = 5,
-            // PartyRes
-            LoadParty_Done                  = 6,
-            CreateNewParty_Done             = 7,
-            CreateNewParty_AlreadyJoined    = 8,
-            CreateNewParty_Beginner         = 9,
-            CreateNewParty_Unknown          = 10,
-            WithdrawParty_Done              = 11,
-            WithdrawParty_NotJoined         = 12,
-            WithdrawParty_Unknown           = 13,
-            JoinParty_Done                  = 14,
-            JoinParty_AlreadyJoined         = 15,
-            JoinParty_OverDesiredSize       = 16,
-            JoinParty_UnknownUser           = 17,
-            JoinParty_Unknown               = 18,
-            ServerMsg                       = 19
-    ;
+  public static final byte
+      // PartyReq
+      LoadParty = 0,
+      CreateNewParty = 1,
+      WithdrawParty = 2,
+      JoinParty = 3,
+      InviteParty = 4,
+      KickParty = 5,
+      // PartyRes
+      LoadParty_Done = 6,
+      CreateNewParty_Done = 7,
+      CreateNewParty_AlreadyJoined = 8,
+      CreateNewParty_Beginner = 9,
+      CreateNewParty_Unknown = 10,
+      WithdrawParty_Done = 11,
+      WithdrawParty_NotJoined = 12,
+      WithdrawParty_Unknown = 13,
+      JoinParty_Done = 14,
+      JoinParty_AlreadyJoined = 15,
+      JoinParty_OverDesiredSize = 16,
+      JoinParty_UnknownUser = 17,
+      JoinParty_Unknown = 18,
+      ServerMsg = 19;
 }

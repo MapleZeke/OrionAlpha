@@ -2,10 +2,17 @@
 type: specs.openrewrite.org/v1beta/recipe
 name: com.orionalpha.Modernize
 displayName: OrionAlpha Modernization Recipe
-description: Comprehensive modernization recipe for the OrionAlpha project including Java 11 migration, Netty 4.2 upgrade, security fixes, and code quality improvements.
+description: Comprehensive modernization recipe for the OrionAlpha project including Java 21 migration, Netty 4.2 upgrade, security fixes, and code quality improvements.
 recipeList:
-  # Core Migration
+  # Full Java Migration Chain (run in order)
+  - org.openrewrite.java.migrate.UpgradeToJava6
+  - org.openrewrite.java.migrate.UpgradeToJava7
+  - org.openrewrite.java.migrate.UpgradeToJava8
   - org.openrewrite.java.migrate.Java8toJava11
+  - org.openrewrite.java.migrate.UpgradeToJava17
+  - org.openrewrite.java.migrate.UpgradeToJava21
+  
+  # Core Migration
   - org.openrewrite.netty.UpgradeNetty_4_1_to_4_2
   
   # Static Analysis
