@@ -15,6 +15,11 @@ recipeList:
   # Core Migration
   - org.openrewrite.netty.UpgradeNetty_4_1_to_4_2
   
+  # Testing Frameworks Best Practices
+  - org.openrewrite.java.testing.junit5.JUnit5BestPractices
+  - org.openrewrite.java.testing.mockito.MockitoBestPractices
+  - org.openrewrite.java.testing.assertj.Assertj
+  
   # Static Analysis
   - org.openrewrite.staticanalysis.CommonStaticAnalysis
   

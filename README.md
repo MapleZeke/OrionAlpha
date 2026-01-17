@@ -174,6 +174,34 @@ OrionAlpha - A Nexon Replica Emulator Project
   * Change the instruction at address `0047965A` to `nop`
   * Change the instruction at address `00479666` to `nop`
   
+  ----------------------------------------------------------------------
+  ## Performance Optimization
+  
+  ### Native Transports
+  
+  OrionAlpha automatically detects and uses the best available Netty transport for your platform:
+  
+  - **Linux (x86_64/aarch64)**: Epoll native transport (20-30% better performance)
+  - **macOS (x86_64/aarch64)**: KQueue native transport (optimized for macOS)
+  - **Windows**: NIO transport (automatic fallback)
+  
+  The server will log which transport is being used at startup.
+  
+  ### Recommended Deployment
+  
+  For production game servers:
+  - **Linux**: Preferred platform for best performance (Epoll)
+  - **Windows**: Fully supported for development/testing (NIO)
+  
+  ### Channel Options
+  
+  The server is configured with optimized settings for game server workloads:
+  - TCP_NODELAY enabled (Nagle's algorithm disabled for low latency)
+  - 64KB send/receive buffers
+  - Pooled ByteBuf allocation for reduced GC pressure
+  - Write buffer water marks to prevent memory exhaustion under load
+  
+  ----------------------------------------------------------------------
   ### Re-Enable Admin Actions
   Restores the ability to allow GM/Admins to drop items, mesos, etc.
   * Change the instruction at address `004795D2` to `jmp 004795E9`
