@@ -33,7 +33,7 @@ if sel == 0:
   if ret == False:
     self.say("I see... the thought of not being able to go outside for a while is just terrible... If you ever change your mind, please come talk to me.")
   else:
-    # TODO: Implement quest control on backend. => Set quest progress to started.
+    self.questRecordSet(1014, "start")
     self.sayNext("Thank you so much. Once you take care of those monsters, then and only then will I feel safe to walk out of Ellinia.")
     self.say("Now, on your way back to Ellinia, please eliminate #b100 Green Mushrooms#k. Then myself or others like me won't feel threatened to go out of Ellinia for a little while.")
 '''

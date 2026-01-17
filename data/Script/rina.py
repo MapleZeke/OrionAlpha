@@ -34,5 +34,5 @@ if sel == 0:
 	self.sayNext("Oh shoot. I'm missing some #bCurse Eye Tails#k and #bPig's Heads#k! What? Of course they really go into this dish! Just, uh, please keep that a secret from Ronnie, okay?")
 	ret = self.askYesNo("Anyway I don't have enough ingredients to make Unagi. Can you get them for me? #b50 Curse Eye Tails and 5 Pig's Heads#k and then I can make the #bUnagi Special#k.")
 	if ret == True:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1005, "start")
 '''

@@ -33,7 +33,7 @@ if sel == 0:
 	if ret == False:
 		self.say("Hey, now that I look close, you look very healthy. I wish I could see the sun every once in a while, you know.")
 	else:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1009, "start")
 		self.sayNext(" Right? You look quite tired, too. This is when something smooth and sweet can work wonders, not like some chips. Right? haha")
 		self.say("Say, if you have #b20 Sap of Ancient Trees#k of Ancient Trees, I can make a delicious #rHoney#k. What do you think? Wanna help me out?")
 '''

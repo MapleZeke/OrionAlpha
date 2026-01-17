@@ -33,6 +33,6 @@ if sel == 0:
 	if ret == False:
 		self.say("Must be busy, eh? Can't blame you. I am, too. Let me know if you get any free time.")
 	else:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1007, "start")
 		self.say("Alright! This year I'm going to make my mom a tasty Snake Drink! Can you get me #b100 Jr. Necki Skins#k, #b10 Stirge Wings#k, and for the final touch, #b1 Salad#k please?")
 '''

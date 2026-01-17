@@ -35,5 +35,5 @@ if sel == 0:
 	self.sayNext("I want #b50 Lupin's Bananas#k and Rina's #bUnagi Special#k, along with some #b#Fresh Milk#k. Rina is a friend of mine who lives in Henesys. Ask her for the Unagi Special and she'll make it for you.")
 	ret = self.askYesNo("Oh yeah! The fairies from Ellinia probably have some #bFresh Milk#k. I always got mine from Ellinia. If you get hungry on your way back and eat my food, my dad's book is going to Curse Eye. So you better take care of that food!")
 	if ret == True:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1013, "start")
 '''
