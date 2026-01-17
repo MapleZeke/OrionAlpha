@@ -128,6 +128,38 @@ OrionAlpha - A Nexon Replica Emulator Project
   * `incDropRate` -> The server's Drop Rate modifier (Nexon standard).
   * `worldName` -> The name of the world. This is sent to and displayed in the login server.
   ----------------------------------------------------------------------
+  ## Database Configuration
+
+### HikariCP Connection Pool
+
+OrionAlpha uses HikariCP 5.1.0 for high-performance database connection pooling.
+
+#### Configuration
+Pool settings can be tuned in `UnifiedDB.java`:
+- **Maximum Pool Size**: 20 connections (default)
+- **Minimum Idle**: 5 connections
+- **Connection Timeout**: 30 seconds
+- **Idle Timeout**: 10 minutes
+- **Max Lifetime**: 30 minutes
+- **Keepalive**: 5 minutes
+
+#### Performance Features
+- PreparedStatement caching (250 statements, 2048 SQL limit)
+- Batch statement rewriting for faster inserts
+- Result metadata caching
+- Server configuration caching
+- Unicode support (utf8mb4)
+
+#### Development Tools
+Enable connection leak detection:
+```bash
+java -Dhikari.leakDetection=true -jar OrionAlpha.jar
+```
+This will log warnings if connections are held for more than 60 seconds.
+
+#### Monitoring
+The connection pool is named `OrionAlpha-DB-Pool` for easy identification in logs and monitoring tools.
+  ----------------------------------------------------------------------
   ## Client Modifications
   Even knowing there's barely anything to edit in such an early version, below are helpful client edits.
   
