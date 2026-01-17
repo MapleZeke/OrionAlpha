@@ -39,3 +39,6 @@ nb-configuration.xml
 *.iml
 *.ipr
 *.iws
+
+# Analysis reports
+analysis/reports/

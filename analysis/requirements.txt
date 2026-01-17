@@ -1,0 +1,2 @@
+# No external dependencies required
+# All analysis tools use Python standard library only
