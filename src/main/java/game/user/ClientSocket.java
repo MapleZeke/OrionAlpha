@@ -141,8 +141,7 @@ public class ClientSocket extends SimpleChannelInboundHandler {
 
   @Override
   public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-    if (evt instanceof IdleStateEvent) {
-      IdleStateEvent e = (IdleStateEvent) evt;
+    if (evt instanceof IdleStateEvent e) {
       if (e.state() == IdleState.READER_IDLE) {
         if (user != null && migrateState == MigrateState.WaitCenterMigrateOutResult) {
           // If a user has been migrating for over 30 seconds, dc and prepare a

@@ -195,7 +195,7 @@ public abstract class ItemSlotBase implements Comparable<ItemSlotBase> {
 
   @Override
   public String toString() {
-    return String.format("ItemID: %d / CashItemSN: %d", this.itemID, this.cashItemSN);
+    return "ItemID: %d / CashItemSN: %d".formatted(this.itemID, this.cashItemSN);
   }
 
   /**

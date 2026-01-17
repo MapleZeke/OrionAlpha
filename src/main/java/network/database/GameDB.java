@@ -264,7 +264,7 @@ public class GameDB {
         Database.execute(
             con,
             ps,
-            inventorySize.get(0),
+            inventorySize.getFirst(),
             inventorySize.get(1),
             inventorySize.get(2),
             inventorySize.get(3),

@@ -39,10 +39,10 @@ public class Inventory {
       item.setCashItemSN(LoginApp.getInstance().getNextCashSN());
       return item.getCashItemSN();
     } else {
-      if (item instanceof ItemSlotBundle) {
-        ((ItemSlotBundle) item).setItemSN(LoginApp.getInstance().getNextSN());
-      } else if (item instanceof ItemSlotEquip) {
-        ((ItemSlotEquip) item).setItemSN(LoginApp.getInstance().getNextSN());
+      if (item instanceof ItemSlotBundle bundle) {
+        bundle.setItemSN(LoginApp.getInstance().getNextSN());
+      } else if (item instanceof ItemSlotEquip equip) {
+        equip.setItemSN(LoginApp.getInstance().getNextSN());
       } else if (item instanceof ItemSlotBase) {
         return LoginApp.getInstance().getNextSN();
       }

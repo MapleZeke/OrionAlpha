@@ -159,7 +159,7 @@ public class MobTemplate implements WzXML {
     template.undead = WzUtil.getBoolean(info.getNode("undead"), false);
 
     for (int i = 1; ; i++) {
-      WzProperty attack = prop.getNode(String.format("attack%d", i));
+      WzProperty attack = prop.getNode("attack%d".formatted(i));
       if (attack == null) {
         break;
       }

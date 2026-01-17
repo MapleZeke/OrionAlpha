@@ -29,7 +29,7 @@ public class Logger {
   }
 
   public static void logReport(String format, Object... args) {
-    System.out.println(String.format(format, args));
+    System.out.println(format.formatted(args));
   }
 
   public static void logError(String format) {
@@ -37,6 +37,6 @@ public class Logger {
   }
 
   public static void logError(String format, Object... args) {
-    System.err.println(String.format(format, args));
+    System.err.println(format.formatted(args));
   }
 }

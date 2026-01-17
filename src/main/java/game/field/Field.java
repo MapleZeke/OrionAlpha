@@ -271,8 +271,8 @@ public class Field {
         fieldSplit.add(new FieldSplit(i, j, j + i * splitColCount));
       }
     }
-    this.splitStart = fieldSplit.get(0);
-    this.splitEnd = fieldSplit.get(fieldSplit.size() - 1);
+    this.splitStart = fieldSplit.getFirst();
+    this.splitEnd = fieldSplit.getLast();
   }
 
   public boolean onEnter(final User user) {

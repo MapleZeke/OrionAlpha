@@ -181,8 +181,7 @@ public class FileTime {
 
   @Override
   public boolean equals(Object o) {
-    if (o instanceof FileTime) {
-      FileTime ft = (FileTime) o;
+    if (o instanceof FileTime ft) {
       return super.equals(o) || ft.getFileTime() == getFileTime();
     }
     return false;

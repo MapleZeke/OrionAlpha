@@ -79,7 +79,7 @@ public class GameApp {
 
   private void connectCenter() {
     try (JsonReader reader =
-        Json.createReader(new FileReader(String.format("Game%d.img", getWorldID())))) {
+        Json.createReader(new FileReader("Game%d.img".formatted(getWorldID())))) {
       JsonObject gameData = reader.readObject();
 
       Integer world = gameData.getInt("gameWorldId", getWorldID());

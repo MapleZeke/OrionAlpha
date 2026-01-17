@@ -99,7 +99,7 @@ public class ScriptSysFunc {
             ScriptMan.onSay(
                 (byte) msgHistory.getSpeakerTypeID(),
                 msgHistory.getSpeakerTemplateID(),
-                (String) msgHistory.getMemory().get(0),
+                (String) msgHistory.getMemory().getFirst(),
                 posMsgHistory != 1,
                 next));
         break;
@@ -221,30 +221,33 @@ public class ScriptSysFunc {
             ScriptMan.onSay(
                 speakerTypeID,
                 speakerTemplateID,
-                (String) memory.get(0),
+                (String) memory.getFirst(),
                 runningVM.getHistoryPos() != 0,
                 next));
         break;
       case ScriptMessage.AskYesNo:
         msg.setPacket(
-            ScriptMan.onAskYesNo(speakerTypeID, speakerTemplateID, (String) memory.get(0)));
+            ScriptMan.onAskYesNo(speakerTypeID, speakerTemplateID, (String) memory.getFirst()));
         break;
       case ScriptMessage.AskAvatar:
         msg.setCouponItemID((Integer) memory.get(1));
         msg.setPacket(
             ScriptMan.onAskAvatar(
-                speakerTypeID, speakerTemplateID, (String) memory.get(0), (int[]) memory.get(2)));
+                speakerTypeID,
+                speakerTemplateID,
+                (String) memory.getFirst(),
+                (int[]) memory.get(2)));
         break;
       case ScriptMessage.AskMenu:
         msg.setPacket(
-            ScriptMan.onAskMenu(speakerTypeID, speakerTemplateID, (String) memory.get(0)));
+            ScriptMan.onAskMenu(speakerTypeID, speakerTemplateID, (String) memory.getFirst()));
         break;
       case ScriptMessage.AskText:
         msg.setPacket(
             ScriptMan.onAskText(
                 speakerTypeID,
                 speakerTemplateID,
-                (String) memory.get(0),
+                (String) memory.getFirst(),
                 (String) memory.get(1),
                 (Short) memory.get(2),
                 (Short) memory.get(3)));
@@ -254,7 +257,7 @@ public class ScriptSysFunc {
             ScriptMan.onAskNumber(
                 speakerTypeID,
                 speakerTemplateID,
-                (String) memory.get(0),
+                (String) memory.getFirst(),
                 (Integer) memory.get(1),
                 (Integer) memory.get(2),
                 (Integer) memory.get(3)));

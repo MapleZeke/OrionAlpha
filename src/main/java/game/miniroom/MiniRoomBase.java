@@ -327,7 +327,7 @@ public abstract class MiniRoomBase {
   private int onEnterBase(User user, MiniRoomBase miniroom) {
     int slot = findEmptySlot(user.getCharacterID());
 
-    if (curUsers == 0 || users.get(0) == null) {
+    if (curUsers == 0 || users.getFirst() == null) {
       return 8;
     }
     if (slot < 0) {
@@ -349,7 +349,7 @@ public abstract class MiniRoomBase {
       reserved.set(slot, 0);
       leaveRequest.set(slot, -1);
       ++curUsers;
-      User firstIndexUser = users.get(0);
+      User firstIndexUser = users.getFirst();
       if (firstIndexUser != null) {
         firstIndexUser.sendPacket(MiniRoomBaseDlg.onEnterBase(user, miniroom));
       }
@@ -360,7 +360,7 @@ public abstract class MiniRoomBase {
 
   private void onInviteResult(MiniRoomBase miniRoom, String character, int result) {
     User user;
-    if ((user = users.get(0)) != null) {
+    if ((user = users.getFirst()) != null) {
       user.sendPacket(MiniRoomBaseDlg.onEnterDecline(miniRoom, character, result));
     }
   }

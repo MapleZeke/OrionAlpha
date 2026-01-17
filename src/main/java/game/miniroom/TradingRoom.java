@@ -63,7 +63,7 @@ public class TradingRoom extends MiniRoomBase {
   }
 
   public int doTrade() {
-    User owner = getUsers().get(0);
+    User owner = getUsers().getFirst();
     User user = getUsers().get(1);
     if (owner == null || user == null) {
       Logger.logError(
@@ -154,9 +154,9 @@ public class TradingRoom extends MiniRoomBase {
       }
     }
     if (result != MiniRoomLeave.TradeDone) {
-      getUsers().get(0).getCharacter().setMoneyTrading(mesoTrading[0]);
+      getUsers().getFirst().getCharacter().setMoneyTrading(mesoTrading[0]);
       getUsers().get(1).getCharacter().setMoneyTrading(mesoTrading[1]);
-      getUsers().get(0).getCharacter().restoreItemSlot(backupItem, backupItemTrading);
+      getUsers().getFirst().getCharacter().restoreItemSlot(backupItem, backupItemTrading);
       getUsers().get(1).getCharacter().restoreItemSlot(backup, backupTrading);
     } else {
       for (int i = 0; i < 2; i++) {
@@ -241,10 +241,10 @@ public class TradingRoom extends MiniRoomBase {
     int admitted = super.isAdmitted(user, onCreate);
     if (admitted == MiniRoomEnter.Success) {
       if (!onCreate) {
-        if (user.getField() == null || this.getUsers().get(0).getField() == null) {
+        if (user.getField() == null || this.getUsers().getFirst().getField() == null) {
           return 8; // MiniRoomEnter.Etc
         }
-        if (user.getField() != this.getUsers().get(0).getField()) {
+        if (user.getField() != this.getUsers().getFirst().getField()) {
           closeRequest(null, 9, 0); // MiniRoomEnter.OnlyInSameField
           processLeaveRequest();
           return 9; // MiniRoomEnter.OnlyInSameField

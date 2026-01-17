@@ -75,24 +75,24 @@ public class Database extends UnifiedDB {
         try {
           if (command instanceof Number) {
             // Specific to only setByte calls, default Integer
-            if (command instanceof Byte) {
-              propSet.setByte(i, (Byte) command);
-            } else if (command instanceof Short) {
-              propSet.setShort(i, (Short) command);
+            if (command instanceof Byte byte1) {
+              propSet.setByte(i, byte1);
+            } else if (command instanceof Short short1) {
+              propSet.setShort(i, short1);
               // Specific to only setLong calls, default Integer
-            } else if (command instanceof Long) {
-              propSet.setLong(i, (Long) command);
-            } else if (command instanceof Double) {
-              propSet.setDouble(i, (Double) command);
+            } else if (command instanceof Long long1) {
+              propSet.setLong(i, long1);
+            } else if (command instanceof Double double1) {
+              propSet.setDouble(i, double1);
               // Almost all types are INT(11), so default to this
             } else {
               propSet.setInt(i, (Integer) command);
             }
             // If it is otherwise a String, we only require setString
-          } else if (command instanceof String) {
-            propSet.setString(i, (String) command);
-          } else if (command instanceof Boolean) {
-            propSet.setBoolean(i, (Boolean) command);
+          } else if (command instanceof String string) {
+            propSet.setString(i, string);
+          } else if (command instanceof Boolean boolean1) {
+            propSet.setBoolean(i, boolean1);
           }
         } catch (SQLException ex) {
           ex.printStackTrace(System.err);

@@ -161,10 +161,9 @@ public class ScriptVM {
               this.self = s;
 
               Npc npc = null;
-              if (s instanceof Creature) {
-                Creature obj = (Creature) s;
-                if (obj instanceof Npc) {
-                  npc = (Npc) obj;
+              if (s instanceof Creature obj) {
+                if (obj instanceof Npc npc1) {
+                  npc = npc1;
                   curPos.x = npc.getCurrentPos().x;
                   curPos.y = npc.getCurrentPos().y;
                 }

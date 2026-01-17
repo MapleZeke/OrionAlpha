@@ -138,7 +138,7 @@ public class Mob extends Creature {
       if (moves.isEmpty() || moves.size() < 2) {
         return false;
       }
-      Rect rc = moves.get(moves.size() - 1); // arcMove.a -> pTail?
+      Rect rc = moves.getLast(); // arcMove.a -> pTail?
       Rect move = new Rect();
       move.left = rc.left;
       move.top = rc.top;
@@ -325,7 +325,8 @@ public class Mob extends Creature {
         x2 += 20;
       }
       if (steal) {
-        if (rewards.get(0).getItem() != null) itemID_Stolen = rewards.get(0).getItem().getItemID();
+        if (rewards.getFirst().getItem() != null)
+          itemID_Stolen = rewards.getFirst().getItem().getItemID();
       }
     }
   }

@@ -53,6 +53,16 @@ public class WzProperty {
   private void serialize() {
     if (FACTORY == null) {
       FACTORY = DocumentBuilderFactory.newInstance();
+      String FEATURE = "http://apache.org/xml/features/disallow-doctype-decl";
+      try {
+        FACTORY.setFeature(FEATURE, true);
+      } catch (ParserConfigurationException e) {
+        throw new IllegalStateException(
+            "ParserConfigurationException was thrown. The feature '"
+                + FEATURE
+                + "' is not supported by your XML processor.",
+            e);
+      }
     }
     try (InputStream stream = new FileInputStream(file)) {
       this.node = FACTORY.newDocumentBuilder().parse(stream).getFirstChild();

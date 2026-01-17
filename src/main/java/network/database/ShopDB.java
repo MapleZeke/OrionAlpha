@@ -62,7 +62,7 @@ public class ShopDB {
 
   public static void rawIncreaseItemSlotCount(int characterID, byte typeIndex, int slotCount) {
     String[] types = {"Equip", "Consume", "Install", "Etc"};
-    String inventory = String.format("%sCount", types[typeIndex - 1]);
+    String inventory = "%sCount".formatted(types[typeIndex - 1]);
     try (Connection con = Database.getDB().poolConnection()) {
       try (PreparedStatement ps =
           con.prepareStatement(
@@ -201,9 +201,8 @@ public class ShopDB {
       String query = "DELETE FROM `itemlocker` WHERE `CharacterID` = ?";
       if (!removeCashSN.isEmpty()) {
         query +=
-            String.format(
-                " AND `CashItemSN` NOT IN (%s)",
-                removeCashSN.substring(0, removeCashSN.length() - 2));
+            " AND `CashItemSN` NOT IN (%s)"
+                .formatted(removeCashSN.substring(0, removeCashSN.length() - 2));
       }
       try (PreparedStatement ps = con.prepareStatement(query)) {
         Database.execute(con, ps, characterID);

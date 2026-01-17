@@ -64,8 +64,7 @@ public class Pointer<P> {
    * @param val The value to add
    */
   public void add(int val) {
-    if (data != null && data instanceof Number) {
-      Number p = (Number) data;
+    if (data != null && data instanceof Number p) {
       if (p instanceof Byte) {
         Pointer<Byte> cur = (Pointer<Byte>) this;
         cur.set((byte) (cur.get() + val));
@@ -98,8 +97,7 @@ public class Pointer<P> {
    * @param val The value to deduct
    */
   public void subtract(int val) {
-    if (data != null && data instanceof Number) {
-      Number p = (Number) data;
+    if (data != null && data instanceof Number p) {
       if (p instanceof Byte) {
         Pointer<Byte> cur = (Pointer<Byte>) this;
         cur.set((byte) (cur.get() - val));
@@ -132,11 +130,10 @@ public class Pointer<P> {
    */
   public boolean isSet() {
     if (data != null) {
-      if (data instanceof Number) {
-        Number p = (Number) data;
+      if (data instanceof Number p) {
         return p.intValue() != 0;
-      } else if (data instanceof Boolean) {
-        return (Boolean) data;
+      } else if (data instanceof Boolean boolean1) {
+        return boolean1;
       }
     }
     return false;
