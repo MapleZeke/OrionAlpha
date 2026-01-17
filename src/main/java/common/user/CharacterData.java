@@ -44,6 +44,7 @@ public class CharacterData {
   private final List<List<Integer>> itemTrading;
   private final Map<Integer, Integer> skillRecord;
   private final Map<String, String> questRecord;
+  private final Map<Integer, QuestRecord> questRecords;
   private int moneyTrading;
   private boolean onTrading;
 
@@ -55,6 +56,7 @@ public class CharacterData {
     this.itemTrading = new ArrayList<>(ItemType.NO);
     this.skillRecord = new HashMap<>();
     this.questRecord = new HashMap<>();
+    this.questRecords = new HashMap<>();
     this.onTrading = false;
 
     for (int i = 0; i <= BodyPartCount; i++) {
@@ -306,6 +308,18 @@ public class CharacterData {
 
   public Map<Integer, Integer> getSkillRecord() {
     return skillRecord;
+  }
+
+  public Map<Integer, QuestRecord> getQuestRecords() {
+    return questRecords;
+  }
+
+  public QuestRecord getQuestRecord(int questID) {
+    return questRecords.computeIfAbsent(questID, QuestRecord::new);
+  }
+
+  public void setQuestRecord(int questID, QuestRecord record) {
+    questRecords.put(questID, record);
   }
 
   public void load(ResultSet rs, byte flag) throws SQLException {

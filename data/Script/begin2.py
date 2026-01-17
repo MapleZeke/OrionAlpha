@@ -69,7 +69,7 @@ if self.inventoryGetItemCount(2010007) == 0:
       self.sayNext("Your inventory is full...")
     else:
       self.userIncEXP(10, False)
-      # TODO: Implement quest control on backend. => Set quest progress to completed.
+      self.questRecordSet(1021, "complete")
   else:
     self.sayNext("Hey, your HP is not fully recovered yet. Did you take all the #t2010007# that I gave you? Are you sure?")
 else:

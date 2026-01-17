@@ -32,5 +32,5 @@ if sel == 0:
 	self.sayNext("")
 	ret = self.askYesNo("")
 	if ret == True:
-		# TODO: Implemented quest backend handling. => Set quest to started.
+		self.questRecordSet(1010, "start")
 '''

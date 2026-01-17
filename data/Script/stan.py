@@ -33,5 +33,5 @@ if sel == 0:
 	if ret == False:
 		self.say("I guess you don't feel comfortable handling a strange letter like this. If you ever change your mind, however, please talk to me. This letter concerns me more than it should.")
 	else:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1008, "start")
 '''

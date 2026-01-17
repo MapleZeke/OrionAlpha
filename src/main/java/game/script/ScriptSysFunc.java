@@ -26,6 +26,7 @@ import common.item.ItemSlotBase;
 import common.item.ItemType;
 import common.user.CharacterStat.CharacterStatType;
 import common.user.DBChar;
+import common.user.QuestRecord;
 import game.field.Field;
 import game.field.FieldMan;
 import game.field.GameObject;
@@ -1045,6 +1046,68 @@ public class ScriptSysFunc {
       return;
     }
     getUser().onTransferField(field, field.getPortal().findPortal(portal));
+  }
+
+  /** Get quest state: 0=Not Started, 1=Started, 2=Completed */
+  public int questRecordGetState(int questID) {
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+    return record != null ? record.getState() : 0;
+  }
+
+  /** Set quest state and save to database */
+  public void questRecordSet(int questID, String state) {
+    int characterID = getUser().getCharacterID();
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+
+    if ("1".equals(state) || "start".equalsIgnoreCase(state)) {
+      record.start();
+      network.database.QuestDB.rawUpdateQuestState(characterID, questID, (byte) 1);
+    } else if ("2".equals(state) || "complete".equalsIgnoreCase(state)) {
+      record.complete();
+      network.database.QuestDB.rawUpdateQuestState(characterID, questID, (byte) 2);
+    } else if ("0".equals(state) || "reset".equalsIgnoreCase(state)) {
+      // Remove from memory by creating a fresh record
+      getUser().getCharacter().setQuestRecord(questID, new QuestRecord(questID));
+      network.database.QuestDB.rawUpdateQuestState(characterID, questID, (byte) 0);
+    }
+  }
+
+  /** Check if quest is started */
+  public boolean questRecordIsStarted(int questID) {
+    return questRecordGetState(questID) == 1;
+  }
+
+  /** Check if quest is completed */
+  public boolean questRecordIsCompleted(int questID) {
+    return questRecordGetState(questID) == 2;
+  }
+
+  /** Get quest custom data */
+  public String questRecordGetData(int questID) {
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+    return record != null ? record.getData() : "";
+  }
+
+  /** Set quest custom data */
+  public void questRecordSetData(int questID, String data) {
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+    record.setData(data);
+    network.database.QuestDB.rawSaveQuestRecord(getUser().getCharacterID(), record);
+  }
+
+  /** Get mob kill count for quest */
+  public int questMobKillGet(int questID, int mobID) {
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+    return record != null ? record.getMobKillCount(mobID) : 0;
+  }
+
+  /** Increment mob kill count */
+  public void questMobKillIncrement(int questID, int mobID) {
+    int characterID = getUser().getCharacterID();
+    QuestRecord record = getUser().getCharacter().getQuestRecord(questID);
+    record.incrementMobKill(mobID);
+    network.database.QuestDB.rawSaveMobKill(
+        characterID, questID, mobID, record.getMobKillCount(mobID));
   }
 
   private void sendMessageAnswer() {

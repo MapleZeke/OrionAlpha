@@ -35,6 +35,6 @@ if sel == 0:
 	if ret == False:
 		self.say("I'll reward you handsomely for your work so if you ever change your mind, please let me know.")
 	else:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1012, "start")
 		self.say("It won't be easy locating my son. Victoria Island is humongous. I'm guessing that he may be in a passage made of trees near Ellinia, because that's his favorite spot. Best of luck to you!")
 '''

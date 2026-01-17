@@ -34,5 +34,5 @@ if sel == 0: # Initiate Finding Sophia Quest
 	self.sayNext("")
 	ret = self.askYesNo("")
 	if ret == True:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1006, "start")
 '''

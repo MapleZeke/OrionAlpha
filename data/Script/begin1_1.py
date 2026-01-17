@@ -37,7 +37,7 @@ if sel == 0:
 	if ret == 0:
 		self.say("Don't be shy! We're all eager to see you.")
 	else:
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1000, "start")
 		self.sayNext("You've just accepted a quest! Now, check the #bMinimap#k on the left side of the screen. Press #bM#k to open/close it. It displays various colors to indiciate different people, and the blinking green figures signify residents of this world.")
 		self.say("If you look at the Minimap right now, you'll see two green spots. The left one is me, Heena, and the right one is Sera. All you need to do is move to the #bright#k, and you'll see Sera hanging her laundry.")
 '''

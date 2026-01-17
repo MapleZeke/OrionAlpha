@@ -33,5 +33,5 @@ if ret == False:
 	self.say("Awww... You aren't going to tell her?")
 else:
 	self.say("You know where my sister is, right? I mean, you just talked to her...")
-	# TODO: Implement quest control on backend. => Set quest progress to started.
+	self.questRecordSet(1003, "start")
 '''

@@ -35,5 +35,5 @@ if sel == 0:
 		self.say("Oh, you must be busy. Wouldn't it be fun to get to know some others, though?")
 	else:
 		self.say("Thanks. To enter the house, press the #bUp arrow#k on your keyboard in front of the house, just like when you use a portal.")
-		# TODO: Implement quest control on backend. => Set quest progress to started.
+		self.questRecordSet(1002, "start")
 '''

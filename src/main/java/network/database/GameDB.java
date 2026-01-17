@@ -138,6 +138,8 @@ public class GameDB {
           cd.load(rs, DBChar.QuestRecord);
         }
       }
+      // Load Quest Records
+      QuestDB.rawLoadQuestRecords(characterID, cd);
       // Initialize New Equip ItemSN/CashItemSN
       boolean updateEquip = false;
       for (ItemSlotBase item : cd.getEquipped()) {

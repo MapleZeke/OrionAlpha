@@ -128,6 +128,100 @@ OrionAlpha - A Nexon Replica Emulator Project
   * `incDropRate` -> The server's Drop Rate modifier (Nexon standard).
   * `worldName` -> The name of the world. This is sent to and displayed in the login server.
   ----------------------------------------------------------------------
+  ## Quest System
+
+OrionAlpha includes a comprehensive quest tracking system.
+
+### Database Tables
+
+The quest system uses three tables:
+- `questrecord` - Quest states (not started, started, completed)
+- `questmobkill` - Kill quest progress tracking
+- `questitemcollect` - Collection quest progress tracking
+
+### Installation
+
+Run the quest system schema:
+```bash
+mysql -u root -p orionalpha < sql/quest_system.sql
+```
+
+Or manually execute the SQL statements from `sql/quest_system.sql` in your database client.
+
+### Script API
+
+Available quest functions in NPC scripts (Python):
+
+```python
+# Check quest state (0=not started, 1=started, 2=completed)
+state = self.questRecordGetState(questID)
+
+# Start a quest
+self.questRecordSet(questID, "start")
+
+# Complete a quest
+self.questRecordSet(questID, "complete")
+
+# Reset a quest
+self.questRecordSet(questID, "reset")
+
+# Check if started/completed
+if self.questRecordIsStarted(questID):
+    # Quest is in progress
+    pass
+
+if self.questRecordIsCompleted(questID):
+    # Quest is completed
+    pass
+
+# Custom quest data (for storing quest-specific information)
+self.questRecordSetData(questID, "somedata")
+data = self.questRecordGetData(questID)
+
+# Mob kill tracking (for "kill X mobs" quests)
+count = self.questMobKillGet(questID, mobID)
+self.questMobKillIncrement(questID, mobID)
+```
+
+### Example Usage
+
+**Starting a quest when player accepts:**
+```python
+ret = self.askYesNo("Would you like to help me?")
+if ret == True:
+    self.questRecordSet(1000, "start")
+    self.say("Thank you! Go collect 10 mushrooms for me.")
+```
+
+**Completing a quest:**
+```python
+if self.inventoryGetItemCount(4000000) >= 10:
+    self.inventoryExchange(0, [4000000, -10])  # Remove items
+    self.questRecordSet(1000, "complete")
+    self.userIncEXP(100, False)
+    self.say("Thank you for your help!")
+```
+
+**Checking quest progress:**
+```python
+if self.questRecordIsStarted(1000):
+    self.say("How's the mushroom collection going?")
+elif self.questRecordIsCompleted(1000):
+    self.say("Thanks again for helping me!")
+else:
+    self.say("Would you like to help me collect mushrooms?")
+```
+
+### Testing
+
+After implementation:
+1. Create a test character
+2. Talk to NPCs to start quests (e.g., Heena in Maple Island)
+3. Check database: `SELECT * FROM questrecord WHERE CharacterID = ?;`
+4. Complete quest requirements
+5. Verify quest completion in database
+
+  ----------------------------------------------------------------------
   ## Database Configuration
 
 ### HikariCP Connection Pool
