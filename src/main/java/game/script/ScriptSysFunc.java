@@ -1066,7 +1066,8 @@ public class ScriptSysFunc {
       record.complete();
       network.database.QuestDB.rawUpdateQuestState(characterID, questID, (byte) 2);
     } else if ("0".equals(state) || "reset".equalsIgnoreCase(state)) {
-      record.setState((byte) 0);
+      // Remove from memory by creating a fresh record
+      getUser().getCharacter().setQuestRecord(questID, new QuestRecord(questID));
       network.database.QuestDB.rawUpdateQuestState(characterID, questID, (byte) 0);
     }
   }
