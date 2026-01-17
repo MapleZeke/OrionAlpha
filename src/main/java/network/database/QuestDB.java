@@ -116,11 +116,11 @@ public class QuestDB {
   }
 
   /**
-   * Update quest state (started/completed)
+   * Update quest state (started/completed/reset)
    *
    * @param characterID The character ID
    * @param questID The quest ID
-   * @param state The new state (0=None, 1=Started, 2=Completed)
+   * @param state The new state (0=None/Reset, 1=Started, 2=Completed)
    */
   public static void rawUpdateQuestState(int characterID, int questID, byte state) {
     try (Connection con = Database.getDB().poolConnection()) {
@@ -129,23 +129,29 @@ public class QuestDB {
         sql =
             "INSERT INTO `questrecord` (`CharacterID`, `QuestID`, `State`, `StartTime`) "
                 + "VALUES (?, ?, 1, ?) ON DUPLICATE KEY UPDATE `State` = 1, `StartTime` = ?";
-      } else { // Completed
+      } else if (state == 2) { // Completed
         sql =
             "UPDATE `questrecord` SET `State` = 2, `CompleteTime` = ? "
                 + "WHERE `CharacterID` = ? AND `QuestID` = ?";
+      } else { // Reset (state 0)
+        sql = "DELETE FROM `questrecord` WHERE `CharacterID` = ? AND `QuestID` = ?";
       }
 
       try (PreparedStatement ps = con.prepareStatement(sql)) {
-        long time = System.currentTimeMillis();
         if (state == 1) {
+          long time = System.currentTimeMillis();
           ps.setInt(1, characterID);
           ps.setInt(2, questID);
           ps.setLong(3, time);
           ps.setLong(4, time);
-        } else {
+        } else if (state == 2) {
+          long time = System.currentTimeMillis();
           ps.setLong(1, time);
           ps.setInt(2, characterID);
           ps.setInt(3, questID);
+        } else { // Reset - delete the quest record
+          ps.setInt(1, characterID);
+          ps.setInt(2, questID);
         }
         ps.executeUpdate();
       }
