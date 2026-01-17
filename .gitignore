@@ -40,5 +40,10 @@ nb-configuration.xml
 *.ipr
 *.iws
 
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Analysis reports
 analysis/reports/
