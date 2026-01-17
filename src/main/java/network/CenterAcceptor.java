@@ -17,15 +17,13 @@
  */
 package network;
 
-import common.OrionConfig;
+import common.NettyConfig;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.ReplayingDecoder;
 import java.net.SocketAddress;
@@ -67,13 +65,13 @@ public class CenterAcceptor {
   /** Initializes the CenterAcceptor and binds to our SocketAddress. */
   public void start() {
     try {
-      bossGroup = new NioEventLoopGroup();
-      workerGroup = new NioEventLoopGroup();
+      bossGroup = NettyTransportDetector.createBossGroup(1);
+      workerGroup = NettyTransportDetector.createWorkerGroup();
 
       channel =
           new ServerBootstrap()
               .group(bossGroup, workerGroup)
-              .channel(NioServerSocketChannel.class)
+              .channel(NettyTransportDetector.getServerChannelClass())
               .childHandler(
                   new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -83,10 +81,16 @@ public class CenterAcceptor {
                       ch.pipeline().addLast("GameSocket", socket);
                     }
                   })
-              .option(ChannelOption.SO_BACKLOG, OrionConfig.MAX_CONNECTIONS)
+              .option(ChannelOption.SO_BACKLOG, NettyConfig.SO_BACKLOG)
+              .option(ChannelOption.SO_REUSEADDR, NettyConfig.SO_REUSEADDR)
               .option(ChannelOption.ALLOCATOR, new PooledByteBufAllocator(true))
-              .childOption(ChannelOption.TCP_NODELAY, true)
-              .childOption(ChannelOption.SO_KEEPALIVE, true)
+              .childOption(ChannelOption.TCP_NODELAY, NettyConfig.TCP_NODELAY)
+              .childOption(ChannelOption.SO_KEEPALIVE, NettyConfig.SO_KEEPALIVE)
+              .childOption(ChannelOption.SO_RCVBUF, NettyConfig.SO_RCVBUF)
+              .childOption(ChannelOption.SO_SNDBUF, NettyConfig.SO_SNDBUF)
+              .childOption(
+                  ChannelOption.WRITE_BUFFER_WATER_MARK, NettyConfig.WRITE_BUFFER_WATER_MARK)
+              .childOption(ChannelOption.AUTO_READ, NettyConfig.AUTO_READ)
               .bind(addr)
               .syncUninterruptibly()
               .channel()

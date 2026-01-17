@@ -26,9 +26,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.ReplayingDecoder;
 import java.io.IOException;
@@ -37,6 +35,7 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.json.JsonObject;
+import network.NettyTransportDetector;
 import network.ShopAcceptor;
 import network.packet.CenterPacket;
 import network.packet.InPacket;
@@ -66,7 +65,7 @@ public class CenterSocket extends SimpleChannelInboundHandler {
     this.closePosted = false;
     this.lock = new ReentrantLock();
     this.lockSend = new ReentrantLock();
-    this.workerGroup = new NioEventLoopGroup();
+    this.workerGroup = NettyTransportDetector.createWorkerGroup();
   }
 
   @Override
@@ -110,7 +109,7 @@ public class CenterSocket extends SimpleChannelInboundHandler {
       bootstrap =
           new Bootstrap()
               .group(workerGroup)
-              .channel(NioSocketChannel.class)
+              .channel(NettyTransportDetector.getClientChannelClass())
               .option(ChannelOption.SO_KEEPALIVE, true)
               .handler(
                   new ChannelInitializer<SocketChannel>() {

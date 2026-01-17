@@ -17,7 +17,7 @@
  */
 package network;
 
-import common.OrionConfig;
+import common.NettyConfig;
 import game.GameApp;
 import game.user.ClientSocket;
 import game.user.ClientSocket.MigrateState;
@@ -27,9 +27,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.ScheduledFuture;
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -136,13 +134,13 @@ public class GameAcceptor {
   /** Initializes the GameAcceptor and binds to our SocketAddress. */
   public void start() {
     try {
-      bossGroup = new NioEventLoopGroup(1);
-      workerGroup = new NioEventLoopGroup();
+      bossGroup = NettyTransportDetector.createBossGroup(1);
+      workerGroup = NettyTransportDetector.createWorkerGroup();
 
       channel =
           new ServerBootstrap()
               .group(bossGroup, workerGroup)
-              .channel(NioServerSocketChannel.class)
+              .channel(NettyTransportDetector.getServerChannelClass())
               .childHandler(
                   new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -168,10 +166,16 @@ public class GameAcceptor {
                       }
                     }
                   })
-              .option(ChannelOption.SO_BACKLOG, OrionConfig.MAX_CONNECTIONS)
+              .option(ChannelOption.SO_BACKLOG, NettyConfig.SO_BACKLOG)
+              .option(ChannelOption.SO_REUSEADDR, NettyConfig.SO_REUSEADDR)
               .option(ChannelOption.ALLOCATOR, new PooledByteBufAllocator(true))
-              .childOption(ChannelOption.TCP_NODELAY, true)
-              .childOption(ChannelOption.SO_KEEPALIVE, true)
+              .childOption(ChannelOption.TCP_NODELAY, NettyConfig.TCP_NODELAY)
+              .childOption(ChannelOption.SO_KEEPALIVE, NettyConfig.SO_KEEPALIVE)
+              .childOption(ChannelOption.SO_RCVBUF, NettyConfig.SO_RCVBUF)
+              .childOption(ChannelOption.SO_SNDBUF, NettyConfig.SO_SNDBUF)
+              .childOption(
+                  ChannelOption.WRITE_BUFFER_WATER_MARK, NettyConfig.WRITE_BUFFER_WATER_MARK)
+              .childOption(ChannelOption.AUTO_READ, NettyConfig.AUTO_READ)
               .bind(addr)
               .syncUninterruptibly()
               .channel()
