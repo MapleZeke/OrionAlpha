@@ -36,5 +36,5 @@ if self.UserGetJob() == 400 and self.UserGetLevel() >= 30:
             self.sayNext("Really... alright, I'll let you out. Please don't give up, though. You can always try again, so do not give up. Until then, bye...")
             self.RegisterTransferField(102040000, "")
 else:
-    self.sayNext("What are you doing here? This is for thiefs who are ready for advancement.")
+    self.sayNext("What are you doing here? This is for thieves who are ready for advancement.")
     self.RegisterTransferField(102040000, "")
