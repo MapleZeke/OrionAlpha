@@ -23,7 +23,7 @@ Script: Potion NPC (Quest Required)
 Quest: Jane and the Wild Boar
 '''
 
-val = "" # self.questRecordGetState(2013)
+val = self.questRecordGet(2013)
 isBeginner = self.userGetJob() == 0
 potionInfo = {}
 
@@ -43,11 +43,7 @@ potionInfo[2] = {
 	"Recovery": "800 MP"
 }
 
-# TODO: Implement quest handling for Jane and the Wild Boar
-if self.userGetLevel() >= 25 and isBeginner == False:
-	val = "2"
-
-if val == "2":
+if val == "complete":
 	self.sayNext("It's you... thanks to you I was able to get a lot done. Nowadays I've been making a bunch of items. If you need anything let me know.")
 
 	text = "Which item would you like to buy?#b"
@@ -62,16 +58,19 @@ if val == "2":
 		if retBuy == 0:
 			self.sayNext("I still have quite a few of the materials you got me before. The items are all there so take your time choosing.")
 		else:
-			ret = self.inventoryExchange(-price, [potionInfo[sel]["Item"], retNum])
+			ret = self.inventoryExchange(-price, potionInfo[sel]["Item"], retNum)
 			if (ret == False): 
 				self.say("Are you lacking mesos by any chance? Please check and see if you have an empty slot available at your etc. inventory, and if you have at least #r" + str(price) + "#k mesos with you.")
 			else:
 				self.sayNext("Thank you for coming. Stuff here can always be made so if you need something, please come again.")
-elif self.userGetLevel() >= 40 and isBeginner == False:
-	# Voc?s?poder?comprar a po豫o depois de tomar conta dos meus pedidos.
-	self.sayNext("You may purchase my potions once you have taken care of my orders.")
-elif self.userGetLevel() >= 25 and isBeginner == False:
-	self.sayNext("You don't seem strong enough to be able to purchase my potion...")
+elif val == "start":
+	self.say("Have you taken care of the Wild Boars yet? Please come back once you've completed your task!")
+elif self.userGetLevel() >= 15 and isBeginner == False and val == "":
+	self.say("My dream is to travel everywhere, much like you. My father, however, does not allow me to do it, because he thinks it's very dangerous. He may say yes, though, if I show him some sort of a proof that I'm not the weak girl that he thinks I am...")
+	ret = self.askYesNo("Can you help me? I need you to take care of some #bWild Boars#k to prove that I can handle myself. Will you help me?")
+	if ret == True:
+		self.questRecordSet(2013, "start")
+		self.say("Thank you so much! Please be careful out there!")
 else:
 	self.say("My dream is to travel everywhere, much like you. My father, however, does not allow me to do it, because he thinks it's very dangerous. He may say yes, though, if I show him some sort of a proof that I'm not the weak girl that he thinks I am...")
 

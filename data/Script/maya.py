@@ -22,15 +22,12 @@ NPC: Maya
 Quest: Maya of Henesys (Maya and the Weird Medicine)
 '''
 
-# TODO: Implement Maya of Henesys quest handling.
 prompt = "Cough... Cough... Ah... Headache... Can somebody help me?..."
-self.say(prompt)
 
-'''
 sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Maya of Henesys#l#k")
 if sel == 0:
-	self.sayNext("")
-	ret = self.askYesNo("")
+	self.sayNext("I'm feeling very sick right now... I think I need some medicine. Can you help me get some #bWeird Medicine#k?")
+	ret = self.askYesNo("The medicine I need is very rare, but if you can find it, I'll be forever grateful. Will you help me?")
 	if ret == True:
 		self.questRecordSet(1010, "start")
-'''
+		self.say("Thank you so much! Please bring me the Weird Medicine as soon as you can. I really need it...")

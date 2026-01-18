@@ -22,18 +22,14 @@ NPC: Alex
 Quest: Alex's Request
 '''
 
-# TODO: Implement Alex's Request quest handling.
 prompt = "It's been a months since I ran away from home, and frankly I'm sick of wandering around strange places now. But I feel weird about going home..."
-self.say(prompt)
 
-'''
 sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Alex's Request#l#k")
 if sel == 0:
-	self.sayNext("")
+	self.sayNext("I ran away from home because my dad and I had a huge fight. I was young and stupid, and now I regret it. But I'm too scared to go back...")
 	ret = self.askYesNo("I don't think my dad will just let me walk back in the door... Not without beating the bejeebus out of me. Can you find a way to calm him down? I need your help, man.")
 	if ret == False:
 		self.say("You can't do me a favor because I'm an immature kid who ran away from home, right? I understand, but I'm trying to... Ah, nevermind.")
 	else:
-		self.sayNext("")
-		self.say("")
-'''
+		self.sayNext("Thank you! My dad lives in Perion. His name is... well, just ask around for 'Alex's father' and they'll point you in the right direction.")
+		self.say("Please tell him that I'm sorry and that I want to come home. Maybe if you talk to him, he'll calm down and let me come back.")

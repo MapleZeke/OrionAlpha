@@ -22,11 +22,8 @@ NPC: Nina
 Quest: Nina's Brother Sen
 '''
 
-# TODO: Implement Nina's Brother Sen quest handling.
 prompt = "I wonder what #bSen#k is up to..."
-self.say(prompt)
 
-'''
 sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Nina's Brother Sen#l#k")
 if sel == 0:
 	self.sayNext("Oh, hello traveler! Good thing you're here, I need your help! Head to the right a bit, and you'll see a #bhouse with a yellow roof#k. That's my house, and my baby brother #bSen#k is the only one inside right now.")
@@ -36,4 +33,3 @@ if sel == 0:
 	else:
 		self.say("Thanks. To enter the house, press the #bUp arrow#k on your keyboard in front of the house, just like when you use a portal.")
 		self.questRecordSet(1002, "start")
-'''
