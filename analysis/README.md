@@ -110,5 +110,5 @@ python3 analysis/run_analysis.py
 **Key Findings:**
 - Zero orphan scripts (all scripts are referenced by NPCs)
 - All shop-only NPCs work automatically from WZ data
-- All functional NPCs (excluding decoration) are at 91% completion
+- Overall functional NPC implementation is 91% complete (81 of 89 NPCs working)
 - Remaining 8 NPCs have stub scripts with TODO comments for porting from JavaScript
