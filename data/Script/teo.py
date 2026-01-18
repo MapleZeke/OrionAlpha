@@ -22,17 +22,13 @@ NPC: Teo
 Quest: Maya of Henesys (Maya and the Weird Medicine), Finding Sophia
 '''
 
-# TODO: Implement Maya of Henesys quest handling.
-# TODO: Implement Finding Sophia quest handling.
 prompt = "I heard that Maya is sick again. Tragic..."
-self.say(prompt)
 
-'''
-sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Maya of Henesys#l#k") # After completing the dialogue, even if declining, this changes to 'Finding Sophia'.
-if sel == 0: # Initiate Finding Sophia Quest
-	self.sayNext("")
-	self.sayNext("")
-	ret = self.askYesNo("")
+sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Maya of Henesys#l#k")
+if sel == 0:
+	self.sayNext("You know about #bMaya of Henesys#k? She's been sick for quite some time now. I've been worried about her, but what can I do? I can't exactly cure her myself.")
+	self.sayNext("If you happen to see her, please let her know that I hope she feels better soon. I'm sure she'd appreciate a visitor!")
+	ret = self.askYesNo("Actually, on second thought, I have a favor to ask of you. Would you be willing to find #bSophia#k for me? She lives in Lith Harbor, and I need to get a message to her.")
 	if ret == True:
 		self.questRecordSet(1006, "start")
-'''
+		self.say("Thank you so much! Please find Sophia in Lith Harbor and let her know that I need to speak with her. I really appreciate your help!")

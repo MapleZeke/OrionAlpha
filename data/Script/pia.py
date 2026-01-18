@@ -22,15 +22,12 @@ NPC: Pia
 Quest: Pia and the Blue Mushroom
 '''
 
-# TODO: Implement Pia and the Blue Mushroom quest handling.
 prompt = "Ah~! It is really getting to me!!! Blue Mushroom... Oh... Are you a stranger?"
-self.say(prompt)
 
-'''
 sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Pia and the Blue Mushroom#l#k")
 if sel == 0:
-	self.sayNext("")
-	ret = self.askYesNo("")
+	self.sayNext("You must be new around here. I'm Pia, and I need your help! I've been having nightmares about Blue Mushrooms lately. They're everywhere!")
+	ret = self.askYesNo("Can you please hunt down some Blue Mushrooms for me? If you bring me #b15 Blue Mushroom Caps#k, I'll feel much better. Will you help me?")
 	if ret == True:
 		self.questRecordSet(1011, "start")
-'''
+		self.say("Thank you! Please bring me 15 Blue Mushroom Caps. You can get them by defeating Blue Mushrooms in the forest nearby.")

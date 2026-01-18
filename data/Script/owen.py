@@ -22,21 +22,22 @@ NPC: Arwen the Fairy
 Quest: Arwen and Ellinia
 '''
 
-# TODO: Implement Arwen and Ellinia quest handling.
-prompt = "I lost a very important item ..."
-self.say(prompt)
-
-'''
-sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Arwen and Ellinia#l#k")
-if sel == 0:
-  ret = self.askYesNo("A few days ago, on my way back to Ellinia, I got ambushed by a monster, which made me run for my life. Ever since then, even if I wanted to venture outside Ellinia, just the thought of that monster waiting for me scares me to death. Can you please take care of those monsters?")
-  if ret == False:
-    self.say("I see... the thought of not being able to go outside for a while is just terrible... If you ever change your mind, please come talk to me.")
-  else:
-    self.questRecordSet(1014, "start")
-    self.sayNext("Thank you so much. Once you take care of those monsters, then and only then will I feel safe to walk out of Ellinia.")
-    self.say("Now, on your way back to Ellinia, please eliminate #b100 Green Mushrooms#k. Then myself or others like me won't feel threatened to go out of Ellinia for a little while.")
-'''
+val = self.questRecordGet(1014)
+if val == "start":
+	# Check if quest is complete (would need monster kill tracking)
+	self.say("Have you defeated 100 Green Mushrooms yet? Please keep working on it! Once you're done, I'll feel safe to leave Ellinia again.")
+else:
+	prompt = "I lost a very important item ..."
+	
+	sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Arwen and Ellinia#l#k")
+	if sel == 0:
+		ret = self.askYesNo("A few days ago, on my way back to Ellinia, I got ambushed by a monster, which made me run for my life. Ever since then, even if I wanted to venture outside Ellinia, just the thought of that monster waiting for me scares me to death. Can you please take care of those monsters?")
+		if ret == False:
+			self.say("I see... the thought of not being able to go outside for a while is just terrible... If you ever change your mind, please come talk to me.")
+		else:
+			self.questRecordSet(1014, "start")
+			self.sayNext("Thank you so much. Once you take care of those monsters, then and only then will I feel safe to walk out of Ellinia.")
+			self.say("Now, on your way back to Ellinia, please eliminate #b100 Green Mushrooms#k. Then myself or others like me won't feel threatened to go out of Ellinia for a little while.")
 
 # Moon and Star Rocks don't exist in this version yet. Whoops..
 '''

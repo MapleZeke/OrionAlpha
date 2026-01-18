@@ -22,16 +22,12 @@ NPC: Sera
 Quest: Heena and Sera
 '''
 
-# TODO: Implement Heena and Sera quest handling.
-prompt = "It is a fine day for laundry. Wouldn't you agree?"
-self.say(prompt)
-
-'''
-sel = self.askMenu(prompt + "\r\n\r\n#b#L0#Heena and Sera#l#k") 
-if sel == 0:
+val = self.questRecordGet(1000)
+if val == "start":
 	self.say("Oh, hello there! You must be a new traveler! Did you just talk to Heena?")
 	self.questRecordSet(1000, "complete")
 	self.userIncEXP(5, False)
-	self.sayNext("Maple Island may be small, but it's also the perfect place for me to meet new travelers. There's nothing quite like making new friends. " + self.getUser().getCharacterName() + ", hopefully you will make lots of new friends here too.")
+	self.sayNext("Maple Island may be small, but it's also the perfect place for me to meet new travelers. There's nothing quite like making new friends. " + self.userGetCharacterName() + ", hopefully you will make lots of new friends here too.")
 	self.say("To continue, use the #bportal#k located to the right. See that spot on the ground that's glowing? That's the portal. Step in it and press the #bUp#k arrow key. I'll now bid you adieu. May your journey be blessed!")
-'''
+else:
+	self.say("It is a fine day for laundry. Wouldn't you agree?")

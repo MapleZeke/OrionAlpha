@@ -22,16 +22,15 @@ NPC: Sen
 Quest: Nina's Brother Sen
 '''
 
-# TODO: Implement Nina's Brother Sen quest handling.
-# TODO: Implement Nina's Request quest handling.
-prompt = "There is nothing to eat in here. My poor tummy..."
-self.say(prompt)
-
-'''
-ret = self.askYesNo("")
-if ret == False:
-	self.say("Awww... You aren't going to tell her?")
+val = self.questRecordGet(1002)
+if val == "start":
+	self.say("Who are you? What do you want from me? Oh, my sister sent you? She wants to give me a gift?")
+	self.sayNext("Yeah, well, I could use some #bOranges#k. I heard they taste great, and I want to have one! Tell her that!")
+	ret = self.askYesNo("You want me to go tell her now?")
+	if ret == False:
+		self.say("Awww... You aren't going to tell her?")
+	else:
+		self.say("You know where my sister is, right? I mean, you just talked to her...")
+		self.questRecordSet(1003, "start")
 else:
-	self.say("You know where my sister is, right? I mean, you just talked to her...")
-	self.questRecordSet(1003, "start")
-'''
+	self.say("There is nothing to eat in here. My poor tummy...")

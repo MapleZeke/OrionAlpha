@@ -22,25 +22,24 @@ NPC: Blackbull
 Quest: Fixing Blackbull's House
 '''
 
-# TODO: Implement Fixing Blackbull's House quest handling.
-prompt = "Our family grew, and I'll have to fix the house to make it bigger, but I need materials to do so..."
-self.say(prompt)
-
-'''
-	This doesn't exist in BMS nor Orion, so all we have are old references.
-
-	=> Dialogue
-		=> AskYesNo
-			=> Start Quest
-
-	Quest:
-		- 30 Tree Branch from Stump
-		- 50 Firewood from Axe Stump or Dark Axe Stump
-
-	=> Complete Quest
-		=> Rewards
-
-	Rewards:
-		- 50 EXP
-		- 1 Steel Shield or 1 Red Triangular Shield (Random Reward)
-'''
+# Check if player has the required items
+if self.inventoryItemCount(4000001) >= 30 and self.inventoryItemCount(4000018) >= 50:
+	self.sayNext("Oh! You brought me the materials I need! Thank you so much!")
+	ret = self.inventoryExchange(0, 4000001, -30, 4000018, -50)
+	if ret == True:
+		self.userIncEXP(50, False)
+		# Random reward: Steel Shield or Red Triangular Shield
+		import random
+		if random.randint(0, 1) == 0:
+			self.inventoryExchange(0, 1092002, 1)  # Steel Shield
+		else:
+			self.inventoryExchange(0, 1092004, 1)  # Red Triangular Shield
+		self.say("Here's a little something for your trouble. Thanks for helping me expand my house!")
+	else:
+		self.say("You don't have enough space in your inventory. Please make some room and come back.")
+else:
+	prompt = "Our family grew, and I'll have to fix the house to make it bigger, but I need materials to do so..."
+	self.sayNext(prompt)
+	ret = self.askYesNo("Can you help me gather the materials I need? I need #b30 Tree Branches#k from Stumps and #b50 Firewood#k from Axe Stumps. Will you help me?")
+	if ret == True:
+		self.say("Thank you! Please bring me 30 Tree Branches and 50 Firewood. I'll be waiting here!")

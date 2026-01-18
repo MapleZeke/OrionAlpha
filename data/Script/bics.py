@@ -22,6 +22,8 @@ NPC: Biggs
 Quest: Bigg's Collection of Items
 '''
 
-# TODO: Implement Bigg's Collection of Items quest handling.
 prompt = "I can't stay in this town forever. Someone rescue me!"
-self.say(prompt)
+self.sayNext(prompt)
+ret = self.askYesNo("I'm Biggs, and I collect various items. If you bring me certain items, I can reward you for your efforts. Are you interested in helping me?")
+if ret == True:
+	self.say("Great! Come back when you have some items I might be interested in. I'll let you know what I need.")

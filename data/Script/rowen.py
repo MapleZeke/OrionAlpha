@@ -22,6 +22,8 @@ NPC: Rowen the Fairy
 Quest: Collecting 100 Cursed Dolls (Requires 'A Clue to the Secret Book' Completion)
 '''
 
-# TODO: Implement Collecting 100 Cursed Dolls quest handling.
-prompt = "Do you need me for something? Please don't bother me unless you need me right this minute."
-self.say(prompt)
+val = self.questRecordGet(1012)
+if val == "complete":
+	self.say("Thank you for helping Mr. Wetbottom recover his book. If you need anything else, let me know.")
+else:
+	self.say("Do you need me for something? Please don't bother me unless you need me right this minute.")
