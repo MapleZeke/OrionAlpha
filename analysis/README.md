@@ -95,3 +95,20 @@ python3 analysis/run_analysis.py
 
 - `analysis/reports/npc_analysis.json` - Full NPC categorization data
 - `analysis/reports/NPC_REPORT.md` - Human-readable report with priorities
+
+### Current Status (as of latest analysis)
+
+**Overall Completion: 91.0%**
+
+- ✅ **53 Quest NPCs** - Fully implemented with working scripts
+- ✅ **21 Shop NPCs** - Auto-working from WZ data (no script needed)
+- ⬜ **7 Decoration NPCs** - Visual only, no interaction needed
+- ❌ **8 NPCs** - Still need script implementation:
+  - 3 Job Advancement NPCs (change_swordman, change_magician, change_rogue)
+  - 5 Refining/Crafting NPCs (refine_henesys, refine_perion, refine_perion2, refine_ellinia, refine_sleepy)
+
+**Key Findings:**
+- Zero orphan scripts (all scripts are referenced by NPCs)
+- All shop-only NPCs work automatically from WZ data
+- Overall functional NPC implementation is 91% complete (81 of 89 NPCs working)
+- Remaining 8 NPCs have stub scripts with TODO comments for porting from JavaScript
