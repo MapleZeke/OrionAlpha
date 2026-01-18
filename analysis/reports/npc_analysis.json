@@ -1,0 +1,4842 @@
+{
+  "stats": {
+    "total_npcs_in_wz": 89,
+    "total_scripts": 56,
+    "working_npcs": 81,
+    "needs_implementation": 8,
+    "completion_percentage": 91.0,
+    "category_breakdown": {
+      "QUEST_ONLY": 53,
+      "SHOP_ONLY": 21,
+      "QUEST_AND_SHOP": 0,
+      "SCRIPTED_OTHER": 0,
+      "DECORATION": 7,
+      "NEEDS_SCRIPT": 8,
+      "SCRIPT_EXISTS_NO_NPC": 0
+    },
+    "shop_npcs_auto_working": 21,
+    "quest_npcs_working": 53,
+    "decoration_npcs": 7
+  },
+  "categories": {
+    "QUEST_ONLY": [
+      {
+        "id": "1052100",
+        "name": "원장 나탈리",
+        "quest_script": "hair_kerning1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052101",
+        "name": "보조 브리트니",
+        "quest_script": "hair_kerning2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1022002",
+        "name": "만지",
+        "quest_script": "manji",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052000",
+        "name": "알렉스",
+        "quest_script": "alex",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0022000",
+        "name": "샹크스",
+        "quest_script": "begin7",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1012000",
+        "name": "메이플운수 중형택시",
+        "quest_script": "goRith",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1012003",
+        "name": "장로 스탄",
+        "quest_script": "stan",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0012000",
+        "name": "루카스",
+        "quest_script": "begin6_2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052002",
+        "name": "뒷골목의 제이엠",
+        "quest_script": "refine_kerning",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002001",
+        "name": "센",
+        "quest_script": "begin3_2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1012100",
+        "name": "헬레나",
+        "quest_script": "bowman",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1072007",
+        "name": "도적 전직교관",
+        "quest_script": "inside_rogue",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1032001",
+        "name": "하인즈",
+        "quest_script": "magician",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1072005",
+        "name": "마법사 전직교관",
+        "quest_script": "inside_magician",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002000",
+        "name": "로저",
+        "quest_script": "begin2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1002001",
+        "name": "테오",
+        "quest_script": "teo",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0012101",
+        "name": "레인",
+        "quest_script": "rein",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1022000",
+        "name": "주먹펴고 일어서",
+        "quest_script": "fighter",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1040001",
+        "name": "마이크",
+        "quest_script": "ruke",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1012101",
+        "name": "마야",
+        "quest_script": "maya",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1061003",
+        "name": "시워언해",
+        "quest_script": "cool",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1010100",
+        "name": "리나",
+        "quest_script": "rina",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1072004",
+        "name": "전사 전직교관",
+        "quest_script": "inside_swordman",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1061004",
+        "name": "로니",
+        "quest_script": "rony",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1072002",
+        "name": "궁수 전직교관",
+        "quest_script": "change_archer",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052004",
+        "name": "원장 덴마",
+        "quest_script": "face_henesys1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1020000",
+        "name": "돼지와 함께 춤을",
+        "quest_script": "wood",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1061100",
+        "name": "호텔 안내원",
+        "quest_script": "hotel1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052005",
+        "name": "의사 돌팔이",
+        "quest_script": "face_henesys2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002002",
+        "name": "피터",
+        "quest_script": "begin4",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0020002",
+        "name": "빅스",
+        "quest_script": "bics",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1032101",
+        "name": "요정 로웬",
+        "quest_script": "rowen",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002100",
+        "name": "세라",
+        "quest_script": "begin1_2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002102",
+        "name": "니나",
+        "quest_script": "begin3_1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0000070",
+        "name": "반스",
+        "quest_script": "fighter",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1032100",
+        "name": "요정 아르웬",
+        "quest_script": "owen",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1022100",
+        "name": "소피아",
+        "quest_script": "sopia",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0020001",
+        "name": "바리",
+        "quest_script": "bari",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1022001",
+        "name": "메이플운수 중형택시",
+        "quest_script": "goRith",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1032000",
+        "name": "메이플운수 중형택시",
+        "quest_script": "goRith",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1072006",
+        "name": "궁수 전직교관",
+        "quest_script": "inside_archer",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0010000",
+        "name": "피오",
+        "quest_script": "pio",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0000180",
+        "name": "에블라",
+        "quest_script": "magician",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002103",
+        "name": "마리아",
+        "quest_script": "begin6_1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0020000",
+        "name": "존",
+        "quest_script": "weapon",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1002000",
+        "name": "필",
+        "quest_script": "rithTeleport",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1002100",
+        "name": "제인",
+        "quest_script": "jane",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002101",
+        "name": "히나",
+        "quest_script": "begin1_1",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1040000",
+        "name": "루크",
+        "quest_script": "ruke",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052003",
+        "name": "크리스",
+        "quest_script": "refine_kerning2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1052001",
+        "name": "다크로드",
+        "quest_script": "rogue",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "0002003",
+        "name": "로빈",
+        "quest_script": "begin5",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      },
+      {
+        "id": "1012102",
+        "name": "피아",
+        "quest_script": "pia",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": true
+      }
+    ],
+    "SHOP_ONLY": [
+      {
+        "id": "1051001",
+        "name": "마파",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 114,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1051002",
+        "name": "소문난",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 28,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1011100",
+        "name": "루나",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 25,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1021100",
+        "name": "그레고리 손",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 30,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1031000",
+        "name": "요정 플로라",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 11,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0000220",
+        "name": "루시",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 34,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0011000",
+        "name": "시드",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 4,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1001000",
+        "name": "실버",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 6,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1061002",
+        "name": "시원해",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 13,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1031001",
+        "name": "요정 세라비",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 66,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1061001",
+        "name": "24시간 포장마차",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 17,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1011000",
+        "name": "칼",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 13,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0021000",
+        "name": "판",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 13,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1001001",
+        "name": "나타샤",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 38,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0011100",
+        "name": "루시",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 5,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1021001",
+        "name": "해리",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 72,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1051000",
+        "name": "만슈타인",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 17,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1021000",
+        "name": "리버",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 30,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1011001",
+        "name": "샘",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 101,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1031100",
+        "name": "요정 렌",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 22,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1001100",
+        "name": "미나",
+        "quest_script": null,
+        "has_shop": true,
+        "shop_item_count": 19,
+        "script_exists": null,
+        "script_working": false
+      }
+    ],
+    "QUEST_AND_SHOP": [],
+    "SCRIPTED_OTHER": [],
+    "DECORATION": [
+      {
+        "id": "1012103",
+        "name": "원장 나탈리",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0020100",
+        "name": "유나",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1012001",
+        "name": "원장 돌팔이",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0012100",
+        "name": "마이",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0000090",
+        "name": "라덴",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "0000110",
+        "name": "필",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      },
+      {
+        "id": "1012104",
+        "name": "보조 브리트니",
+        "quest_script": null,
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": null,
+        "script_working": false
+      }
+    ],
+    "NEEDS_SCRIPT": [
+      {
+        "id": "1061000",
+        "name": "크리슈라마",
+        "quest_script": "refine_sleepy",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1072003",
+        "name": "도적 전직교관",
+        "quest_script": "change_rogue",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1072001",
+        "name": "마법사 전직교관",
+        "quest_script": "change_magician",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1012002",
+        "name": "비셔스",
+        "quest_script": "refine_henesys",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1022004",
+        "name": "스미스",
+        "quest_script": "refine_perion2",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1022003",
+        "name": "선더",
+        "quest_script": "refine_perion",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1032002",
+        "name": "에뜨랑",
+        "quest_script": "refine_ellinia",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      },
+      {
+        "id": "1072000",
+        "name": "전사 전직교관",
+        "quest_script": "change_swordman",
+        "has_shop": false,
+        "shop_item_count": 0,
+        "script_exists": true,
+        "script_working": false,
+        "reason": "Script exists but is stubbed/broken"
+      }
+    ],
+    "SCRIPT_EXISTS_NO_NPC": []
+  },
+  "npcs": {
+    "1061000": {
+      "id": "1061000",
+      "file": "Npc/1061000.img.xml",
+      "name": "크리슈라마",
+      "quest": "refine_sleepy",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1052100": {
+      "id": "1052100",
+      "file": "Npc/1052100.img.xml",
+      "name": "원장 나탈리",
+      "quest": "hair_kerning1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1051001": {
+      "id": "1051001",
+      "file": "Npc/1051001.img.xml",
+      "name": "마파",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1002122,
+          "price": 900
+        },
+        {
+          "itemID": 1002123,
+          "price": 900
+        },
+        {
+          "itemID": 1002124,
+          "price": 900
+        },
+        {
+          "itemID": 1002125,
+          "price": 900
+        },
+        {
+          "itemID": 1002126,
+          "price": 900
+        },
+        {
+          "itemID": 1002001,
+          "price": 3000
+        },
+        {
+          "itemID": 1002107,
+          "price": 4000
+        },
+        {
+          "itemID": 1002108,
+          "price": 4000
+        },
+        {
+          "itemID": 1002109,
+          "price": 4000
+        },
+        {
+          "itemID": 1002110,
+          "price": 4000
+        },
+        {
+          "itemID": 1002111,
+          "price": 4000
+        },
+        {
+          "itemID": 1002127,
+          "price": 12000
+        },
+        {
+          "itemID": 1002128,
+          "price": 12000
+        },
+        {
+          "itemID": 1002129,
+          "price": 12000
+        },
+        {
+          "itemID": 1002130,
+          "price": 12000
+        },
+        {
+          "itemID": 1002131,
+          "price": 12000
+        },
+        {
+          "itemID": 1002020,
+          "price": 7400
+        },
+        {
+          "itemID": 1002096,
+          "price": 7400
+        },
+        {
+          "itemID": 1002097,
+          "price": 7400
+        },
+        {
+          "itemID": 1002146,
+          "price": 20000
+        },
+        {
+          "itemID": 1002147,
+          "price": 20000
+        },
+        {
+          "itemID": 1002148,
+          "price": 20000
+        },
+        {
+          "itemID": 1002149,
+          "price": 20000
+        },
+        {
+          "itemID": 1002150,
+          "price": 20000
+        },
+        {
+          "itemID": 1002171,
+          "price": 30000
+        },
+        {
+          "itemID": 1002172,
+          "price": 30000
+        },
+        {
+          "itemID": 1002173,
+          "price": 30000
+        },
+        {
+          "itemID": 1002174,
+          "price": 30000
+        },
+        {
+          "itemID": 1002175,
+          "price": 30000
+        },
+        {
+          "itemID": 1040031,
+          "price": 3000
+        },
+        {
+          "itemID": 1040032,
+          "price": 3000
+        },
+        {
+          "itemID": 1040033,
+          "price": 3000
+        },
+        {
+          "itemID": 1040034,
+          "price": 5000
+        },
+        {
+          "itemID": 1040035,
+          "price": 5000
+        },
+        {
+          "itemID": 1040042,
+          "price": 9000
+        },
+        {
+          "itemID": 1040043,
+          "price": 9000
+        },
+        {
+          "itemID": 1040044,
+          "price": 9000
+        },
+        {
+          "itemID": 1040048,
+          "price": 16000
+        },
+        {
+          "itemID": 1040049,
+          "price": 16000
+        },
+        {
+          "itemID": 1040050,
+          "price": 16000
+        },
+        {
+          "itemID": 1040057,
+          "price": 45000
+        },
+        {
+          "itemID": 1040058,
+          "price": 45000
+        },
+        {
+          "itemID": 1040059,
+          "price": 45000
+        },
+        {
+          "itemID": 1040060,
+          "price": 45000
+        },
+        {
+          "itemID": 1041036,
+          "price": 3000
+        },
+        {
+          "itemID": 1041037,
+          "price": 3000
+        },
+        {
+          "itemID": 1041038,
+          "price": 3000
+        },
+        {
+          "itemID": 1041044,
+          "price": 5000
+        },
+        {
+          "itemID": 1041045,
+          "price": 5000
+        },
+        {
+          "itemID": 1041003,
+          "price": 9000
+        },
+        {
+          "itemID": 1041039,
+          "price": 9000
+        },
+        {
+          "itemID": 1041040,
+          "price": 9000
+        },
+        {
+          "itemID": 1041047,
+          "price": 45000
+        },
+        {
+          "itemID": 1041048,
+          "price": 45000
+        },
+        {
+          "itemID": 1041049,
+          "price": 45000
+        },
+        {
+          "itemID": 1041050,
+          "price": 45000
+        },
+        {
+          "itemID": 1041057,
+          "price": 18000
+        },
+        {
+          "itemID": 1041058,
+          "price": 18000
+        },
+        {
+          "itemID": 1041059,
+          "price": 18000
+        },
+        {
+          "itemID": 1041060,
+          "price": 18000
+        },
+        {
+          "itemID": 1060021,
+          "price": 2800
+        },
+        {
+          "itemID": 1060022,
+          "price": 2800
+        },
+        {
+          "itemID": 1060023,
+          "price": 2800
+        },
+        {
+          "itemID": 1060024,
+          "price": 4800
+        },
+        {
+          "itemID": 1060025,
+          "price": 4800
+        },
+        {
+          "itemID": 1060031,
+          "price": 8000
+        },
+        {
+          "itemID": 1060032,
+          "price": 8000
+        },
+        {
+          "itemID": 1060033,
+          "price": 8000
+        },
+        {
+          "itemID": 1060037,
+          "price": 19000
+        },
+        {
+          "itemID": 1060038,
+          "price": 19000
+        },
+        {
+          "itemID": 1060039,
+          "price": 19000
+        },
+        {
+          "itemID": 1060043,
+          "price": 40000
+        },
+        {
+          "itemID": 1060044,
+          "price": 40000
+        },
+        {
+          "itemID": 1060045,
+          "price": 40000
+        },
+        {
+          "itemID": 1060046,
+          "price": 40000
+        },
+        {
+          "itemID": 1061029,
+          "price": 2800
+        },
+        {
+          "itemID": 1061030,
+          "price": 2800
+        },
+        {
+          "itemID": 1061031,
+          "price": 2800
+        },
+        {
+          "itemID": 1061037,
+          "price": 4800
+        },
+        {
+          "itemID": 1061038,
+          "price": 4800
+        },
+        {
+          "itemID": 1061003,
+          "price": 8000
+        },
+        {
+          "itemID": 1061032,
+          "price": 8000
+        },
+        {
+          "itemID": 1061033,
+          "price": 8000
+        },
+        {
+          "itemID": 1061040,
+          "price": 12000
+        },
+        {
+          "itemID": 1061041,
+          "price": 12000
+        },
+        {
+          "itemID": 1061042,
+          "price": 12000
+        },
+        {
+          "itemID": 1061053,
+          "price": 18000
+        },
+        {
+          "itemID": 1061054,
+          "price": 18000
+        },
+        {
+          "itemID": 1061055,
+          "price": 18000
+        },
+        {
+          "itemID": 1061056,
+          "price": 18000
+        },
+        {
+          "itemID": 1061043,
+          "price": 40000
+        },
+        {
+          "itemID": 1061044,
+          "price": 40000
+        },
+        {
+          "itemID": 1061045,
+          "price": 40000
+        },
+        {
+          "itemID": 1061046,
+          "price": 40000
+        },
+        {
+          "itemID": 1072070,
+          "price": 1800
+        },
+        {
+          "itemID": 1072071,
+          "price": 1800
+        },
+        {
+          "itemID": 1072004,
+          "price": 2000
+        },
+        {
+          "itemID": 1072042,
+          "price": 2000
+        },
+        {
+          "itemID": 1072043,
+          "price": 2000
+        },
+        {
+          "itemID": 1072028,
+          "price": 4500
+        },
+        {
+          "itemID": 1072029,
+          "price": 4500
+        },
+        {
+          "itemID": 1072030,
+          "price": 4500
+        },
+        {
+          "itemID": 1072031,
+          "price": 4500
+        },
+        {
+          "itemID": 1072022,
+          "price": 9000
+        },
+        {
+          "itemID": 1072065,
+          "price": 9000
+        },
+        {
+          "itemID": 1072066,
+          "price": 9000
+        },
+        {
+          "itemID": 2070000,
+          "price": 500
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "1052101": {
+      "id": "1052101",
+      "file": "Npc/1052101.img.xml",
+      "name": "보조 브리트니",
+      "quest": "hair_kerning2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1022002": {
+      "id": "1022002",
+      "file": "Npc/1022002.img.xml",
+      "name": "만지",
+      "quest": "manji",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1052000": {
+      "id": "1052000",
+      "file": "Npc/1052000.img.xml",
+      "name": "알렉스",
+      "quest": "alex",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0022000": {
+      "id": "0022000",
+      "file": "Npc/0022000.img.xml",
+      "name": "샹크스",
+      "quest": "begin7",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012000": {
+      "id": "1012000",
+      "file": "Npc/1012000.img.xml",
+      "name": "메이플운수 중형택시",
+      "quest": "goRith",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012003": {
+      "id": "1012003",
+      "file": "Npc/1012003.img.xml",
+      "name": "장로 스탄",
+      "quest": "stan",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "0012000": {
+      "id": "0012000",
+      "file": "Npc/0012000.img.xml",
+      "name": "루카스",
+      "quest": "begin6_2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "1051002": {
+      "id": "1051002",
+      "file": "Npc/1051002.img.xml",
+      "name": "소문난",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2002000,
+          "price": 500
+        },
+        {
+          "itemID": 2002001,
+          "price": 400
+        },
+        {
+          "itemID": 2002002,
+          "price": 500
+        },
+        {
+          "itemID": 2002004,
+          "price": 500
+        },
+        {
+          "itemID": 2002005,
+          "price": 500
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2060000,
+          "price": 1
+        },
+        {
+          "itemID": 2061000,
+          "price": 1
+        },
+        {
+          "itemID": 2030000,
+          "price": 150
+        },
+        {
+          "itemID": 2030005,
+          "price": 180
+        },
+        {
+          "itemID": 2040000,
+          "price": 35000
+        },
+        {
+          "itemID": 2040400,
+          "price": 35000
+        },
+        {
+          "itemID": 2040600,
+          "price": 35000
+        },
+        {
+          "itemID": 2040700,
+          "price": 35000
+        },
+        {
+          "itemID": 2040703,
+          "price": 35000
+        },
+        {
+          "itemID": 2043300,
+          "price": 70000
+        },
+        {
+          "itemID": 2043000,
+          "price": 70000
+        },
+        {
+          "itemID": 2043200,
+          "price": 70000
+        },
+        {
+          "itemID": 2044700,
+          "price": 70000
+        }
+      ],
+      "has_move": false
+    },
+    "1052002": {
+      "id": "1052002",
+      "file": "Npc/1052002.img.xml",
+      "name": "뒷골목의 제이엠",
+      "quest": "refine_kerning",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1011100": {
+      "id": "1011100",
+      "file": "Npc/1011100.img.xml",
+      "name": "루나",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2002000,
+          "price": 500
+        },
+        {
+          "itemID": 2002001,
+          "price": 400
+        },
+        {
+          "itemID": 2002002,
+          "price": 500
+        },
+        {
+          "itemID": 2002004,
+          "price": 500
+        },
+        {
+          "itemID": 2002005,
+          "price": 500
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2060000,
+          "price": 1
+        },
+        {
+          "itemID": 2061000,
+          "price": 1
+        },
+        {
+          "itemID": 2030000,
+          "price": 150
+        },
+        {
+          "itemID": 2030004,
+          "price": 180
+        },
+        {
+          "itemID": 2040000,
+          "price": 35000
+        },
+        {
+          "itemID": 2040400,
+          "price": 35000
+        },
+        {
+          "itemID": 2040600,
+          "price": 35000
+        },
+        {
+          "itemID": 2040700,
+          "price": 35000
+        },
+        {
+          "itemID": 2044500,
+          "price": 70000
+        },
+        {
+          "itemID": 2044600,
+          "price": 70000
+        }
+      ],
+      "has_move": false
+    },
+    "0002001": {
+      "id": "0002001",
+      "file": "Npc/0002001.img.xml",
+      "name": "센",
+      "quest": "begin3_2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012100": {
+      "id": "1012100",
+      "file": "Npc/1012100.img.xml",
+      "name": "헬레나",
+      "quest": "bowman",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012103": {
+      "id": "1012103",
+      "file": "Npc/1012103.img.xml",
+      "name": "원장 나탈리",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1021100": {
+      "id": "1021100",
+      "file": "Npc/1021100.img.xml",
+      "name": "그레고리 손",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2002000,
+          "price": 500
+        },
+        {
+          "itemID": 2002001,
+          "price": 400
+        },
+        {
+          "itemID": 2002002,
+          "price": 500
+        },
+        {
+          "itemID": 2002004,
+          "price": 500
+        },
+        {
+          "itemID": 2002005,
+          "price": 500
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2060000,
+          "price": 1
+        },
+        {
+          "itemID": 2061000,
+          "price": 1
+        },
+        {
+          "itemID": 2030000,
+          "price": 150
+        },
+        {
+          "itemID": 2030003,
+          "price": 180
+        },
+        {
+          "itemID": 2040000,
+          "price": 35000
+        },
+        {
+          "itemID": 2040003,
+          "price": 35000
+        },
+        {
+          "itemID": 2040500,
+          "price": 35000
+        },
+        {
+          "itemID": 2043000,
+          "price": 70000
+        },
+        {
+          "itemID": 2043100,
+          "price": 70000
+        },
+        {
+          "itemID": 2043200,
+          "price": 70000
+        },
+        {
+          "itemID": 2044000,
+          "price": 70000
+        },
+        {
+          "itemID": 2044100,
+          "price": 70000
+        },
+        {
+          "itemID": 2044200,
+          "price": 70000
+        },
+        {
+          "itemID": 2044300,
+          "price": 70000
+        },
+        {
+          "itemID": 2044400,
+          "price": 70000
+        }
+      ],
+      "has_move": false
+    },
+    "1072007": {
+      "id": "1072007",
+      "file": "Npc/1072007.img.xml",
+      "name": "도적 전직교관",
+      "quest": "inside_rogue",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1072003": {
+      "id": "1072003",
+      "file": "Npc/1072003.img.xml",
+      "name": "도적 전직교관",
+      "quest": "change_rogue",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1031000": {
+      "id": "1031000",
+      "file": "Npc/1031000.img.xml",
+      "name": "요정 플로라",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1372005,
+          "price": 2000
+        },
+        {
+          "itemID": 1372006,
+          "price": 5000
+        },
+        {
+          "itemID": 1372002,
+          "price": 9000
+        },
+        {
+          "itemID": 1372004,
+          "price": 18000
+        },
+        {
+          "itemID": 1372003,
+          "price": 38000
+        },
+        {
+          "itemID": 1382000,
+          "price": 3000
+        },
+        {
+          "itemID": 1382003,
+          "price": 6000
+        },
+        {
+          "itemID": 1382005,
+          "price": 6000
+        },
+        {
+          "itemID": 1382004,
+          "price": 10000
+        },
+        {
+          "itemID": 1382002,
+          "price": 20000
+        },
+        {
+          "itemID": 1322002,
+          "price": 10000
+        }
+      ],
+      "has_move": false
+    },
+    "1032001": {
+      "id": "1032001",
+      "file": "Npc/1032001.img.xml",
+      "name": "하인즈",
+      "quest": "magician",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0000220": {
+      "id": "0000220",
+      "file": "Npc/0000220.img.xml",
+      "name": "루시",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1302000,
+          "price": 100
+        },
+        {
+          "itemID": 1302001,
+          "price": 120
+        },
+        {
+          "itemID": 1302002,
+          "price": 500
+        },
+        {
+          "itemID": 1302013,
+          "price": 2000
+        },
+        {
+          "itemID": 1302011,
+          "price": 5500
+        },
+        {
+          "itemID": 1302008,
+          "price": 7000
+        },
+        {
+          "itemID": 1302014,
+          "price": 6500
+        },
+        {
+          "itemID": 1302010,
+          "price": 8700
+        },
+        {
+          "itemID": 1302009,
+          "price": 9000
+        },
+        {
+          "itemID": 1302005,
+          "price": 18000
+        },
+        {
+          "itemID": 1302015,
+          "price": 8000
+        },
+        {
+          "itemID": 1312000,
+          "price": 2700
+        },
+        {
+          "itemID": 1312001,
+          "price": 7000
+        },
+        {
+          "itemID": 1322000,
+          "price": 5400
+        },
+        {
+          "itemID": 1402001,
+          "price": 100
+        },
+        {
+          "itemID": 1402000,
+          "price": 5200
+        },
+        {
+          "itemID": 1402002,
+          "price": 30000
+        },
+        {
+          "itemID": 1412001,
+          "price": 200
+        },
+        {
+          "itemID": 1412000,
+          "price": 5400
+        },
+        {
+          "itemID": 1412002,
+          "price": 8200
+        },
+        {
+          "itemID": 1432000,
+          "price": 200
+        },
+        {
+          "itemID": 1432001,
+          "price": 6000
+        },
+        {
+          "itemID": 1442000,
+          "price": 200
+        },
+        {
+          "itemID": 1442001,
+          "price": 22500
+        },
+        {
+          "itemID": 1452002,
+          "price": 100
+        },
+        {
+          "itemID": 1452003,
+          "price": 3000
+        },
+        {
+          "itemID": 1452001,
+          "price": 6000
+        },
+        {
+          "itemID": 1452000,
+          "price": 24000
+        },
+        {
+          "itemID": 1452004,
+          "price": 120000
+        },
+        {
+          "itemID": 1462001,
+          "price": 120
+        },
+        {
+          "itemID": 1462002,
+          "price": 2000
+        },
+        {
+          "itemID": 1462003,
+          "price": 13000
+        },
+        {
+          "itemID": 1462000,
+          "price": 24000
+        },
+        {
+          "itemID": 1462004,
+          "price": 94000
+        }
+      ],
+      "has_move": false
+    },
+    "0011000": {
+      "id": "0011000",
+      "file": "Npc/0011000.img.xml",
+      "name": "시드",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1302000,
+          "price": 50
+        },
+        {
+          "itemID": 1312004,
+          "price": 50
+        },
+        {
+          "itemID": 1322005,
+          "price": 50
+        },
+        {
+          "itemID": 1332005,
+          "price": 500
+        }
+      ],
+      "has_move": false
+    },
+    "1001000": {
+      "id": "1001000",
+      "file": "Npc/1001000.img.xml",
+      "name": "실버",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1302000,
+          "price": 50
+        },
+        {
+          "itemID": 1312004,
+          "price": 50
+        },
+        {
+          "itemID": 1322005,
+          "price": 50
+        },
+        {
+          "itemID": 1302007,
+          "price": 3000
+        },
+        {
+          "itemID": 1312000,
+          "price": 3000
+        },
+        {
+          "itemID": 1332007,
+          "price": 1000
+        }
+      ],
+      "has_move": false
+    },
+    "1072005": {
+      "id": "1072005",
+      "file": "Npc/1072005.img.xml",
+      "name": "마법사 전직교관",
+      "quest": "inside_magician",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0002000": {
+      "id": "0002000",
+      "file": "Npc/0002000.img.xml",
+      "name": "로저",
+      "quest": "begin2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1061002": {
+      "id": "1061002",
+      "file": "Npc/1061002.img.xml",
+      "name": "시원해",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2022000,
+          "price": 1650
+        },
+        {
+          "itemID": 2022003,
+          "price": 1100
+        },
+        {
+          "itemID": 2030006,
+          "price": 200
+        }
+      ],
+      "has_move": false
+    },
+    "1002001": {
+      "id": "1002001",
+      "file": "Npc/1002001.img.xml",
+      "name": "테오",
+      "quest": "teo",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1031001": {
+      "id": "1031001",
+      "file": "Npc/1031001.img.xml",
+      "name": "요정 세라비",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1002017,
+          "price": 1200
+        },
+        {
+          "itemID": 1002102,
+          "price": 3800
+        },
+        {
+          "itemID": 1002103,
+          "price": 3800
+        },
+        {
+          "itemID": 1002104,
+          "price": 3800
+        },
+        {
+          "itemID": 1002105,
+          "price": 3800
+        },
+        {
+          "itemID": 1002106,
+          "price": 3800
+        },
+        {
+          "itemID": 1002016,
+          "price": 8000
+        },
+        {
+          "itemID": 1040004,
+          "price": 2000
+        },
+        {
+          "itemID": 1040017,
+          "price": 2000
+        },
+        {
+          "itemID": 1040018,
+          "price": 8500
+        },
+        {
+          "itemID": 1040019,
+          "price": 8500
+        },
+        {
+          "itemID": 1040020,
+          "price": 8500
+        },
+        {
+          "itemID": 1041015,
+          "price": 2000
+        },
+        {
+          "itemID": 1041016,
+          "price": 2000
+        },
+        {
+          "itemID": 1041017,
+          "price": 4000
+        },
+        {
+          "itemID": 1041018,
+          "price": 4000
+        },
+        {
+          "itemID": 1041025,
+          "price": 4000
+        },
+        {
+          "itemID": 1041026,
+          "price": 4000
+        },
+        {
+          "itemID": 1041029,
+          "price": 8500
+        },
+        {
+          "itemID": 1041030,
+          "price": 8500
+        },
+        {
+          "itemID": 1041031,
+          "price": 8500
+        },
+        {
+          "itemID": 1041041,
+          "price": 42000
+        },
+        {
+          "itemID": 1041042,
+          "price": 42000
+        },
+        {
+          "itemID": 1041043,
+          "price": 42000
+        },
+        {
+          "itemID": 1050008,
+          "price": 7000
+        },
+        {
+          "itemID": 1050009,
+          "price": 7000
+        },
+        {
+          "itemID": 1050010,
+          "price": 7000
+        },
+        {
+          "itemID": 1050001,
+          "price": 16000
+        },
+        {
+          "itemID": 1050023,
+          "price": 16000
+        },
+        {
+          "itemID": 1050024,
+          "price": 16000
+        },
+        {
+          "itemID": 1050025,
+          "price": 16000
+        },
+        {
+          "itemID": 1050003,
+          "price": 40000
+        },
+        {
+          "itemID": 1050026,
+          "price": 40000
+        },
+        {
+          "itemID": 1050027,
+          "price": 40000
+        },
+        {
+          "itemID": 1050028,
+          "price": 40000
+        },
+        {
+          "itemID": 1051004,
+          "price": 16000
+        },
+        {
+          "itemID": 1051005,
+          "price": 16000
+        },
+        {
+          "itemID": 1051003,
+          "price": 16000
+        },
+        {
+          "itemID": 1060012,
+          "price": 2000
+        },
+        {
+          "itemID": 1060013,
+          "price": 2000
+        },
+        {
+          "itemID": 1060014,
+          "price": 8000
+        },
+        {
+          "itemID": 1060015,
+          "price": 8000
+        },
+        {
+          "itemID": 1061010,
+          "price": 2000
+        },
+        {
+          "itemID": 1061011,
+          "price": 2000
+        },
+        {
+          "itemID": 1061012,
+          "price": 4000
+        },
+        {
+          "itemID": 1061013,
+          "price": 4000
+        },
+        {
+          "itemID": 1061021,
+          "price": 4000
+        },
+        {
+          "itemID": 1061022,
+          "price": 4000
+        },
+        {
+          "itemID": 1061027,
+          "price": 8000
+        },
+        {
+          "itemID": 1061028,
+          "price": 8000
+        },
+        {
+          "itemID": 1061034,
+          "price": 40000
+        },
+        {
+          "itemID": 1061035,
+          "price": 40000
+        },
+        {
+          "itemID": 1061036,
+          "price": 40000
+        },
+        {
+          "itemID": 1072006,
+          "price": 1500
+        },
+        {
+          "itemID": 1072044,
+          "price": 1500
+        },
+        {
+          "itemID": 1072045,
+          "price": 1500
+        },
+        {
+          "itemID": 1072023,
+          "price": 4000
+        },
+        {
+          "itemID": 1072024,
+          "price": 4000
+        },
+        {
+          "itemID": 2070000,
+          "price": 500
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "0012101": {
+      "id": "0012101",
+      "file": "Npc/0012101.img.xml",
+      "name": "레인",
+      "quest": "rein",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1022000": {
+      "id": "1022000",
+      "file": "Npc/1022000.img.xml",
+      "name": "주먹펴고 일어서",
+      "quest": "fighter",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1040001": {
+      "id": "1040001",
+      "file": "Npc/1040001.img.xml",
+      "name": "마이크",
+      "quest": "ruke",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0020100": {
+      "id": "0020100",
+      "file": "Npc/0020100.img.xml",
+      "name": "유나",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012101": {
+      "id": "1012101",
+      "file": "Npc/1012101.img.xml",
+      "name": "마야",
+      "quest": "maya",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1061003": {
+      "id": "1061003",
+      "file": "Npc/1061003.img.xml",
+      "name": "시워언해",
+      "quest": "cool",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1010100": {
+      "id": "1010100",
+      "file": "Npc/1010100.img.xml",
+      "name": "리나",
+      "quest": "rina",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "1072004": {
+      "id": "1072004",
+      "file": "Npc/1072004.img.xml",
+      "name": "전사 전직교관",
+      "quest": "inside_swordman",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1061004": {
+      "id": "1061004",
+      "file": "Npc/1061004.img.xml",
+      "name": "로니",
+      "quest": "rony",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1061001": {
+      "id": "1061001",
+      "file": "Npc/1061001.img.xml",
+      "name": "24시간 포장마차",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2020001,
+          "price": 220
+        },
+        {
+          "itemID": 2020005,
+          "price": 320
+        },
+        {
+          "itemID": 2020003,
+          "price": 450
+        },
+        {
+          "itemID": 2020004,
+          "price": 450
+        },
+        {
+          "itemID": 2020006,
+          "price": 530
+        },
+        {
+          "itemID": 2022003,
+          "price": 1100
+        },
+        {
+          "itemID": 2020000,
+          "price": 420
+        },
+        {
+          "itemID": 2022000,
+          "price": 1650
+        },
+        {
+          "itemID": 2020002,
+          "price": 320
+        },
+        {
+          "itemID": 2070000
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "1072002": {
+      "id": "1072002",
+      "file": "Npc/1072002.img.xml",
+      "name": "궁수 전직교관",
+      "quest": "change_archer",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1052004": {
+      "id": "1052004",
+      "file": "Npc/1052004.img.xml",
+      "name": "원장 덴마",
+      "quest": "face_henesys1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1020000": {
+      "id": "1020000",
+      "file": "Npc/1020000.img.xml",
+      "name": "돼지와 함께 춤을",
+      "quest": "wood",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1061100": {
+      "id": "1061100",
+      "file": "Npc/1061100.img.xml",
+      "name": "호텔 안내원",
+      "quest": "hotel1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "1011000": {
+      "id": "1011000",
+      "file": "Npc/1011000.img.xml",
+      "name": "칼",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1452002,
+          "price": 3000
+        },
+        {
+          "itemID": 1452003,
+          "price": 6000
+        },
+        {
+          "itemID": 1452001,
+          "price": 10000
+        },
+        {
+          "itemID": 1452000,
+          "price": 20000
+        },
+        {
+          "itemID": 1462001,
+          "price": 4000
+        },
+        {
+          "itemID": 1462002,
+          "price": 8000
+        },
+        {
+          "itemID": 1462003,
+          "price": 12000
+        },
+        {
+          "itemID": 1462000,
+          "price": 30000
+        },
+        {
+          "itemID": 1302007,
+          "price": 3000
+        },
+        {
+          "itemID": 1322007,
+          "price": 6000
+        },
+        {
+          "itemID": 1322008,
+          "price": 12000
+        },
+        {
+          "itemID": 1422004,
+          "price": 20000
+        },
+        {
+          "itemID": 1442004,
+          "price": 24000
+        }
+      ],
+      "has_move": false
+    },
+    "0021000": {
+      "id": "0021000",
+      "file": "Npc/0021000.img.xml",
+      "name": "판",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1040002,
+          "price": 50
+        },
+        {
+          "itemID": 1040006,
+          "price": 50
+        },
+        {
+          "itemID": 1040010,
+          "price": 50
+        },
+        {
+          "itemID": 1041002,
+          "price": 50
+        },
+        {
+          "itemID": 1041006,
+          "price": 50
+        },
+        {
+          "itemID": 1041010,
+          "price": 50
+        },
+        {
+          "itemID": 1041011,
+          "price": 50
+        },
+        {
+          "itemID": 1060002,
+          "price": 50
+        },
+        {
+          "itemID": 1060006,
+          "price": 50
+        },
+        {
+          "itemID": 1061002,
+          "price": 50
+        },
+        {
+          "itemID": 1061008,
+          "price": 50
+        },
+        {
+          "itemID": 1072001,
+          "price": 50
+        },
+        {
+          "itemID": 1072005,
+          "price": 50
+        }
+      ],
+      "has_move": false
+    },
+    "1052005": {
+      "id": "1052005",
+      "file": "Npc/1052005.img.xml",
+      "name": "의사 돌팔이",
+      "quest": "face_henesys2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012001": {
+      "id": "1012001",
+      "file": "Npc/1012001.img.xml",
+      "name": "원장 돌팔이",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1072001": {
+      "id": "1072001",
+      "file": "Npc/1072001.img.xml",
+      "name": "마법사 전직교관",
+      "quest": "change_magician",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0002002": {
+      "id": "0002002",
+      "file": "Npc/0002002.img.xml",
+      "name": "피터",
+      "quest": "begin4",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0020002": {
+      "id": "0020002",
+      "file": "Npc/0020002.img.xml",
+      "name": "빅스",
+      "quest": "bics",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0012100": {
+      "id": "0012100",
+      "file": "Npc/0012100.img.xml",
+      "name": "마이",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0000090": {
+      "id": "0000090",
+      "file": "Npc/0000090.img.xml",
+      "name": "라덴",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1032101": {
+      "id": "1032101",
+      "file": "Npc/1032101.img.xml",
+      "name": "요정 로웬",
+      "quest": "rowen",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012002": {
+      "id": "1012002",
+      "file": "Npc/1012002.img.xml",
+      "name": "비셔스",
+      "quest": "refine_henesys",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1001001": {
+      "id": "1001001",
+      "file": "Npc/1001001.img.xml",
+      "name": "나타샤",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1002008,
+          "price": 500
+        },
+        {
+          "itemID": 1002014,
+          "price": 450
+        },
+        {
+          "itemID": 1002066,
+          "price": 450
+        },
+        {
+          "itemID": 1002067,
+          "price": 450
+        },
+        {
+          "itemID": 1002068,
+          "price": 450
+        },
+        {
+          "itemID": 1002069,
+          "price": 450
+        },
+        {
+          "itemID": 1002132,
+          "price": 800
+        },
+        {
+          "itemID": 1002133,
+          "price": 800
+        },
+        {
+          "itemID": 1002134,
+          "price": 800
+        },
+        {
+          "itemID": 1002019,
+          "price": 2000
+        },
+        {
+          "itemID": 1002001,
+          "price": 3000
+        },
+        {
+          "itemID": 1040013,
+          "price": 3000
+        },
+        {
+          "itemID": 1040014,
+          "price": 3000
+        },
+        {
+          "itemID": 1041004,
+          "price": 3000
+        },
+        {
+          "itemID": 1041012,
+          "price": 3000
+        },
+        {
+          "itemID": 1060007,
+          "price": 1000
+        },
+        {
+          "itemID": 1060004,
+          "price": 2800
+        },
+        {
+          "itemID": 1062000,
+          "price": 4800
+        },
+        {
+          "itemID": 1062001,
+          "price": 4800
+        },
+        {
+          "itemID": 1072001,
+          "price": 50
+        },
+        {
+          "itemID": 1072037,
+          "price": 50
+        },
+        {
+          "itemID": 1072038,
+          "price": 50
+        },
+        {
+          "itemID": 1072005,
+          "price": 50
+        },
+        {
+          "itemID": 1072008,
+          "price": 5000
+        },
+        {
+          "itemID": 1072048,
+          "price": 5000
+        },
+        {
+          "itemID": 1072049,
+          "price": 5000
+        },
+        {
+          "itemID": 1072017,
+          "price": 10000
+        },
+        {
+          "itemID": 1072062,
+          "price": 10000
+        },
+        {
+          "itemID": 1072063,
+          "price": 10000
+        },
+        {
+          "itemID": 1092003,
+          "price": 2000
+        },
+        {
+          "itemID": 2070000,
+          "price": 500
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "0002100": {
+      "id": "0002100",
+      "file": "Npc/0002100.img.xml",
+      "name": "세라",
+      "quest": "begin1_2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "0002102": {
+      "id": "0002102",
+      "file": "Npc/0002102.img.xml",
+      "name": "니나",
+      "quest": "begin3_1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0000070": {
+      "id": "0000070",
+      "file": "Npc/0000070.img.xml",
+      "name": "반스",
+      "quest": "fighter",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1032100": {
+      "id": "1032100",
+      "file": "Npc/1032100.img.xml",
+      "name": "요정 아르웬",
+      "quest": "owen",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1022100": {
+      "id": "1022100",
+      "file": "Npc/1022100.img.xml",
+      "name": "소피아",
+      "quest": "sopia",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "1022004": {
+      "id": "1022004",
+      "file": "Npc/1022004.img.xml",
+      "name": "스미스",
+      "quest": "refine_perion2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0020001": {
+      "id": "0020001",
+      "file": "Npc/0020001.img.xml",
+      "name": "바리",
+      "quest": "bari",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0011100": {
+      "id": "0011100",
+      "file": "Npc/0011100.img.xml",
+      "name": "루시",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        }
+      ],
+      "has_move": false
+    },
+    "1022003": {
+      "id": "1022003",
+      "file": "Npc/1022003.img.xml",
+      "name": "선더",
+      "quest": "refine_perion",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1022001": {
+      "id": "1022001",
+      "file": "Npc/1022001.img.xml",
+      "name": "메이플운수 중형택시",
+      "quest": "goRith",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1021001": {
+      "id": "1021001",
+      "file": "Npc/1021001.img.xml",
+      "name": "해리",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1002043,
+          "price": 2400
+        },
+        {
+          "itemID": 1002039,
+          "price": 2700
+        },
+        {
+          "itemID": 1002051,
+          "price": 3500
+        },
+        {
+          "itemID": 1002055,
+          "price": 8700
+        },
+        {
+          "itemID": 1002059,
+          "price": 8500
+        },
+        {
+          "itemID": 1002027,
+          "price": 11500
+        },
+        {
+          "itemID": 1002005,
+          "price": 19000
+        },
+        {
+          "itemID": 1040015,
+          "price": 3200
+        },
+        {
+          "itemID": 1040038,
+          "price": 3200
+        },
+        {
+          "itemID": 1040009,
+          "price": 5500
+        },
+        {
+          "itemID": 1040037,
+          "price": 5500
+        },
+        {
+          "itemID": 1040012,
+          "price": 9000
+        },
+        {
+          "itemID": 1040039,
+          "price": 9000
+        },
+        {
+          "itemID": 1040040,
+          "price": 16000
+        },
+        {
+          "itemID": 1040016,
+          "price": 16000
+        },
+        {
+          "itemID": 1040041,
+          "price": 16000
+        },
+        {
+          "itemID": 1040021,
+          "price": 40000
+        },
+        {
+          "itemID": 1040026,
+          "price": 40000
+        },
+        {
+          "itemID": 1041014,
+          "price": 3200
+        },
+        {
+          "itemID": 1041064,
+          "price": 3200
+        },
+        {
+          "itemID": 1041019,
+          "price": 9000
+        },
+        {
+          "itemID": 1041020,
+          "price": 9000
+        },
+        {
+          "itemID": 1041021,
+          "price": 9000
+        },
+        {
+          "itemID": 1041022,
+          "price": 16000
+        },
+        {
+          "itemID": 1041023,
+          "price": 16000
+        },
+        {
+          "itemID": 1041024,
+          "price": 16000
+        },
+        {
+          "itemID": 1050005,
+          "price": 15000
+        },
+        {
+          "itemID": 1050006,
+          "price": 15000
+        },
+        {
+          "itemID": 1050007,
+          "price": 15000
+        },
+        {
+          "itemID": 1050011,
+          "price": 70000
+        },
+        {
+          "itemID": 1051000,
+          "price": 8000
+        },
+        {
+          "itemID": 1051010,
+          "price": 60000
+        },
+        {
+          "itemID": 1051011,
+          "price": 60000
+        },
+        {
+          "itemID": 1051012,
+          "price": 60000
+        },
+        {
+          "itemID": 1051013,
+          "price": 60000
+        },
+        {
+          "itemID": 1060008,
+          "price": 3000
+        },
+        {
+          "itemID": 1060028,
+          "price": 3000
+        },
+        {
+          "itemID": 1060009,
+          "price": 5000
+        },
+        {
+          "itemID": 1060027,
+          "price": 5000
+        },
+        {
+          "itemID": 1060010,
+          "price": 9000
+        },
+        {
+          "itemID": 1060029,
+          "price": 9000
+        },
+        {
+          "itemID": 1060011,
+          "price": 14000
+        },
+        {
+          "itemID": 1060030,
+          "price": 14000
+        },
+        {
+          "itemID": 1060060,
+          "price": 14000
+        },
+        {
+          "itemID": 1060016,
+          "price": 38000
+        },
+        {
+          "itemID": 1060017,
+          "price": 38000
+        },
+        {
+          "itemID": 1060018,
+          "price": 38000
+        },
+        {
+          "itemID": 1060019,
+          "price": 38000
+        },
+        {
+          "itemID": 1061014,
+          "price": 3000
+        },
+        {
+          "itemID": 1061023,
+          "price": 3000
+        },
+        {
+          "itemID": 1061016,
+          "price": 9000
+        },
+        {
+          "itemID": 1061017,
+          "price": 9000
+        },
+        {
+          "itemID": 1061018,
+          "price": 9000
+        },
+        {
+          "itemID": 1061015,
+          "price": 14000
+        },
+        {
+          "itemID": 1061019,
+          "price": 14000
+        },
+        {
+          "itemID": 1061020,
+          "price": 14000
+        },
+        {
+          "itemID": 1072009,
+          "price": 5000
+        },
+        {
+          "itemID": 1072050,
+          "price": 5000
+        },
+        {
+          "itemID": 1072007,
+          "price": 10000
+        },
+        {
+          "itemID": 1072046,
+          "price": 10000
+        },
+        {
+          "itemID": 1072047,
+          "price": 10000
+        },
+        {
+          "itemID": 1072011,
+          "price": 15000
+        },
+        {
+          "itemID": 1092005,
+          "price": 4000
+        },
+        {
+          "itemID": 1092000,
+          "price": 6000
+        },
+        {
+          "itemID": 2070000,
+          "price": 500
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "0000110": {
+      "id": "0000110",
+      "file": "Npc/0000110.img.xml",
+      "name": "필",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1051000": {
+      "id": "1051000",
+      "file": "Npc/1051000.img.xml",
+      "name": "만슈타인",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1302007,
+          "price": 3000
+        },
+        {
+          "itemID": 1332000,
+          "price": 4000
+        },
+        {
+          "itemID": 1332006,
+          "price": 7000
+        },
+        {
+          "itemID": 1332002,
+          "price": 8000
+        },
+        {
+          "itemID": 1332008,
+          "price": 10000
+        },
+        {
+          "itemID": 1332010,
+          "price": 22000
+        },
+        {
+          "itemID": 1332004,
+          "price": 38000
+        },
+        {
+          "itemID": 1332012,
+          "price": 40000
+        },
+        {
+          "itemID": 1332009,
+          "price": 42000
+        },
+        {
+          "itemID": 1322009,
+          "price": 20000
+        },
+        {
+          "itemID": 1402001,
+          "price": 3000
+        },
+        {
+          "itemID": 1412001,
+          "price": 3000
+        },
+        {
+          "itemID": 1422000,
+          "price": 3000
+        },
+        {
+          "itemID": 1432000,
+          "price": 3000
+        },
+        {
+          "itemID": 1432001,
+          "price": 7000
+        },
+        {
+          "itemID": 1442000,
+          "price": 3000
+        },
+        {
+          "itemID": 1472000,
+          "price": 3000
+        }
+      ],
+      "has_move": false
+    },
+    "1021000": {
+      "id": "1021000",
+      "file": "Npc/1021000.img.xml",
+      "name": "리버",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1302007,
+          "price": 3000
+        },
+        {
+          "itemID": 1302005,
+          "price": 6000
+        },
+        {
+          "itemID": 1302002,
+          "price": 10000
+        },
+        {
+          "itemID": 1302006,
+          "price": 10000
+        },
+        {
+          "itemID": 1302003,
+          "price": 20000
+        },
+        {
+          "itemID": 1332006,
+          "price": 7000
+        },
+        {
+          "itemID": 1332008,
+          "price": 10000
+        },
+        {
+          "itemID": 1332010,
+          "price": 22000
+        },
+        {
+          "itemID": 1312001,
+          "price": 6000
+        },
+        {
+          "itemID": 1312003,
+          "price": 20000
+        },
+        {
+          "itemID": 1312005,
+          "price": 40000
+        },
+        {
+          "itemID": 1322000,
+          "price": 6000
+        },
+        {
+          "itemID": 1322002,
+          "price": 10000
+        },
+        {
+          "itemID": 1322004,
+          "price": 22000
+        },
+        {
+          "itemID": 1402001,
+          "price": 3000
+        },
+        {
+          "itemID": 1402000,
+          "price": 12000
+        },
+        {
+          "itemID": 1412001,
+          "price": 3000
+        },
+        {
+          "itemID": 1412002,
+          "price": 10000
+        },
+        {
+          "itemID": 1412000,
+          "price": 22000
+        },
+        {
+          "itemID": 1422000,
+          "price": 3000
+        },
+        {
+          "itemID": 1422002,
+          "price": 6000
+        },
+        {
+          "itemID": 1422003,
+          "price": 10000
+        },
+        {
+          "itemID": 1422006,
+          "price": 10000
+        },
+        {
+          "itemID": 1422004,
+          "price": 20000
+        },
+        {
+          "itemID": 1432000,
+          "price": 3000
+        },
+        {
+          "itemID": 1432001,
+          "price": 7000
+        },
+        {
+          "itemID": 1442000,
+          "price": 3000
+        },
+        {
+          "itemID": 1442006,
+          "price": 8000
+        },
+        {
+          "itemID": 1442007,
+          "price": 12000
+        },
+        {
+          "itemID": 1442004,
+          "price": 24000
+        }
+      ],
+      "has_move": false
+    },
+    "1032000": {
+      "id": "1032000",
+      "file": "Npc/1032000.img.xml",
+      "name": "메이플운수 중형택시",
+      "quest": "goRith",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1072006": {
+      "id": "1072006",
+      "file": "Npc/1072006.img.xml",
+      "name": "궁수 전직교관",
+      "quest": "inside_archer",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0010000": {
+      "id": "0010000",
+      "file": "Npc/0010000.img.xml",
+      "name": "피오",
+      "quest": "pio",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "0000180": {
+      "id": "0000180",
+      "file": "Npc/0000180.img.xml",
+      "name": "에블라",
+      "quest": "magician",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0002103": {
+      "id": "0002103",
+      "file": "Npc/0002103.img.xml",
+      "name": "마리아",
+      "quest": "begin6_1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "0020000": {
+      "id": "0020000",
+      "file": "Npc/0020000.img.xml",
+      "name": "존",
+      "quest": "weapon",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1011001": {
+      "id": "1011001",
+      "file": "Npc/1011001.img.xml",
+      "name": "샘",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 1002008,
+          "price": 500
+        },
+        {
+          "itemID": 1002033,
+          "price": 3000
+        },
+        {
+          "itemID": 1002012,
+          "price": 3000
+        },
+        {
+          "itemID": 1002060,
+          "price": 3000
+        },
+        {
+          "itemID": 1002061,
+          "price": 3000
+        },
+        {
+          "itemID": 1002062,
+          "price": 3000
+        },
+        {
+          "itemID": 1002063,
+          "price": 3000
+        },
+        {
+          "itemID": 1002112,
+          "price": 4000
+        },
+        {
+          "itemID": 1002113,
+          "price": 4000
+        },
+        {
+          "itemID": 1002114,
+          "price": 4000
+        },
+        {
+          "itemID": 1002115,
+          "price": 4000
+        },
+        {
+          "itemID": 1002116,
+          "price": 4000
+        },
+        {
+          "itemID": 1002117,
+          "price": 12000
+        },
+        {
+          "itemID": 1002118,
+          "price": 12000
+        },
+        {
+          "itemID": 1002119,
+          "price": 12000
+        },
+        {
+          "itemID": 1002120,
+          "price": 12000
+        },
+        {
+          "itemID": 1002121,
+          "price": 12000
+        },
+        {
+          "itemID": 1002010,
+          "price": 800
+        },
+        {
+          "itemID": 1002057,
+          "price": 800
+        },
+        {
+          "itemID": 1002156,
+          "price": 20000
+        },
+        {
+          "itemID": 1002157,
+          "price": 20000
+        },
+        {
+          "itemID": 1002158,
+          "price": 20000
+        },
+        {
+          "itemID": 1002159,
+          "price": 20000
+        },
+        {
+          "itemID": 1002160,
+          "price": 20000
+        },
+        {
+          "itemID": 1002161,
+          "price": 30000
+        },
+        {
+          "itemID": 1002162,
+          "price": 30000
+        },
+        {
+          "itemID": 1002163,
+          "price": 30000
+        },
+        {
+          "itemID": 1002164,
+          "price": 30000
+        },
+        {
+          "itemID": 1002165,
+          "price": 30000
+        },
+        {
+          "itemID": 1032001,
+          "price": 7000
+        },
+        {
+          "itemID": 1032003,
+          "price": 7000
+        },
+        {
+          "itemID": 1040008,
+          "price": 3200
+        },
+        {
+          "itemID": 1040071,
+          "price": 3200
+        },
+        {
+          "itemID": 1040007,
+          "price": 5500
+        },
+        {
+          "itemID": 1040011,
+          "price": 5500
+        },
+        {
+          "itemID": 1040003,
+          "price": 9000
+        },
+        {
+          "itemID": 1040022,
+          "price": 15000
+        },
+        {
+          "itemID": 1040023,
+          "price": 15000
+        },
+        {
+          "itemID": 1040024,
+          "price": 15000
+        },
+        {
+          "itemID": 1040025,
+          "price": 15000
+        },
+        {
+          "itemID": 1040067,
+          "price": 50000
+        },
+        {
+          "itemID": 1040068,
+          "price": 50000
+        },
+        {
+          "itemID": 1040069,
+          "price": 50000
+        },
+        {
+          "itemID": 1040070,
+          "price": 50000
+        },
+        {
+          "itemID": 1041007,
+          "price": 3200
+        },
+        {
+          "itemID": 1041061,
+          "price": 3200
+        },
+        {
+          "itemID": 1041008,
+          "price": 5500
+        },
+        {
+          "itemID": 1041062,
+          "price": 5500
+        },
+        {
+          "itemID": 1041063,
+          "price": 5500
+        },
+        {
+          "itemID": 1041013,
+          "price": 9000
+        },
+        {
+          "itemID": 1041027,
+          "price": 9000
+        },
+        {
+          "itemID": 1041028,
+          "price": 9000
+        },
+        {
+          "itemID": 1041032,
+          "price": 15000
+        },
+        {
+          "itemID": 1041033,
+          "price": 15000
+        },
+        {
+          "itemID": 1041034,
+          "price": 15000
+        },
+        {
+          "itemID": 1041035,
+          "price": 15000
+        },
+        {
+          "itemID": 1041054,
+          "price": 50000
+        },
+        {
+          "itemID": 1041055,
+          "price": 50000
+        },
+        {
+          "itemID": 1041056,
+          "price": 50000
+        },
+        {
+          "itemID": 1060005,
+          "price": 14000
+        },
+        {
+          "itemID": 1060056,
+          "price": 44000
+        },
+        {
+          "itemID": 1060057,
+          "price": 44000
+        },
+        {
+          "itemID": 1060058,
+          "price": 44000
+        },
+        {
+          "itemID": 1060059,
+          "price": 44000
+        },
+        {
+          "itemID": 1061009,
+          "price": 3000
+        },
+        {
+          "itemID": 1061057,
+          "price": 3000
+        },
+        {
+          "itemID": 1061006,
+          "price": 5000
+        },
+        {
+          "itemID": 1061058,
+          "price": 5000
+        },
+        {
+          "itemID": 1061059,
+          "price": 5000
+        },
+        {
+          "itemID": 1061024,
+          "price": 9000
+        },
+        {
+          "itemID": 1061025,
+          "price": 9000
+        },
+        {
+          "itemID": 1061026,
+          "price": 9000
+        },
+        {
+          "itemID": 1061050,
+          "price": 44000
+        },
+        {
+          "itemID": 1061051,
+          "price": 44000
+        },
+        {
+          "itemID": 1061052,
+          "price": 44000
+        },
+        {
+          "itemID": 1062004,
+          "price": 3000
+        },
+        {
+          "itemID": 1062002,
+          "price": 9000
+        },
+        {
+          "itemID": 1062006,
+          "price": 13000
+        },
+        {
+          "itemID": 1072015,
+          "price": 1800
+        },
+        {
+          "itemID": 1072059,
+          "price": 1800
+        },
+        {
+          "itemID": 1072016,
+          "price": 4500
+        },
+        {
+          "itemID": 1072060,
+          "price": 4500
+        },
+        {
+          "itemID": 1072061,
+          "price": 4500
+        },
+        {
+          "itemID": 1072025,
+          "price": 9000
+        },
+        {
+          "itemID": 1072026,
+          "price": 9000
+        },
+        {
+          "itemID": 1072067,
+          "price": 9000
+        },
+        {
+          "itemID": 1072068,
+          "price": 9000
+        },
+        {
+          "itemID": 1072012,
+          "price": 15000
+        },
+        {
+          "itemID": 1072054,
+          "price": 15000
+        },
+        {
+          "itemID": 1072055,
+          "price": 15000
+        },
+        {
+          "itemID": 1072056,
+          "price": 15000
+        },
+        {
+          "itemID": 1072018,
+          "price": 30000
+        },
+        {
+          "itemID": 1072064,
+          "price": 30000
+        },
+        {
+          "itemID": 2070000,
+          "price": 500
+        },
+        {
+          "itemID": 2070001
+        },
+        {
+          "itemID": 2070002
+        },
+        {
+          "itemID": 2070003
+        },
+        {
+          "itemID": 2070004
+        },
+        {
+          "itemID": 2070005
+        },
+        {
+          "itemID": 2070006
+        },
+        {
+          "itemID": 2070007
+        }
+      ],
+      "has_move": false
+    },
+    "1002000": {
+      "id": "1002000",
+      "file": "Npc/1002000.img.xml",
+      "name": "필",
+      "quest": "rithTeleport",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1002100": {
+      "id": "1002100",
+      "file": "Npc/1002100.img.xml",
+      "name": "제인",
+      "quest": "jane",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "0002101": {
+      "id": "0002101",
+      "file": "Npc/0002101.img.xml",
+      "name": "히나",
+      "quest": "begin1_1",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1031100": {
+      "id": "1031100",
+      "file": "Npc/1031100.img.xml",
+      "name": "요정 렌",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2002000,
+          "price": 500
+        },
+        {
+          "itemID": 2002001,
+          "price": 400
+        },
+        {
+          "itemID": 2002002,
+          "price": 500
+        },
+        {
+          "itemID": 2002004,
+          "price": 500
+        },
+        {
+          "itemID": 2002005,
+          "price": 500
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2060000,
+          "price": 1
+        },
+        {
+          "itemID": 2061000,
+          "price": 1
+        },
+        {
+          "itemID": 2030000,
+          "price": 150
+        },
+        {
+          "itemID": 2030002,
+          "price": 180
+        },
+        {
+          "itemID": 2040300,
+          "price": 35000
+        },
+        {
+          "itemID": 2043700,
+          "price": 70000
+        },
+        {
+          "itemID": 2043800,
+          "price": 70000
+        }
+      ],
+      "has_move": false
+    },
+    "1032002": {
+      "id": "1032002",
+      "file": "Npc/1032002.img.xml",
+      "name": "에뜨랑",
+      "quest": "refine_ellinia",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1040000": {
+      "id": "1040000",
+      "file": "Npc/1040000.img.xml",
+      "name": "루크",
+      "quest": "ruke",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012104": {
+      "id": "1012104",
+      "file": "Npc/1012104.img.xml",
+      "name": "보조 브리트니",
+      "quest": null,
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1052003": {
+      "id": "1052003",
+      "file": "Npc/1052003.img.xml",
+      "name": "크리스",
+      "quest": "refine_kerning2",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": true
+    },
+    "1052001": {
+      "id": "1052001",
+      "file": "Npc/1052001.img.xml",
+      "name": "다크로드",
+      "quest": "rogue",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1001100": {
+      "id": "1001100",
+      "file": "Npc/1001100.img.xml",
+      "name": "미나",
+      "quest": null,
+      "has_shop": true,
+      "shop_items": [
+        {
+          "itemID": 2000000,
+          "price": 50
+        },
+        {
+          "itemID": 2000001,
+          "price": 160
+        },
+        {
+          "itemID": 2000002,
+          "price": 320
+        },
+        {
+          "itemID": 2000003,
+          "price": 200
+        },
+        {
+          "itemID": 2000006,
+          "price": 620
+        },
+        {
+          "itemID": 2002000,
+          "price": 500
+        },
+        {
+          "itemID": 2002001,
+          "price": 400
+        },
+        {
+          "itemID": 2002002,
+          "price": 500
+        },
+        {
+          "itemID": 2002004,
+          "price": 500
+        },
+        {
+          "itemID": 2002005,
+          "price": 500
+        },
+        {
+          "itemID": 2010000,
+          "price": 30
+        },
+        {
+          "itemID": 2010002,
+          "price": 50
+        },
+        {
+          "itemID": 2010001,
+          "price": 106
+        },
+        {
+          "itemID": 2010003,
+          "price": 100
+        },
+        {
+          "itemID": 2010004,
+          "price": 310
+        },
+        {
+          "itemID": 2060000,
+          "price": 1
+        },
+        {
+          "itemID": 2061000,
+          "price": 1
+        },
+        {
+          "itemID": 2030000,
+          "price": 150
+        },
+        {
+          "itemID": 2030001,
+          "price": 180
+        }
+      ],
+      "has_move": false
+    },
+    "0002003": {
+      "id": "0002003",
+      "file": "Npc/0002003.img.xml",
+      "name": "로빈",
+      "quest": "begin5",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1072000": {
+      "id": "1072000",
+      "file": "Npc/1072000.img.xml",
+      "name": "전사 전직교관",
+      "quest": "change_swordman",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    },
+    "1012102": {
+      "id": "1012102",
+      "file": "Npc/1012102.img.xml",
+      "name": "피아",
+      "quest": "pia",
+      "has_shop": false,
+      "shop_items": [],
+      "has_move": false
+    }
+  },
+  "scripts": {
+    "begin1_2": {
+      "file": "begin1_2.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1537
+    },
+    "rina": {
+      "file": "rina.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 3033
+    },
+    "begin5": {
+      "file": "begin5.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 9954
+    },
+    "begin4": {
+      "file": "begin4.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1355
+    },
+    "alex": {
+      "file": "alex.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1842
+    },
+    "begin3_2": {
+      "file": "begin3_2.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1401
+    },
+    "weapon": {
+      "file": "weapon.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 917
+    },
+    "refine_henesys": {
+      "file": "refine_henesys.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 20605
+    },
+    "rogue": {
+      "file": "rogue.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 45999
+    },
+    "inside_rogue": {
+      "file": "inside_rogue.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2294
+    },
+    "hotel1": {
+      "file": "hotel1.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2126
+    },
+    "face_henesys2": {
+      "file": "face_henesys2.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2642
+    },
+    "rithTeleport": {
+      "file": "rithTeleport.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 8331
+    },
+    "bowman": {
+      "file": "bowman.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 44275
+    },
+    "inside_archer": {
+      "file": "inside_archer.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2295
+    },
+    "refine_ellinia": {
+      "file": "refine_ellinia.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 16561
+    },
+    "change_archer": {
+      "file": "change_archer.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4352
+    },
+    "teo": {
+      "file": "teo.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1678
+    },
+    "begin6_1": {
+      "file": "begin6_1.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1124
+    },
+    "change_rogue": {
+      "file": "change_rogue.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4753
+    },
+    "pio": {
+      "file": "pio.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1083
+    },
+    "manji": {
+      "file": "manji.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1055
+    },
+    "ruke": {
+      "file": "ruke.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2867
+    },
+    "refine_kerning2": {
+      "file": "refine_kerning2.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 10052
+    },
+    "begin1_1": {
+      "file": "begin1_1.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2475
+    },
+    "stan": {
+      "file": "stan.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1485
+    },
+    "inside_swordman": {
+      "file": "inside_swordman.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2293
+    },
+    "begin3_1": {
+      "file": "begin3_1.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1653
+    },
+    "sopia": {
+      "file": "sopia.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1879
+    },
+    "rowen": {
+      "file": "rowen.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1141
+    },
+    "bics": {
+      "file": "bics.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1186
+    },
+    "wood": {
+      "file": "wood.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1977
+    },
+    "maya": {
+      "file": "maya.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1392
+    },
+    "begin7": {
+      "file": "begin7.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1697
+    },
+    "refine_sleepy": {
+      "file": "refine_sleepy.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 43258
+    },
+    "face_henesys1": {
+      "file": "face_henesys1.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2541
+    },
+    "begin2": {
+      "file": "begin2.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4440
+    },
+    "refine_perion2": {
+      "file": "refine_perion2.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 10985
+    },
+    "pia": {
+      "file": "pia.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1483
+    },
+    "jane": {
+      "file": "jane.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 3712
+    },
+    "goRith": {
+      "file": "goRith.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1909
+    },
+    "magician": {
+      "file": "magician.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 51689
+    },
+    "fighter": {
+      "file": "fighter.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 49582
+    },
+    "bari": {
+      "file": "bari.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1210
+    },
+    "hair_kerning2": {
+      "file": "hair_kerning2.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 5250
+    },
+    "rein": {
+      "file": "rein.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1445
+    },
+    "cool": {
+      "file": "cool.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2090
+    },
+    "begin6_2": {
+      "file": "begin6_2.py",
+      "is_stubbed": false,
+      "has_todos": true,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 1099
+    },
+    "change_magician": {
+      "file": "change_magician.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4490
+    },
+    "hair_kerning1": {
+      "file": "hair_kerning1.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4844
+    },
+    "rony": {
+      "file": "rony.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2780
+    },
+    "refine_perion": {
+      "file": "refine_perion.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 16516
+    },
+    "change_swordman": {
+      "file": "change_swordman.py",
+      "is_stubbed": true,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 4484
+    },
+    "inside_magician": {
+      "file": "inside_magician.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 2302
+    },
+    "refine_kerning": {
+      "file": "refine_kerning.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": false,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 21842
+    },
+    "owen": {
+      "file": "owen.py",
+      "is_stubbed": false,
+      "has_todos": false,
+      "is_quest_related": true,
+      "opens_shop": false,
+      "has_dialogue": true,
+      "size": 5411
+    }
+  }
+}

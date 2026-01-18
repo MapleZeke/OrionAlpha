@@ -44,6 +44,3 @@ nb-configuration.xml
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Analysis reports
-analysis/reports/
