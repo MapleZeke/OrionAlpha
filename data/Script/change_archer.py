@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 'NPC: Bowman Job Instructor'
 'Script: Bowman 2nd Job Advancement'
 
-import math
 import random
 
 if self.userGetJob() == 300 and self.userGetLevel() >= 30:
@@ -35,7 +34,7 @@ if self.userGetJob() == 300 and self.userGetLevel() >= 30:
             elif nRet == 1:
                 self.sayNext("Alright I'll let you in! Defeat the monsters inside, collect 30 Dark Marbles, and then talk to my colleague inside. Then he'll award you the proof of passing the test, #b#t4031012##k. Good luck.")
                 aMap = [108000100, 108000101, 108000102]
-                self.registerTransferField(aMap[math.floor(random.random() * len(aMap))], "")
+                self.registerTransferField(random.choice(aMap), "")
         elif nBlack > 0:
             nRet = self.askYesNo("So you've given up in the middle of this before. Don't worry about it, because you can always retake the test. Now...do you want to go back in and try again?")
             if nRet == 0:
@@ -44,7 +43,7 @@ if self.userGetJob() == 300 and self.userGetLevel() >= 30:
                 self.sayNext("Alright! I'll let you in! Sorry to say this, but I have to take away all your marbles beforehand. Defeat the monsters inside, collect 30 Dark Marbles, then strike up a conversation with a colleague of mine inside. He'll give you the #b#t4031012##k, the proof that you've passed the test. Best of luck to you.")
                 self.inventoryExchange(0, 4031013, -nBlack)
                 aMap = [108000100, 108000101, 108000102]
-                self.registerTransferField(aMap[math.floor(random.random() * len(aMap))], "")
+                self.registerTransferField(random.choice(aMap), "")
     else:
         self.sayNext("Do you want to be a stronger bowman? Let me take care of that for you, then. You look definitely qualified for it. For now, go see #b#p1012100##k of Henesys first.")
 elif self.userGetJob() == 300 and self.userGetLevel() < 30:
