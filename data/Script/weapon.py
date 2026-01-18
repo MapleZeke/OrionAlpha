@@ -16,7 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-'NPC: John'
-'Script: ?? ??'
+'''
+NPC: John
+Script: Weapon Services
+'''
 
-self.say("#bScript: weapon#k\r\n\r\n#rSorry, I am not coded yet.#k")
+self.say("Hello, I'm John. I can help you with weapons, but my services are currently under development. Please check back later!")
