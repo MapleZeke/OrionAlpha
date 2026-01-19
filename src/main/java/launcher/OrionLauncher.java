@@ -17,9 +17,10 @@
  */
 package launcher;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Unified launcher for OrionAlpha servers. Starts Login, Game, and Shop servers in the correct
@@ -28,9 +29,9 @@ import java.util.List;
  * @author OrionAlpha Team
  */
 public class OrionLauncher {
-  private static final List<Process> processes = new ArrayList<>();
-  private static final String DEFAULT_CLASSPATH = "target/OrionAlpha.jar";
-  private static final String DEFAULT_WZPATH = "data/";
+  private static final List<Process> processes = new CopyOnWriteArrayList<>();
+  private static final String DEFAULT_CLASSPATH = "target" + File.separator + "OrionAlpha.jar";
+  private static final String DEFAULT_WZPATH = "data" + File.separator;
 
   public static void main(String[] args) {
     // Parse command-line arguments
@@ -131,11 +132,11 @@ public class OrionLauncher {
    * @throws IOException if the process cannot be started
    */
   private static Process startProcess(String mainClass, String... jvmArgs) throws IOException {
-    List<String> command = new ArrayList<>();
+    List<String> command = new java.util.ArrayList<>();
 
     // Get the Java executable path
     String javaHome = System.getProperty("java.home");
-    String javaExec = javaHome + "/bin/java";
+    String javaExec = javaHome + File.separator + "bin" + File.separator + "java";
     command.add(javaExec);
 
     // Add JVM arguments
