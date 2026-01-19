@@ -137,6 +137,10 @@ public class OrionLauncher {
     // Get the Java executable path
     String javaHome = System.getProperty("java.home");
     String javaExec = javaHome + File.separator + "bin" + File.separator + "java";
+    // Add .exe extension on Windows
+    if (System.getProperty("os.name").toLowerCase().contains("win")) {
+      javaExec += ".exe";
+    }
     command.add(javaExec);
 
     // Add JVM arguments
@@ -152,6 +156,13 @@ public class OrionLauncher {
     String classpath = System.getProperty("java.class.path");
     if (classpath == null || classpath.isEmpty()) {
       classpath = DEFAULT_CLASSPATH;
+      // Check if the default classpath exists
+      if (!new File(classpath).exists()) {
+        throw new IOException(
+            "Default classpath not found: "
+                + classpath
+                + ". Please build the project with 'mvn package' first.");
+      }
     }
     command.add(classpath);
 
