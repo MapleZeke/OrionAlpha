@@ -24,17 +24,15 @@ import game.field.portal.Portal;
 import game.user.User;
 import java.awt.Point;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.Source;
 import util.Logger;
 
 /**
@@ -43,21 +41,6 @@ import util.Logger;
 public class ScriptVM {
   // VM Decoder Status
   public static final int Ready = 0, Decoding = 1, Message = 2, Pending = 3, Finishing = 4;
-  private static final ScriptEngine PYTHON_ENGINE;
-
-  static {
-    ScriptEngineManager manager = new ScriptEngineManager();
-    // Try different engine names for GraalPy
-    ScriptEngine engine = manager.getEngineByName("graal.python");
-    if (engine == null) {
-      engine = manager.getEngineByName("python");
-    }
-    if (engine == null) {
-      throw new RuntimeException(
-          "GraalPy ScriptEngine not found. Ensure GraalPy dependencies are on the classpath.");
-    }
-    PYTHON_ENGINE = engine;
-  }
 
   private static final ExecutorService POOL = Executors.newCachedThreadPool();
   private static final String PATH = "data/Script/";
@@ -215,20 +198,17 @@ public class ScriptVM {
     getPool()
         .submit(
             () -> {
-              try {
-                getEngine().put("target", getTarget());
-                getEngine().put("self", getScriptSys());
-                getEngine().eval(new FileReader(script));
-              } catch (FileNotFoundException | ScriptException ex) {
+              try (Context context = Context.newBuilder("python").allowAllAccess(true).build()) {
+                context.getBindings("python").putMember("target", getTarget());
+                context.getBindings("python").putMember("self", getScriptSys());
+                Source source = Source.newBuilder("python", script).build();
+                context.eval(source);
+              } catch (IOException ex) {
                 ex.printStackTrace(System.err);
               } finally {
                 destroy(getTarget());
               }
             });
-  }
-
-  private static ScriptEngine getEngine() {
-    return PYTHON_ENGINE;
   }
 
   private static ExecutorService getPool() {
