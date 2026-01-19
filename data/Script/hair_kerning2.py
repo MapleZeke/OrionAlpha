@@ -93,9 +93,9 @@ elif selectHair == 2:
         mHair = self.makeRandAvatar(4050001, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5])
         
         if mHair == 1:
-            self.say("Here's the mirror. Your new cut! What do you think? I know it's not the trendiest, but it looks really cool to me! Come back when you need a new change!")
+            self.say("Here's the mirror. Your new hair color! What do you think? I know it's not the trendiest, but it looks really cool to me! Come back when you need a new change!")
         elif mHair == -1:
-            self.say("Hmm... Are you sure you have the right coupon? Sorry, but no haircut without it.")
+            self.say("Hmm... Are you sure you have the right coupon? Sorry, but no hair dyeing without it.")
         elif mHair == -3:
             self.say("I'm sorry. Looks like we have a problem here at the salon. I don't think I can dye your hair right now. Come back later.")
         elif mHair == 0 or mHair == -2:
