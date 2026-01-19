@@ -105,7 +105,7 @@
                     <archive>
                         <manifestEntries>
                             <Plugin-Version>${project.version}</Plugin-Version>
-	                        <Main-Class>src</Main-Class>
+	                        <Main-Class>launcher.OrionLauncher</Main-Class>
                         </manifestEntries>
                     </archive>
                 </configuration>
@@ -139,12 +139,6 @@
                         	<finalName>OrionAlpha</finalName>
                             <filters>
                                 <filter>
-                                    <artifact>com.orionalpha:*</artifact>
-                                    <includes>
-                                        <include>**</include>
-                                    </includes>
-                                </filter>
-                                <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/*.SF</exclude>
@@ -155,8 +149,7 @@
                             </filters>
                             <artifactSet>
                                 <includes>
-                                    <artifact>com.orionalpha:*</artifact>
-                                    <include>**</include>
+                                    <include>*:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
