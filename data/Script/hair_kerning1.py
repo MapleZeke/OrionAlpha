@@ -79,7 +79,7 @@ elif selectHair == 1:
     mHair = self.askAvatar("I can change your hair color to something totally new. Aren't you tired of your hair? I can dye your hair if you have #b#t4050001##k. Choose the color you like!", 4050001, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5])
     
     if mHair == 1:
-        self.say("Alright, check out your new hair color. What do you think? Even I admit this is a work of art! HAHAHA. Come find me when you want a new haircut. I'll take care of the rest!")
+        self.say("Alright, check out your new hair color. What do you think? Even I admit this is a work of art! HAHAHA. Come find me when you want a new hair color. I'll take care of the rest!")
     elif mHair == -1:
         self.say("Hmm... Looks like you don't have the right coupon... Too bad, I can't dye your hair without it. Sorry, pal.")
     elif mHair == -3:
