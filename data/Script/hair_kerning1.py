@@ -21,7 +21,7 @@ NPC: Don Giovanni (Hair Salon Owner)
 Script: Kerning City VIP Hair Stylist
 '''
 
-selectHair = self.askMenu("Oi! Sou Don Giovanni, o chefe do salão de beleza! Se você tiver #b#t4050003##k, #b#t4050001##k, por que não me deixa cuidar do resto? Decida o que quer fazer com seu cableo...\r\n#b#L0# Mudar o estilo (cupom VIP)#l\r\n#L1# Tingir seu cabelo (cupom VIP)#l")
+selectHair = self.askMenu("Hi! I'm Don Giovanni, the owner of this hair salon! If you have #b#t4050003##k, #b#t4050001##k, why don't you let me take care of the rest? Decide what you want to do with your hair...\r\n#b#L0# Change hairstyle (VIP coupon)#l\r\n#L1# Dye your hair (VIP coupon)#l")
 
 if selectHair == 0:
     tHair = self.userGetHair() % 10
@@ -40,7 +40,7 @@ if selectHair == 0:
         changeHair11 = 30040 + tHair
         changeHair12 = 30160 + tHair
         
-        mHair = self.askAvatar("Posso mudar o estilo do seu cabelo para alguma coisa totalmente nova. Já não está enjoado do seu cabelo? Posso fazer um novo corte com #b#t4050003##k. Escolha o estilo de acordo com seu gosto.", 4050003, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5, changeHair6, changeHair7, changeHair8, changeHair9, changeHair10, changeHair11, changeHair12])
+        mHair = self.askAvatar("I can change your hairstyle to something totally new. Aren't you tired of your hair? I can give you a new cut with #b#t4050003##k. Choose the style you like.", 4050003, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5, changeHair6, changeHair7, changeHair8, changeHair9, changeHair10, changeHair11, changeHair12])
     elif self.userGetGender() == 1:
         changeHair1 = 31050 + tHair
         changeHair2 = 31040 + tHair
@@ -55,16 +55,16 @@ if selectHair == 0:
         changeHair11 = 31140 + tHair
         changeHair12 = 31010 + tHair
         
-        mHair = self.askAvatar("Posso mudar o estilo do seu cabelo para alguma coisa totalmente nova. Já não está enjoado do seu cabelo? Posso fazer um novo corte com #b#t4050003##k. Escolha o estilo de acordo com seu gosto.", 4050003, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5, changeHair6, changeHair7, changeHair8, changeHair9, changeHair10, changeHair11, changeHair12])
+        mHair = self.askAvatar("I can change your hairstyle to something totally new. Aren't you tired of your hair? I can give you a new cut with #b#t4050003##k. Choose the style you like.", 4050003, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5, changeHair6, changeHair7, changeHair8, changeHair9, changeHair10, changeHair11, changeHair12])
     
     if mHair == 1:
-        self.say("Certo, olhe seu novo corte de cabelo. O que você acha? Mesmo eu admito que isso é uma obra-de-arte! HAHAHA. Me procure quando quiser um novo corte de cabelo. Eu cuido do resto!")
+        self.say("Alright, check out your new haircut. What do you think? Even I admit this is a work of art! HAHAHA. Come find me when you want a new haircut. I'll take care of the rest!")
     elif mHair == -1:
-        self.say("Hum... Parece que você não tem o cupom certo... Pena, não posso cortar seu cabelo sem ele. Desculpe, colega.")
+        self.say("Hmm... Looks like you don't have the right coupon... Too bad, I can't cut your hair without it. Sorry, pal.")
     elif mHair == -3:
-        self.say("Me desculpe. Parece que temos um problema aqui no salão. Não acho que possa cortar seu cabelo neste momento. Volte mais tarde.")
+        self.say("I'm sorry. Looks like we have a problem here at the salon. I don't think I can cut your hair right now. Come back later.")
     elif mHair == 0 or mHair == -2:
-        self.say("Me desculpe. Parece que temos um pequeno problema em mudar seu penteado. Por favor, volte daqui a pouco.")
+        self.say("I'm sorry. Looks like we have a small problem changing your hairstyle. Please come back in a bit.")
 
 elif selectHair == 1:
     cHair = self.userGetHair()
@@ -76,13 +76,13 @@ elif selectHair == 1:
     changeHair4 = eHair + 7
     changeHair5 = eHair + 5
     
-    mHair = self.askAvatar("Posso mudar a cor do seu cabelo para alguma coisa totalmente nova. Já não está enjoado do seu cabelo? Posso tingir seu cabelo se tiver #b#t4050001##k. Escolha a cor de seu gosto!", 4050001, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5])
+    mHair = self.askAvatar("I can change your hair color to something totally new. Aren't you tired of your hair? I can dye your hair if you have #b#t4050001##k. Choose the color you like!", 4050001, [changeHair1, changeHair2, changeHair3, changeHair4, changeHair5])
     
     if mHair == 1:
-        self.say("Certo, olhe sua nova cor de cabelo. O que você acha? Mesmo eu admito que isso é uma obra-de-arte! HAHAHA. Me procure quando quiser um novo corte de cabelo. Eu cuido do resto!")
+        self.say("Alright, check out your new hair color. What do you think? Even I admit this is a work of art! HAHAHA. Come find me when you want a new hair color. I'll take care of the rest!")
     elif mHair == -1:
-        self.say("Hum... Parece que você não tem o cupom certo... Pena, não posso tingir seu cabelo sem ele. Desculpe, colega.")
+        self.say("Hmm... Looks like you don't have the right coupon... Too bad, I can't dye your hair without it. Sorry, pal.")
     elif mHair == -3:
-        self.say("Me desculpe. Parece que temos um problema aqui no salão. Não acho que possa tingir seu cabelo neste momento. Volte mais tarde.")
+        self.say("I'm sorry. Looks like we have a problem here at the salon. I don't think I can dye your hair right now. Come back later.")
     elif mHair == 0 or mHair == -2:
-        self.say("Me desculpe. Parece que temos um pequeno problema em mudar seu penteado. Por favor, volte daqui a pouco.")
+        self.say("I'm sorry. Looks like we have a small problem changing your color. Please come back in a bit.")
