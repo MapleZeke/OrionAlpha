@@ -198,8 +198,7 @@ public class OrionLauncher {
           }
           return worlds;
         } catch (NumberFormatException e) {
-          System.err.println(
-              "Warning: Invalid world count format '" + arg + "', using default 1");
+          System.err.println("Warning: Invalid world count format '" + arg + "', using default 1");
           return 1;
         }
       }
